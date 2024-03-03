@@ -9,11 +9,10 @@ const MainApp = ({ onLogout, userRole }) => {
 
     return (
         <div>
-            <button onClick={handleLogout}>Odjavi se</button>
             {userRole === 'ADMIN' ? (
                 <AdminDashboard />
             ) : (
-                <UserDashboard />
+                <UserDashboard handleLogout={handleLogout} />
             )}
         </div>
     );
