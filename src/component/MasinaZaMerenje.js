@@ -4,7 +4,7 @@ import "../styles/MasinaZaMerenje.css";
 const MasinaZaMerenje = () => {
     return (
         <div>
-            <h1>Masina za merenje zica i kablova</h1>
+            <h2>Mašina za merenje žica i kablova</h2>
             <form>
                 <label htmlFor="zapisnikBroj">Zapisnik Broj:</label>
                 <input type="text" id="zapisnikBroj" name="zapisnikBroj"/><br/>
@@ -105,7 +105,7 @@ const MasinaZaMerenje = () => {
                     <input type="radio" id="neIspunjava" name="ispunjava" value="neIspunjava" />
                     <label htmlFor="neIspunjava">NE ISPUNJAVA</label>
                     <input type="radio" id="nijePrimenljivo" name="ispunjava" value="nijePrimenljivo" />
-                    <label htmlFor="neIspunjava">NIJE PRIMENLJIVO</label>
+                    <label htmlFor="nijePrimenljivo">NIJE PRIMENLJIVO</label>
                 </label>
 
                 <label className="container">

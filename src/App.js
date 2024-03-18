@@ -20,7 +20,7 @@ function App() {
           { token }
       );
 
-      const { role } = response.data;
+      const { token , role } = response.data;
       setLoggedIn(true);
       setUserRole(role);
 
