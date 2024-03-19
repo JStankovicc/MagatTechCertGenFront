@@ -20,11 +20,11 @@ function App() {
           { token }
       );
 
-      const { token , role } = response.data;
+      const { token: authToken , role } = response.data;
       setLoggedIn(true);
       setUserRole(role);
 
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', authToken);
     } catch (error) {
       console.error('Greška pri prijavi korisnika:', error);
     }

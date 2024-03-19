@@ -80,6 +80,16 @@ const MernaLetva = () => {
                     <label htmlFor="ne">NE</label>
                 </label>
 
+                <label>Uslovi okoline:</label>
+                <div className="rezultatiContainer">
+                    <input type="text" value="Temperatura" readOnly />
+                    <input type="text" id="temperatura" name="temperatura" className="rezultatiInput"/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="Vlažnost vazduha" readOnly />
+                    <input type="text" id="vlaznost" name="vlaznost" className="rezultatiInput"/>
+                </div>
+
                 <label htmlFor="napomena">Napomena:</label>
                 <textarea id="napomena" name="napomena" rows="4" cols="50"></textarea><br/>
 
@@ -159,13 +169,11 @@ const MernaLetva = () => {
                     <option value="opcija3">Opcija 3</option>
                 </select><br/>
 
-                <label htmlFor="skinutiZigovi1">Skinuti Zigovi:</label>
-                <input type="text" id="skinutiZigovi1" name="skinutiZigovi1"/>
-                <input type="text" id="skinutiZigovi2" name="skinutiZigovi2"/><br/>
+                <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>
+                <input type="text" id="skinutiZigovi" name="skinutiZigovi"/><br/>
 
-                <label htmlFor="stavljeniZigovi1">Stavljeni Zigovi:</label>
-                <input type="text" id="stavljeniZigovi1" name="stavljeniZigovi1"/>
-                <input type="text" id="stavljeniZigovi2" name="stavljeniZigovi2"/><br/>
+                <label htmlFor="stavljeniZigovi1">Stavljeni žigovi (razdvojiti znakom ;):</label>
+                <input type="text" id="stavljeniZigovi" name="stavljeniZigovi"/><br/>
 
                 <label className="container">
                     <h2>Merna letva ispunjava propisane zahteve:</h2>
@@ -176,7 +184,7 @@ const MernaLetva = () => {
                 </label>
 
                 <label htmlFor="komentar">Komentar:</label>
-                <textarea id="komentar" name="komentar" rows="4" cols="50"></textarea> 
+                <textarea id="komentar" name="komentar" rows="4" cols="50"></textarea>
 
                 <label htmlFor="datum">Datum:</label>
                 <input type="date" id="datum" name="datum"/><br/>
