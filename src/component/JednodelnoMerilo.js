@@ -1,32 +1,99 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../styles/JednodelnoMerilo.css"
 
 const JednodelnoMerilo = () => {
-        return (
+    const [vrsteKontrolisanja, setVrsteKontrolisanja] = useState([]);
+    const [kompanije, setKompanije] = useState([]);
+    const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
+    const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
+
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+
+        // Dobavljanje vrsta kontrolisanja
+        fetch('http://localhost:8080/api/v1/vrstakontrolisanja/getAll', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data.map(model => model.description));
+                setVrsteKontrolisanja(data);
+            })
+            .catch(error => console.error('Greška pri dobavljanju vrsta kontrolisanja:', error));
+
+        // Dobavljanje kompanija
+        fetch('http://localhost:8080/api/v1/kompanija/all', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setKompanije(data))
+            .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
+    }, []);
+
+
+
+    return (
             <div>
                 <h2>Jednodelno Merilo</h2>
                 <form>
                     <label htmlFor="zapisnikBroj">Zapisnik Broj:</label>
                     <input type="text" id="zapisnikBroj" name="zapisnikBroj"/><br/>
 
-                    <label htmlFor="vrstaKontrolisanja">Vrsta kontrolisanja/overavanja:</label>
-                    <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">
-                        <option value="opcija1">Opcija 1</option>
-                        <option value="opcija2">Opcija 2</option>
-                        <option value="opcija3">Opcija 3</option>
-                    </select><br/>
+                    <label>Izaberite vrstu kontrolisanja:</label>
+                    <select>
+                        {vrsteKontrolisanja.map(vrsta => (
+                            <option key={vrsta.id} value={vrsta.id}>
+                                {vrsta.description}
+                            </option>
+                        ))}
+                    </select>
 
                     <label htmlFor="podnosilacZahteva">Podnosilac zahteva:</label>
-                    <input type={"text"} id={"podnosilacZahteva"} list={"kompanije"}/>
-                    <datalist id={"kompanije"}>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
+                    <input
+                        type="text"
+                        id="podnosilacZahteva"
+                        list="kompanije"
+                        value={podnosilacZahteva}
+                        onChange={(e) => setPodnosilacZahteva(e.target.value)}
+                    />
+                    <datalist id="kompanije">
+                        {kompanije.map((kompanija, index) => (
+                            <option key={index} value={kompanija.name} />
+                        ))}
                     </datalist>
-                    <br/>
 
                     <label htmlFor="vlasnikKorisnik">Vlasnik/korisnik:</label>
-                    <input type={"text"} id={"vlasnikKorisnik"} list={"kompanije"}/>
-
+                    <input
+                        type="text"
+                        id="vlasnikKorisnik"
+                        list="kompanije"
+                        value={vlasnikKorisnik}
+                        onChange={(e) => setVlasnikKorisnik(e.target.value)}
+                    />
+                    <datalist id="kompanije">
+                        {kompanije.map((kompanija, index) => (
+                            <option key={index} value={kompanija.name} />
+                        ))}
+                    </datalist>
 
                     <label htmlFor="serijskiBroj">Serijski broj:</label>
                     <input type="text" id="serijskiBroj" name="serijskiBroj"/><br/>
