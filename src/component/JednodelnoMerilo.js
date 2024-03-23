@@ -8,6 +8,48 @@ const JednodelnoMerilo = () => {
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
 
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+
+        const formData = new FormData(event.target);
+
+        const formDataToJson = (formData) => {
+            const json = {};
+            formData.forEach((value, key) => {
+                json[key] = value;
+            });
+            return json;
+        };
+
+        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/add', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataToJson(formData))
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Neuspješno podnošenje forme');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                alert('Forma uspješno podnesena!');
+            })
+            .catch(error => {
+                console.error('Greška prilikom podnošenja forme:', error);
+            });
+    };
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -54,9 +96,11 @@ const JednodelnoMerilo = () => {
     return (
             <div>
                 <h2>Jednodelno Merilo</h2>
-                <form>
-                    <label htmlFor="zapisnikBroj">Zapisnik Broj:</label>
-                    <input type="text" id="zapisnikBroj" name="zapisnikBroj"/><br/>
+                <form onSubmit={handleSubmit}>
+                    <input type="hidden" id="token" name="token" value={localStorage.getItem('jwtToken')}/>
+
+                    <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
+                    <input type="text" id="brojZapisnika" name="zapisnikBroj"/><br/>
 
                     <label>Izaberite vrstu kontrolisanja:</label>
                     <select>
@@ -77,21 +121,21 @@ const JednodelnoMerilo = () => {
                     />
                     <datalist id="kompanije">
                         {kompanije.map((kompanija, index) => (
-                            <option key={index} value={kompanija.name} />
+                            <option key={index} value={kompanija.name}/>
                         ))}
                     </datalist>
 
-                    <label htmlFor="vlasnikKorisnik">Vlasnik/korisnik:</label>
+                    <label htmlFor="korisnik">Vlasnik/korisnik:</label>
                     <input
                         type="text"
-                        id="vlasnikKorisnik"
+                        id="korisnik"
                         list="kompanije"
                         value={vlasnikKorisnik}
                         onChange={(e) => setVlasnikKorisnik(e.target.value)}
                     />
                     <datalist id="kompanije">
                         {kompanije.map((kompanija, index) => (
-                            <option key={index} value={kompanija.name} />
+                            <option key={index} value={kompanija.name}/>
                         ))}
                     </datalist>
 
@@ -109,11 +153,11 @@ const JednodelnoMerilo = () => {
                     </datalist>
                     <br/>
 
-                    <label htmlFor="oznakaModela">Oznaka tipa/modela:</label>
-                    <input type="text" id="oznakaModela" name="oznakaModela"/><br/>
+                    <label htmlFor="oznakaTipa">Oznaka tipa/modela:</label>
+                    <input type="text" id="oznakaTipa" name="oznakaTipa"/><br/>
 
-                    <label htmlFor="sluzbenaOznaka">Službena oznaka tipa/broj izjave o usaglašenosti:</label>
-                    <select id="sluzbenaOznaka" name="sluzbenaOznaka">
+                    <label htmlFor="sluzbenaOznakaTipa">Službena oznaka tipa/broj izjave o usaglašenosti:</label>
+                    <select id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa">
                         <option value="predlog1">Predlog 1</option>
                         <option value="predlog2">Predlog 2</option>
                         <option value="predlog3">Predlog 3</option>
@@ -142,19 +186,19 @@ const JednodelnoMerilo = () => {
 
                     <label>Uslovi okoline:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" value="Temperatura" readOnly />
+                        <input type="text" value="Temperatura" readOnly/>
                         <input type="text" id="temperatura" name="temperatura" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="Vlažnost vazduha" readOnly />
-                        <input type="text" id="vlaznost" name="vlaznost" className="rezultatiInput"/>
+                        <input type="text" value="Vlažnost vazduha" readOnly/>
+                        <input type="text" id="vlaznostVazduha" name="vlaznostVazduha" className="rezultatiInput"/>
                     </div>
 
                     <label className="container">
                         <h2>Merilo je funkcionalno ispravno:</h2>
-                        <input type="radio" id="da" name="funkcionalnaIspravnost" value="da" />
+                        <input type="radio" id="da" name="meriloJeIspravno" value="DA"/>
                         <label htmlFor="da">DA</label>
-                        <input type="radio" id="ne" name="funkcionalnaIspravnost" value="ne" />
+                        <input type="radio" id="ne" name="meriloJeIspravno" value="NE"/>
                         <label htmlFor="ne">NE</label>
                     </label>
 
@@ -163,149 +207,199 @@ const JednodelnoMerilo = () => {
 
                     <label>Odstupanje od nazivne mere:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" value="20" readOnly />
-                        <input type="text" id="rezultat20" name="rezultat20" className="rezultatiInput"/>
+                        <input type="text" value="20" readOnly/>
+                        <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="40" readOnly />
-                        <input type="text" id="rezultat40" name="rezultat40" className="rezultatiInput"/>
+                        <input type="text" value="40" readOnly/>
+                        <input type="text" id="odstupanje2" name="odstupanje2" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="60" readOnly />
-                        <input type="text" id="rezultat60" name="rezultat60" className="rezultatiInput"/>
+                        <input type="text" value="60" readOnly/>
+                        <input type="text" id="odstupanje3" name="odstupanje3" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="80" readOnly />
-                        <input type="text" id="rezultat80" name="rezultat80" className="rezultatiInput"/>
+                        <input type="text" value="80" readOnly/>
+                        <input type="text" id="odstupanje4" name="odstupanje4" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="100" readOnly />
-                        <input type="text" id="rezultat100" name="rezultat100" className="rezultatiInput"/>
+                        <input type="text" value="100" readOnly/>
+                        <input type="text" id="odstupanje5" name="odstupanje5" className="rezultatiInput"/>
+                    </div>
+
+
+                    <div className="rezultatiContainer">
+                        <input type="text" value="NDG" readOnly/>
+                        <input type="text" id="ndg1" name="ndg1" className="rezultatiInput"/>
                     </div>
 
 
                     <label>Greška podeljka skale:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska1" name="greska1" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat1" name="rezultat1" className="rezultatiInput"/>
+                        <input type="text" id="greska1" name="greska1" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka1" name="greskaPodeljka1" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska2" name="greska2" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat2" name="rezultat2" className="rezultatiInput"/>
+                        <input type="text" id="greska2" name="greska2" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka2" name="greskaPodeljka2" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska3" name="greska3" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat3" name="rezultat3" className="rezultatiInput"/>
+                        <input type="text" id="greska3" name="greska3" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka3" name="greskaPodeljka3" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska4" name="greska4" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat4" name="rezultat4" className="rezultatiInput"/>
+                        <input type="text" id="greska4" name="greska4" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka4" name="greskaPodeljka4" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska5" name="greska5" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat5" name="rezultat5" className="rezultatiInput"/>
+                        <input type="text" id="greska5" name="greska5" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka5" name="greskaPodeljka5" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska6" name="greska6" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat6" name="rezultat6" className="rezultatiInput"/>
+                        <input type="text" id="greska6" name="greska6" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka6" name="greskaPodeljka6" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska7" name="greska7" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat7" name="rezultat7" className="rezultatiInput"/>
+                        <input type="text" id="greska7" name="greska7" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka7" name="greskaPodeljka7" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska8" name="greska8" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat8" name="rezultat8" className="rezultatiInput"/>
+                        <input type="text" id="greska8" name="greska8" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka8" name="greskaPodeljka8" className="rezultatiInput"/>
                     </div>
+
+
+                    <div className="rezultatiContainer">
+                        <input type="text" value="NDG" readOnly/>
+                        <input type="text" id="ndg2" name="ndg2" className="rezultatiInput"/>
+                    </div>
+                    <div className="rezultatiContainer">
+                        <input type="text" value="NDR" readOnly/>
+                        <input type="text" id="ndr1" name="ndr1" className="rezultatiInput"/>
+                    </div>
+
 
                     <label>Odstupanje od nazivne mere:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" value="20" readOnly />
-                        <input type="text" id="rezultat201" name="rezultat201" className="rezultatiInput"/>
+                        <input type="text" value="20" readOnly/>
+                        <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="40" readOnly />
-                        <input type="text" id="rezultat401" name="rezultat401" className="rezultatiInput"/>
+                        <input type="text" value="40" readOnly/>
+                        <input type="text" id="odstupanje7" name="odstupanje7" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="60" readOnly />
-                        <input type="text" id="rezultat601" name="rezultat601" className="rezultatiInput"/>
+                        <input type="text" value="60" readOnly/>
+                        <input type="text" id="odstupanje8" name="odstupanje8" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="80" readOnly />
-                        <input type="text" id="rezultat801" name="rezultat801" className="rezultatiInput"/>
+                        <input type="text" value="80" readOnly/>
+                        <input type="text" id="odstupanje9" name="odstupanje9" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" value="100" readOnly />
-                        <input type="text" id="rezultat1001" name="rezultat1001" className="rezultatiInput"/>
+                        <input type="text" value="100" readOnly/>
+                        <input type="text" id="odstupanje10" name="odstupanje10" className="rezultatiInput"/>
                     </div>
+
+
+                    <div className="rezultatiContainer">
+                        <input type="text" value="NDG" readOnly/>
+                        <input type="text" id="ndg3" name="ndg3" className="rezultatiInput"/>
+                    </div>
+
 
                     <label>Greška podeljka skale:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska11" name="greska11" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat3132" name="rezultat3132" className="rezultatiInput"/>
+                        <input type="text" id="greska11" name="greska11" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka9" name="greskaPodeljka9" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska12" name="greska12" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat3233" name="rezultat3233" className="rezultatiInput"/>
+                        <input type="text" id="greska12" name="greska12" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka10" name="greskaPodeljka10" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska13" name="greska13" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat4142" name="rezultat4142" className="rezultatiInput"/>
+                        <input type="text" id="greska13" name="greska13" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka11" name="greskaPodeljka11" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska14" name="greska14" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat4243" name="rezultat4243" className="rezultatiInput"/>
+                        <input type="text" id="greska14" name="greska14" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka12" name="greskaPodeljka12" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska15" name="greska15" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat5556" name="rezultat5556" className="rezultatiInput"/>
+                        <input type="text" id="greska15" name="greska15" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka13" name="greskaPodeljka13" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska16" name="greska16" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat5657" name="rezultat5657" className="rezultatiInput"/>
+                        <input type="text" id="greska16" name="greska16" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka14" name="greskaPodeljka14" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska17" name="greska17" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat8586" name="rezultat8586" className="rezultatiInput"/>
+                        <input type="text" id="greska17" name="greska17" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka15" name="greskaPodeljka15" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska18" name="greska18" className="rezultatiInput" placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="rezultat8687" name="rezultat8687" className="rezultatiInput"/>
+                        <input type="text" id="greska18" name="greska18" className="rezultatiInput"
+                               placeholder={"Greška podeljka skale"}/>
+                        <input type="text" id="greskaPodeljka16" name="greskaPodeljka16" className="rezultatiInput"/>
                     </div>
 
 
-                    <label htmlFor="merniLenjir">Serijski broj Mernog lenjira:</label>
-                    <select id="merniLenjir" name="merniLenjir">
+                    <div className="rezultatiContainer">
+                        <input type="text" value="NDG" readOnly/>
+                        <input type="text" id="ndg4" name="ndg4" className="rezultatiInput"/>
+                    </div>
+                    <div className="rezultatiContainer">
+                        <input type="text" value="NDR" readOnly/>
+                        <input type="text" id="ndr2" name="ndr2" className="rezultatiInput"/>
+                    </div>
+
+
+                    <label htmlFor="brojMernogLenjira">Serijski broj Mernog lenjira:</label>
+                    <select id="brojMernogLenjira" name="brojMernogLenjira">
                         <option value="opcija1">Opcija 1</option>
                         <option value="opcija2">Opcija 2</option>
                         <option value="opcija3">Opcija 3</option>
                     </select><br/>
 
-                    <label htmlFor="mernaLupa">Serijski broj Merne lupe:</label>
-                    <select id="mernaLupa" name="mernaLupa">
+                    <label htmlFor="brojMerneLupe">Serijski broj Merne lupe:</label>
+                    <select id="brojMerneLupe" name="brojMerneLupe">
                         <option value="opcija1">Opcija 1</option>
                         <option value="opcija2">Opcija 2</option>
                         <option value="opcija3">Opcija 3</option>
                     </select><br/>
 
-                    <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>
+                    <label htmlFor="skinutiZigovi">Skinuti žigovi (razdvojiti znakom ;):</label>
                     <input type="text" id="skinutiZigovi" name="skinutiZigovi"/><br/>
 
-                    <label htmlFor="stavljeniZigovi1">Stavljeni žigovi (razdvojiti znakom ;):</label>
-                    <input type="text" id="stavljeniZigovi" name="stavljeniZigovi"/><br/>
+                    <label htmlFor="postavljeniZigovi">Stavljeni žigovi (razdvojiti znakom ;):</label>
+                    <input type="text" id="postavljeniZigovi" name="postavljeniZigovi"/><br/>
 
                     <label className="container">
                         <h2>Merilo ispunjava propisane zahteve:</h2>
-                        <input type="radio" id="ispunjava" name="ispunjava" value="ispunjava" />
-                        <label htmlFor="ispunjava">DA</label>
-                        <input type="radio" id="neIspunjava" name="ispunjava" value="neIspunjava" />
+                        <input type="radio" id="meriloIspunjavaZahteve" name="meriloIspunjavaZahteve" value="DA"/>
+                        <label htmlFor="meriloIspunjavaZahteve">DA</label>
+                        <input type="radio" id="neIspunjava" name="meriloIspunjavaZahteve" value="NE"/>
                         <label htmlFor="neIspunjava">NE</label>
                     </label><br/>
 
 
-                    <label htmlFor="komentar">Komentar:</label>
-                    <textarea id="komentar" name="komentar" rows="4" cols="50"></textarea><br/>
+                    <label htmlFor="komentar2">Komentar:</label>
+                    <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea><br/>
 
                     <label htmlFor="datum">Datum:</label>
                     <input type="date" id="datum" name="datum"/><br/><br/>
@@ -313,7 +407,7 @@ const JednodelnoMerilo = () => {
                     <input type="submit" value="Potvrdi"/>
                 </form>
             </div>
-        );
+    );
 }
 
 export default JednodelnoMerilo;
