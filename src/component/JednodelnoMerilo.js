@@ -37,17 +37,16 @@ const JednodelnoMerilo = () => {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspješno podnošenje forme');
                 }
                 return response.json();
             })
             .then(data => {
                 console.log(data);
-                alert('Forma uspješno podnesena!');
             })
             .catch(error => {
                 console.error('Greška prilikom podnošenja forme:', error);
             });
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -57,7 +56,6 @@ const JednodelnoMerilo = () => {
             return;
         }
 
-        // Dobavljanje vrsta kontrolisanja
         fetch('http://localhost:8080/api/v1/vrstakontrolisanja/getAll', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -75,7 +73,6 @@ const JednodelnoMerilo = () => {
             })
             .catch(error => console.error('Greška pri dobavljanju vrsta kontrolisanja:', error));
 
-        // Dobavljanje kompanija
         fetch('http://localhost:8080/api/v1/kompanija/all', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -100,7 +97,7 @@ const JednodelnoMerilo = () => {
                     <input type="hidden" id="token" name="token" value={localStorage.getItem('jwtToken')}/>
 
                     <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
-                    <input type="text" id="brojZapisnika" name="zapisnikBroj"/><br/>
+                    <input type="text" id="brojZapisnika" name="brojZapisnika"/><br/>
 
                     <label>Izaberite vrstu kontrolisanja:</label>
                     <select>
@@ -115,6 +112,7 @@ const JednodelnoMerilo = () => {
                     <input
                         type="text"
                         id="podnosilacZahteva"
+                        name="podnosilacZahteva"
                         list="kompanije"
                         value={podnosilacZahteva}
                         onChange={(e) => setPodnosilacZahteva(e.target.value)}
@@ -129,6 +127,7 @@ const JednodelnoMerilo = () => {
                     <input
                         type="text"
                         id="korisnik"
+                        name="korisnik"
                         list="kompanije"
                         value={vlasnikKorisnik}
                         onChange={(e) => setVlasnikKorisnik(e.target.value)}
@@ -146,7 +145,7 @@ const JednodelnoMerilo = () => {
                     <input type="text" id="identifikacioniBroj" name="identifikacioniBroj"/><br/>
 
                     <label htmlFor="proizvodjac">Proizvodjač:</label>
-                    <input type={"text"} id={"proizvodjaci"} list={"kompanije"}/>
+                    <input type={"text"} id={"proizvodjac"} name="proizvodjac" list={"kompanije"}/>
                     <datalist id={"proizvodjaci"}>
                         <option>Opcija 1</option>
                         <option>Opcija 2</option>
@@ -157,11 +156,7 @@ const JednodelnoMerilo = () => {
                     <input type="text" id="oznakaTipa" name="oznakaTipa"/><br/>
 
                     <label htmlFor="sluzbenaOznakaTipa">Službena oznaka tipa/broj izjave o usaglašenosti:</label>
-                    <select id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa">
-                        <option value="predlog1">Predlog 1</option>
-                        <option value="predlog2">Predlog 2</option>
-                        <option value="predlog3">Predlog 3</option>
-                    </select><br/>
+                    <input type="text" id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa"/>
 
                     <label htmlFor="merniOpseg">Merni opseg:</label>
                     <select id="merniOpseg" name="merniOpseg">
@@ -318,42 +313,42 @@ const JednodelnoMerilo = () => {
 
                     <label>Greška podeljka skale:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska11" name="greska11" className="rezultatiInput"
+                        <input type="text" id="greska9" name="greska9" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka9" name="greskaPodeljka9" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska12" name="greska12" className="rezultatiInput"
+                        <input type="text" id="greska10" name="greska10" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka10" name="greskaPodeljka10" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska13" name="greska13" className="rezultatiInput"
+                        <input type="text" id="greska11" name="greska11" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka11" name="greskaPodeljka11" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska14" name="greska14" className="rezultatiInput"
+                        <input type="text" id="greska12" name="greska12" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka12" name="greskaPodeljka12" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska15" name="greska15" className="rezultatiInput"
+                        <input type="text" id="greska13" name="greska13" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka13" name="greskaPodeljka13" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska16" name="greska16" className="rezultatiInput"
+                        <input type="text" id="greska14" name="greska14" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka14" name="greskaPodeljka14" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska17" name="greska17" className="rezultatiInput"
+                        <input type="text" id="greska15" name="greska15" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka15" name="greskaPodeljka15" className="rezultatiInput"/>
                     </div>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska18" name="greska18" className="rezultatiInput"
+                        <input type="text" id="greska16" name="greska16" className="rezultatiInput"
                                placeholder={"Greška podeljka skale"}/>
                         <input type="text" id="greskaPodeljka16" name="greskaPodeljka16" className="rezultatiInput"/>
                     </div>
