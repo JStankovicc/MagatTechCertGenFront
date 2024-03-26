@@ -159,24 +159,16 @@ const JednodelnoMerilo = () => {
                     <input type="text" id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa"/>
 
                     <label htmlFor="merniOpseg">Merni opseg:</label>
-                    <select id="merniOpseg" name="merniOpseg">
-                        <option value="opcija1">Opcija 1</option>
-                        <option value="opcija2">Opcija 2</option>
-                        <option value="opcija3">Opcija 3</option>
-                    </select><br/>
+                    <input type="text" id="merniOpseg" name="merniOpseg"/>
 
                     <label htmlFor="najmanjiPodeljak">Najmanji podeljak:</label>
-                    <select id="najmanjiPodeljak" name="najmanjiPodeljak">
-                        <option value="opcija1">Opcija 1</option>
-                        <option value="opcija2">Opcija 2</option>
-                        <option value="opcija3">Opcija 3</option>
-                    </select><br/>
+                    <input type="text" id="najmanjiPodeljak" name="najmanjiPodeljak"/>
 
                     <label htmlFor="klasaTacnosti">Klasa tacnosti:</label>
                     <select id="klasaTacnosti" name="klasaTacnosti">
-                        <option value="opcija1">Opcija 1</option>
-                        <option value="opcija2">Opcija 2</option>
-                        <option value="opcija3">Opcija 3</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
                     </select><br/><br/>
 
                     <label>Uslovi okoline:</label>
