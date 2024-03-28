@@ -18,12 +18,11 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspješno dohvatanje podataka');
+                    throw new Error('Neuspešno dohvatanje podataka');
                 }
                 return response.json();
             })
             .then(data => {
-                // Promenite ime svakog merila na "Jednodelno merilo"
                 const merilaSaImenom = data.map(merilo => {
                     return { ...merilo, ime: "Jednodelno merilo" };
                 });

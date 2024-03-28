@@ -7,8 +7,44 @@ const JednodelnoMerilo = () => {
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
 
+    // Stanja za vrednosti greska1a, greska3a, greska5a, greska7a
+    const [greska1a, setGreska1a] = useState('');
+    const [greska1b, setGreska1b] = useState('');
+    const [greska3a, setGreska3a] = useState('');
+    const [greska3b, setGreska3b] = useState('');
+    const [greska5a, setGreska5a] = useState('');
+    const [greska5b, setGreska5b] = useState('');
+    const [greska7a, setGreska7a] = useState('');
+    const [greska7b, setGreska7b] = useState('');
+
+
+    // Stanja za vrednosti greska2b, greska4b, greska6b, greska8b
+    const [greska2b, setGreska2b] = useState('');
+    const [greska2a, setGreska2a] = useState('');
+
+    const [greska4b, setGreska4b] = useState('');
+    const [greska4a, setGreska4a] = useState('');
+
+    const [greska6b, setGreska6b] = useState('');
+    const [greska6a, setGreska6a] = useState('');
+
+    const [greska8b, setGreska8b] = useState('');
+    const [greska8a, setGreska8a] = useState('');
+
+
+
+    // Funkcija koja ažurira vrednosti za greska1b i greska2b
+    const updateValues = (inputValue, setter) => {
+        const numericValue = parseInt(inputValue);
+        if (!isNaN(numericValue)) {
+            setter(numericValue + 1);
+        } else {
+            setter('');
+        }
+    };
 
     const handleSubmit = (event) => {
+
         event.preventDefault();
 
         const token = localStorage.getItem('token');
@@ -50,6 +86,22 @@ const JednodelnoMerilo = () => {
     };
 
     useEffect(() => {
+        const handleEnterKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const form = event.target.form;
+                const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
+                const index = inputs.indexOf(event.target);
+                if (index !== -1 && index !== inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            }
+        };
+
+        document.addEventListener('keydown', handleEnterKeyPress);
+
+
+
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
@@ -223,44 +275,316 @@ const JednodelnoMerilo = () => {
 
                     <label>Greška podeljka skale:</label>
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska1" name="greska1" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka1" name="greskaPodeljka1" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska1a"
+                            name="greska1a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={greska1a}
+                            onChange={(e) => {
+                                setGreska1a(e.target.value);
+                                updateValues(e.target.value, setGreska1b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska1b"
+                            name="greska1b"
+                            className="rezultatiInput"
+                            placeholder={"Do:"}
+                            value={parseInt(greska1a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska1b(e.target.value);
+                                updateValues(e.target.value, setGreska1b);
+                            }}
+                        />
+                        <select id="unit1" name="unit1" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka1"
+                            name="greskaPodeljka1"
+                            className="rezultatiInput"
+                            placeholder="Greška podeljka skale"
+                        />
                     </div>
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska2" name="greska2" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka2" name="greskaPodeljka2" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska2a"
+                            name="greska2a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={parseInt(greska1a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska2a(e.target.value);
+                                updateValues(e.target.value, setGreska1b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska2b"
+                            name="greska2b"
+                            className="rezultatiInput"
+                            placeholder="Do:"
+                            value={parseInt(greska1a) + 2 || ''}
+                            onChange={(e) => {
+                                setGreska2b(e.target.value);
+                                updateValues(e.target.value, setGreska1b);
+                            }}
+                        />
+                        <select id="unit2" name="unit2" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka2"
+                            name="greskaPodeljka2"
+                            className="rezultatiInput"
+                            value="Greška podeljka skale"
+                        />
                     </div>
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska3" name="greska3" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka3" name="greskaPodeljka3" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska3a"
+                            name="greska3a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={greska3a}
+                            onChange={(e) => {
+                                setGreska3a(e.target.value);
+                                updateValues(e.target.value, setGreska3b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska3b"
+                            name="greska3b"
+                            className="rezultatiInput"
+                            placeholder={"Do:"}
+                            value={parseInt(greska3a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska3b(e.target.value);
+                                updateValues(e.target.value, setGreska3b);
+                            }}
+                        />
+                        <select id="unit1" name="unit1" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka3"
+                            name="greskaPodeljka3"
+                            className="rezultatiInput"
+                            placeholder="Greška podeljka skale"
+                        />
                     </div>
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska4" name="greska4" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka4" name="greskaPodeljka4" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska4a"
+                            name="greska4a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={parseInt(greska3a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska4a(e.target.value);
+                                updateValues(e.target.value, setGreska4b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska4b"
+                            name="greska4b"
+                            className="rezultatiInput"
+                            placeholder="Do:"
+                            value={parseInt(greska3a) + 2 || ''}
+                            onChange={(e) => {
+                                setGreska4b(e.target.value);
+                                updateValues(e.target.value, setGreska4b);
+                            }}
+                        />
+                        <select id="unit2" name="unit2" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka4"
+                            name="greskaPodeljka4"
+                            className="rezultatiInput"
+                            value="Greška podeljka skale"
+                        />
                     </div>
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska5" name="greska5" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka5" name="greskaPodeljka5" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska5a"
+                            name="greska5a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={greska5a}
+                            onChange={(e) => {
+                                setGreska5a(e.target.value);
+                                updateValues(e.target.value, setGreska5b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska5b"
+                            name="greska5b"
+                            className="rezultatiInput"
+                            placeholder={"Do:"}
+                            value={parseInt(greska5a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska5b(e.target.value);
+                                updateValues(e.target.value, setGreska5b);
+                            }}
+                        />
+                        <select id="unit1" name="unit1" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka5"
+                            name="greskaPodeljka5"
+                            className="rezultatiInput"
+                            placeholder="Greška podeljka skale"
+                        />
                     </div>
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska6" name="greska6" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka6" name="greskaPodeljka6" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska6a"
+                            name="greska6a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={parseInt(greska5a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska6a(e.target.value);
+                                updateValues(e.target.value, setGreska6b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska6b"
+                            name="greska6b"
+                            className="rezultatiInput"
+                            placeholder="Do:"
+                            value={parseInt(greska5a) + 2 || ''}
+                            onChange={(e) => {
+                                setGreska2b(e.target.value);
+                                updateValues(e.target.value, setGreska6b);
+                            }}
+                        />
+                        <select id="unit2" name="unit2" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka6"
+                            name="greskaPodeljka6"
+                            className="rezultatiInput"
+                            value="Greška podeljka skale"
+                        />
                     </div>
+
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska7" name="greska7" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka7" name="greskaPodeljka7" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska7a"
+                            name="greska7a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={greska7a}
+                            onChange={(e) => {
+                                setGreska7a(e.target.value);
+                                updateValues(e.target.value, setGreska7b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska7b"
+                            name="greska7b"
+                            className="rezultatiInput"
+                            placeholder={"Do:"}
+                            value={parseInt(greska7a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska7b(e.target.value);
+                                updateValues(e.target.value, setGreska7b);
+                            }}
+                        />
+                        <select id="unit1" name="unit1" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka7"
+                            name="greskaPodeljka7"
+                            className="rezultatiInput"
+                            placeholder="Greška podeljka skale"
+                        />
                     </div>
+
                     <div className="rezultatiContainer">
-                        <input type="text" id="greska8" name="greska8" className="rezultatiInput"
-                               placeholder={"Greška podeljka skale"}/>
-                        <input type="text" id="greskaPodeljka8" name="greskaPodeljka8" className="rezultatiInput"/>
+                        <input
+                            type="text"
+                            id="greska8a"
+                            name="greska8a"
+                            className="rezultatiInput"
+                            placeholder="Od:"
+                            value={parseInt(greska7a) + 1 || ''}
+                            onChange={(e) => {
+                                setGreska8a(e.target.value);
+                                updateValues(e.target.value, setGreska8b);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            id="greska8b"
+                            name="greska8b"
+                            className="rezultatiInput"
+                            placeholder="Do:"
+                            value={parseInt(greska7a) + 2 || ''}
+                            onChange={(e) => {
+                                setGreska8b(e.target.value);
+                                updateValues(e.target.value, setGreska8b);
+                            }}
+                        />
+                        <select id="unit2" name="unit2" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="greskaPodeljka8"
+                            name="greskaPodeljka8"
+                            className="rezultatiInput"
+                            value="Greška podeljka skale"
+                        />
                     </div>
 
 
@@ -356,19 +680,19 @@ const JednodelnoMerilo = () => {
                     </div>
 
 
-                    <label htmlFor="brojMernogLenjira">Serijski broj Mernog lenjira:</label>
-                    <select id="brojMernogLenjira" name="brojMernogLenjira">
-                        <option value="opcija1">Opcija 1</option>
-                        <option value="opcija2">Opcija 2</option>
-                        <option value="opcija3">Opcija 3</option>
-                    </select><br/>
-
-                    <label htmlFor="brojMerneLupe">Serijski broj Merne lupe:</label>
-                    <select id="brojMerneLupe" name="brojMerneLupe">
-                        <option value="opcija1">Opcija 1</option>
-                        <option value="opcija2">Opcija 2</option>
-                        <option value="opcija3">Opcija 3</option>
-                    </select><br/>
+                    <label>Merna Oprema:</label>
+                    <label>
+                        <input type="checkbox" name="mernaLupa"/>
+                        Merna lupa
+                    </label>
+                    <label>
+                        <input type="checkbox" name="merniLenjir"/>
+                        Merni lenjir
+                    </label>
+                    <label>
+                        <input type="checkbox" name="pomicnoMerilo"/>
+                        Pomično merilo
+                    </label>
 
                     <label htmlFor="skinutiZigovi">Skinuti žigovi (razdvojiti znakom ;):</label>
                     <input type="text" id="skinutiZigovi" name="skinutiZigovi"/><br/>
@@ -377,6 +701,10 @@ const JednodelnoMerilo = () => {
                     <input type="text" id="postavljeniZigovi" name="postavljeniZigovi"/><br/>
 
                     <label className="container">
+                        <div className="rezultatiContainer">
+                            <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                            <input type="text" id="ndr2" name="ndr2" className="rezultatiInput"/>
+                        </div>
                         <h2>Merilo ispunjava propisane zahteve:</h2>
                         <input type="radio" id="meriloIspunjavaZahteve" name="meriloIspunjavaZahteve" value="DA"/>
                         <label htmlFor="meriloIspunjavaZahteve">DA</label>
@@ -387,6 +715,14 @@ const JednodelnoMerilo = () => {
 
                     <label htmlFor="komentar2">Komentar:</label>
                     <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea><br/>
+
+
+                    <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
+                    <select id="zapisnikUneo" name="zapisnikUneo">
+                        <option value="1">Opcija 1</option>
+                        <option value="2">Opcija 2</option>
+                        <option value="3">Opcija 3</option>
+                    </select><br/>
 
                     <label htmlFor="datum">Datum:</label>
                     <input type="date" id="datum" name="datum"/><br/><br/>
