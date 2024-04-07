@@ -47,7 +47,7 @@ function Dashboard() {
 
     return (
         <div>
-            <h2>User Dashboard</h2>
+            <h2>Neoverena Merila</h2>
             <table>
                 <thead>
                 <tr>
