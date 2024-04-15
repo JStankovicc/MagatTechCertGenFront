@@ -45,8 +45,50 @@ function Dashboard() {
 
     }
 
+    function handlePreuzimanje(id) {
+        // Uzimamo token iz local storage-a
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+
+        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/print', {
+            method: 'GET',
+            headers: {
+                // Dodajemo Authorization header sa Bearer tokenom
+                'Authorization': `Bearer ${token}`,
+                // Postavljamo responseType na blob za binarni format
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Neuspešno preuzimanje PDF-a');
+                }
+                return response.blob(); // Pretvaramo odgovor u blob
+            })
+            .then(pdfBlob => {
+                // Kreiramo URL za preuzimanje PDF fajla
+                const url = window.URL.createObjectURL(pdfBlob);
+                // Kreiramo skriveni <a> element za preuzimanje
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', `merilo_${id}.pdf`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.error('Greška prilikom preuzimanja PDF-a:', error);
+            });
+    }
+
+
+
     return (
         <div>
+            <button onClick={handlePreuzimanje(0)}>TEST</button>
             <h2>Neoverena Merila</h2>
             <table>
                 <thead>
