@@ -176,12 +176,13 @@ function Dashboard() {
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/print', {
+        // Kreiramo URL sa brojem zapisnika kao query parametrom
+        const url = `http://localhost:8080/api/v1/jednodelnoMerilo/print?brojZapisnika=${id}`;
+
+        fetch(url, {
             method: 'GET',
             headers: {
-                // Dodajemo Authorization header sa Bearer tokenom
                 'Authorization': `Bearer ${token}`,
-                // Postavljamo responseType na blob za binarni format
                 'Content-Type': 'application/json'
             }
         })
@@ -189,12 +190,10 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error('Neuspešno preuzimanje Word datoteke');
                 }
-                return response.blob(); // Pretvaramo odgovor u blob
+                return response.blob();
             })
             .then(docxBlob => {
-                // Kreiramo URL za preuzimanje Word datoteke
                 const url = window.URL.createObjectURL(docxBlob);
-                // Kreiramo skriveni <a> element za preuzimanje
                 const link = document.createElement('a');
                 link.href = url;
                 link.setAttribute('download', `generisanoJednodelnoMerilo.docx`);
@@ -206,6 +205,7 @@ function Dashboard() {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
             });
     }
+
 
 
     function handlePreuzimanjeMerneLetve(id) {
@@ -458,10 +458,10 @@ function Dashboard() {
                         <td>{merilo.ime}</td>
                         <td>{new Date(merilo.datum).toLocaleDateString()}</td>
                         <td>
-                            <button onClick={() => handlePreuzimanjeJednodelnogMerila(merilo.id)}>Preuzmi</button>
+                            <button onClick={() => handlePreuzimanjeJednodelnogMerila(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                        <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                     </tr>
                 ))}
