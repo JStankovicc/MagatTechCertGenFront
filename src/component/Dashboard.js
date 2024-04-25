@@ -342,7 +342,9 @@ function Dashboard() {
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/slozivoMerilo/print', {
+        const url = `http://localhost:8080/api/v1/slozivoMerilo/print?brojZapisnika=${id}`;
+
+        fetch(url, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -546,7 +548,7 @@ function Dashboard() {
                         <td>{merilo.ime}</td>
                         <td>{new Date(merilo.datum).toLocaleDateString()}</td>
                         <td>
-                            <button onClick={() => handlePreuzimanjeSlozivogMerila(merilo.id)}>Preuzmi</button>
+                            <button onClick={() => handlePreuzimanjeSlozivogMerila(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
