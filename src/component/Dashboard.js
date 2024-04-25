@@ -169,14 +169,12 @@ function Dashboard() {
             return;
         }
 
-        // Uzimamo token iz local storage-a
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
 
-        // Kreiramo URL sa brojem zapisnika kao query parametrom
         const url = `http://localhost:8080/api/v1/jednodelnoMerilo/print?brojZapisnika=${id}`;
 
         fetch(url, {
@@ -214,20 +212,17 @@ function Dashboard() {
         if (!potvrda) {
             return;
         }
-
-        // Uzimamo token iz local storage-a
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+        const url = `http://localhost:8080/api/v1/mernaLetva/print?brojZapisnika=${id}`;
 
-        fetch('http://localhost:8080/api/v1/mernaLetva/print', {
+        fetch(url, {
             method: 'GET',
             headers: {
-                // Dodajemo Authorization header sa Bearer tokenom
                 'Authorization': `Bearer ${token}`,
-                // Postavljamo responseType na blob za binarni format
                 'Content-Type': 'application/json'
             }
         })
@@ -235,12 +230,10 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error('Neuspešno preuzimanje Word datoteke');
                 }
-                return response.blob(); // Pretvaramo odgovor u blob
+                return response.blob();
             })
             .then(docxBlob => {
-                // Kreiramo URL za preuzimanje Word datoteke
                 const url = window.URL.createObjectURL(docxBlob);
-                // Kreiramo skriveni <a> element za preuzimanje
                 const link = document.createElement('a');
                 link.href = url;
                 link.setAttribute('download', `generisanaMernaLetva.docx`);
@@ -260,19 +253,16 @@ function Dashboard() {
             return;
         }
 
-        // Uzimamo token iz local storage-a
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-
-        fetch('http://localhost:8080/api/v1/mernaTrakaSaViskom/print', {
+        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom/print?brojZapisnika=${id}`;
+        fetch(url, {
             method: 'GET',
             headers: {
-                // Dodajemo Authorization header sa Bearer tokenom
                 'Authorization': `Bearer ${token}`,
-                // Postavljamo responseType na blob za binarni format
                 'Content-Type': 'application/json'
             }
         })
@@ -280,12 +270,10 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error('Neuspešno preuzimanje Word datoteke');
                 }
-                return response.blob(); // Pretvaramo odgovor u blob
+                return response.blob();
             })
             .then(docxBlob => {
-                // Kreiramo URL za preuzimanje Word datoteke
                 const url = window.URL.createObjectURL(docxBlob);
-                // Kreiramo skriveni <a> element za preuzimanje
                 const link = document.createElement('a');
                 link.href = url;
                 link.setAttribute('download', `generisanaMernaTraka.docx`);
@@ -306,19 +294,17 @@ function Dashboard() {
             return;
         }
 
-        // Uzimamo token iz local storage-a
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+        const url = `http://localhost:8080/api/v1/masinaZaMerenje/print?brojZapisnika=${id}`;
 
-        fetch('http://localhost:8080/api/v1/masinaZaMerenje/print', {
+        fetch(url, {
             method: 'GET',
             headers: {
-                // Dodajemo Authorization header sa Bearer tokenom
                 'Authorization': `Bearer ${token}`,
-                // Postavljamo responseType na blob za binarni format
                 'Content-Type': 'application/json'
             }
         })
@@ -326,12 +312,10 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error('Neuspešno preuzimanje Word datoteke');
                 }
-                return response.blob(); // Pretvaramo odgovor u blob
+                return response.blob();
             })
             .then(docxBlob => {
-                // Kreiramo URL za preuzimanje Word datoteke
                 const url = window.URL.createObjectURL(docxBlob);
-                // Kreiramo skriveni <a> element za preuzimanje
                 const link = document.createElement('a');
                 link.href = url;
                 link.setAttribute('download', `generisanaMasinaZaMerenje.docx`);
@@ -352,7 +336,6 @@ function Dashboard() {
             return;
         }
 
-        // Uzimamo token iz local storage-a
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
@@ -362,9 +345,7 @@ function Dashboard() {
         fetch('http://localhost:8080/api/v1/slozivoMerilo/print', {
             method: 'GET',
             headers: {
-                // Dodajemo Authorization header sa Bearer tokenom
                 'Authorization': `Bearer ${token}`,
-                // Postavljamo responseType na blob za binarni format
                 'Content-Type': 'application/json'
             }
         })
@@ -372,12 +353,10 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error('Neuspešno preuzimanje Word datoteke');
                 }
-                return response.blob(); // Pretvaramo odgovor u blob
+                return response.blob();
             })
             .then(docxBlob => {
-                // Kreiramo URL za preuzimanje Word datoteke
                 const url = window.URL.createObjectURL(docxBlob);
-                // Kreiramo skriveni <a> element za preuzimanje
                 const link = document.createElement('a');
                 link.href = url;
                 link.setAttribute('download', `generisanoSlozivoMerilo.docx`);
@@ -397,7 +376,6 @@ function Dashboard() {
             return;
         }
 
-        // Uzimamo token iz local storage-a
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
@@ -407,9 +385,7 @@ function Dashboard() {
         fetch('http://localhost:8080/api/v1/metriZaTekstil/print', {
             method: 'GET',
             headers: {
-                // Dodajemo Authorization header sa Bearer tokenom
                 'Authorization': `Bearer ${token}`,
-                // Postavljamo responseType na blob za binarni format
                 'Content-Type': 'application/json'
             }
         })
@@ -417,12 +393,10 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error('Neuspešno preuzimanje Word datoteke');
                 }
-                return response.blob(); // Pretvaramo odgovor u blob
+                return response.blob();
             })
             .then(docxBlob => {
-                // Kreiramo URL za preuzimanje Word datoteke
                 const url = window.URL.createObjectURL(docxBlob);
-                // Kreiramo skriveni <a> element za preuzimanje
                 const link = document.createElement('a');
                 link.href = url;
                 link.setAttribute('download', `generisanMetarZaTekstil.docx`);
@@ -486,7 +460,7 @@ function Dashboard() {
                         <td>{merilo.ime}</td>
                         <td>{new Date(merilo.datum).toLocaleDateString()}</td>
                         <td>
-                            <button onClick={() => handlePreuzimanjeMerneLetve(merilo.id)}>Preuzmi</button>
+                            <button onClick={() => handlePreuzimanjeMerneLetve(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
@@ -515,7 +489,7 @@ function Dashboard() {
                         <td>{merilo.ime}</td>
                         <td>{new Date(merilo.datum).toLocaleDateString()}</td>
                         <td>
-                            <button onClick={() => handlePreuzimanjeMerneTrake(merilo.id)}>Preuzmi</button>
+                            <button onClick={() => handlePreuzimanjeMerneTrake(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
@@ -544,7 +518,7 @@ function Dashboard() {
                         <td>{merilo.ime}</td>
                         <td>{new Date(merilo.datum).toLocaleDateString()}</td>
                         <td>
-                            <button onClick={() => handlePreuzimanjeMasineZaMerenje(merilo.id)}>Preuzmi</button>
+                            <button onClick={() => handlePreuzimanjeMasineZaMerenje(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
