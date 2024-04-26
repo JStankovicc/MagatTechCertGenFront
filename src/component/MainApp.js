@@ -10,7 +10,7 @@ const MainApp = ({ onLogout, userRole }) => {
     return (
         <div>
             {userRole === 'ADMIN' ? (
-                <AdminDashboard />
+                <AdminDashboard handleLogout={handleLogout}/>
             ) : (
                 <UserDashboard handleLogout={handleLogout} />
             )}

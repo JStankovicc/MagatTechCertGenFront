@@ -228,6 +228,7 @@ const JednodelnoMerilo = () => {
 
                     <label htmlFor="klasaTacnosti">Klasa tacnosti:</label>
                     <select id="klasaTacnosti" name="klasaTacnosti">
+                        <option value="/">/</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
                         <option value="III">III</option>
