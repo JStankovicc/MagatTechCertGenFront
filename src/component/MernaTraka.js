@@ -59,6 +59,32 @@ const MernaTraka = () => {
             return json;
         };
 
+        const finishSetCheckbox = document.getElementById('finishSetCheckbox');
+        const finishSet = finishSetCheckbox.checked;
+        if (finishSet) {
+            formData.append('finishSet', true);
+
+            fetch('http://localhost:8080/api/v1/brojZapisnika/update', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Zapisnik ažuriran:', data);
+                })
+                .catch(error => {
+                    console.error('Greška prilikom ažuriranja zapisnika:', error);
+                });
+        }
+
         fetch('http://localhost:8080/api/v1/mernaTrakaSaViskom/add', {
             method: 'POST',
             headers: {
@@ -134,7 +160,7 @@ const MernaTraka = () => {
     return (
         <div>
             <h2>Merna traka sa viskom</h2>
-            <form>
+            <form onSubmit={handleSubmit} id="form">
                 <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
                 <input
                     type="text"
@@ -658,6 +684,10 @@ const MernaTraka = () => {
 
                 <label htmlFor="datum">Datum:</label>
                 <input type="date" id="datum" name="datum"/><br/>
+
+                <label>
+                    <input type="checkbox" id="finishSetCheckbox"/> Završi set
+                </label>
 
                 <input type="submit" value="Potvrdi"/>
             </form>

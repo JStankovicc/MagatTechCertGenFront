@@ -61,16 +61,20 @@ const JednodelnoMerilo = () => {
     };
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
-
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
 
-        const formData = new FormData(event.target);
+        const form = document.getElementById('form');
+        const formData = new FormData(form);
+
+        const finishSetCheckbox = document.getElementById('finishSetCheckbox');
+        const finishSet = finishSetCheckbox.checked;
+
+        const endpoint = 'http://localhost:8080/api/v1/jednodelnoMerilo/add';
 
         const formDataToJson = (formData) => {
             const json = {};
@@ -80,7 +84,31 @@ const JednodelnoMerilo = () => {
             return json;
         };
 
-        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/add', {
+        if (finishSet) {
+            formData.append('finishSet', true);
+
+            fetch('http://localhost:8080/api/v1/brojZapisnika/update', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Zapisnik ažuriran:', data);
+                })
+                .catch(error => {
+                    console.error('Greška prilikom ažuriranja zapisnika:', error);
+                });
+        }
+
+        fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -90,17 +118,21 @@ const JednodelnoMerilo = () => {
         })
             .then(response => {
                 if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                console.log('Merilo dodato:', data);
             })
             .catch(error => {
-                console.error('Greška prilikom podnošenja forme:', error);
+                console.error('Greška prilikom dodavanja merila:', error);
             });
+
         window.location.reload();
     };
+
+
 
 
     useEffect(() => {
@@ -117,9 +149,6 @@ const JednodelnoMerilo = () => {
         };
 
         document.addEventListener('keydown', handleEnterKeyPress);
-        document.getElementById('otherSubmitButton').addEventListener('click', handleOtherSubmit);
-
-
 
         const token = localStorage.getItem('token');
         if (!token) {
@@ -171,46 +200,6 @@ const JednodelnoMerilo = () => {
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
     }, []);
-
-
-    const handleOtherSubmit = () => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            console.error('Token nije pronađen u local storage-u.');
-            return;
-        }
-
-        const formData = new FormData(document.querySelector('form'));
-
-        const formDataToJson = (formData) => {
-            const json = {};
-            formData.forEach((value, key) => {
-                json[key] = value;
-            });
-            return json;
-        };
-
-        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/addAndFinish', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formDataToJson(formData))
-        })
-            .then(response => {
-                if (!response.ok) {
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Greška prilikom podnošenja forme:', error);
-            });
-        window.location.reload();
-    };
 
     return (
             <div>
@@ -1075,9 +1064,13 @@ const JednodelnoMerilo = () => {
                     <label htmlFor="datum">Datum:</label>
                     <input type="date" id="datum" name="datum"/><br/><br/>
 
-                    <input type="submit" value="Potvrdi"/>
-                    <button id="otherSubmitButton">Drugim endpointom</button>
 
+                    <label>
+                        <input type="checkbox" id="finishSetCheckbox"/> Završi set
+                    </label>
+
+
+                    <input type="submit" value="Potvrdi"/>
                 </form>
             </div>
     );
