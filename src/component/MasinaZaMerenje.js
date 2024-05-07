@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {UseEffect, useState, UseState} from 'react';
 import "../styles/MasinaZaMerenje.css";
 
 const MasinaZaMerenje = () => {
+    const [brojZapisnika, setBrojZapisnika] = useState('');
+
+    const handleChangeZapisnik = (event) => {
+        setBrojZapisnika(event.target.value);
+    };
     return (
         <div>
             <h2>Mašina za merenje žica i kablova</h2>
             <form>
-                <label htmlFor="zapisnikBroj">Zapisnik Broj:</label>
-                <input type="text" id="zapisnikBroj" name="zapisnikBroj"/><br/>
+                <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
+                <input
+                    type="text"
+                    id="brojZapisnika"
+                    name="brojZapisnika"
+                    value={brojZapisnika}
+                    onChange={handleChangeZapisnik}
+                /><br/>
 
                 <label htmlFor="vrstaKontrolisanja">Vrsta kontrolisanja/overavanja:</label>
                 <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">

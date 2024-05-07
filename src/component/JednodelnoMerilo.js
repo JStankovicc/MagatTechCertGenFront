@@ -7,6 +7,9 @@ const JednodelnoMerilo = () => {
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
 
+    const [brojZapisnika, setBrojZapisnika] = useState('');
+
+
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
     const [greska2a, setGreska2a] = useState('');
@@ -53,6 +56,10 @@ const JednodelnoMerilo = () => {
         }
     };
 
+    const handleChangeZapisnik = (event) => {
+        setBrojZapisnika(event.target.value);
+    };
+
     const handleSubmit = (event) => {
 
         event.preventDefault();
@@ -95,6 +102,7 @@ const JednodelnoMerilo = () => {
         window.location.reload();
     };
 
+
     useEffect(() => {
         const handleEnterKeyPress = (event) => {
             if (event.key === 'Enter') {
@@ -109,6 +117,7 @@ const JednodelnoMerilo = () => {
         };
 
         document.addEventListener('keydown', handleEnterKeyPress);
+        document.getElementById('otherSubmitButton').addEventListener('click', handleOtherSubmit);
 
 
 
@@ -117,6 +126,19 @@ const JednodelnoMerilo = () => {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+
+        fetch('http://localhost:8080/api/v1/brojZapisnika',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                setBrojZapisnika(data);
+            })
+            .catch(error => {
+                console.error('Error fetching broj zapisnika:', error);
+            });
 
         fetch('http://localhost:8080/api/v1/vrstakontrolisanja/getAll', {
             headers: {
@@ -151,15 +173,59 @@ const JednodelnoMerilo = () => {
     }, []);
 
 
+    const handleOtherSubmit = () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+
+        const formData = new FormData(document.querySelector('form'));
+
+        const formDataToJson = (formData) => {
+            const json = {};
+            formData.forEach((value, key) => {
+                json[key] = value;
+            });
+            return json;
+        };
+
+        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/addAndFinish', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataToJson(formData))
+        })
+            .then(response => {
+                if (!response.ok) {
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Greška prilikom podnošenja forme:', error);
+            });
+        window.location.reload();
+    };
 
     return (
             <div>
                 <h2>Jednodelno Merilo</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} id="form">
                     <input type="hidden" id="token" name="token" value={localStorage.getItem('jwtToken')}/>
 
                     <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
-                    <input type="text" id="brojZapisnika" name="brojZapisnika"/><br/>
+                    <input
+                        type="text"
+                        id="brojZapisnika"
+                        name="brojZapisnika"
+                        value={brojZapisnika}
+                        onChange={handleChangeZapisnik}
+                    /><br/>
 
                     <label>Izaberite vrstu kontrolisanja:</label>
                     <select>
@@ -1010,6 +1076,8 @@ const JednodelnoMerilo = () => {
                     <input type="date" id="datum" name="datum"/><br/><br/>
 
                     <input type="submit" value="Potvrdi"/>
+                    <button id="otherSubmitButton">Drugim endpointom</button>
+
                 </form>
             </div>
     );

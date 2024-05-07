@@ -6,6 +6,8 @@ const MernaLetva = () => {
     const [kompanije, setKompanije] = useState([]);
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
+    const [brojZapisnika, setBrojZapisnika] = useState('');
+
 
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
@@ -32,6 +34,10 @@ const MernaLetva = () => {
         } else {
             setter('');
         }
+    };
+
+    const handleChangeZapisnik = (event) => {
+        setBrojZapisnika(event.target.value);
     };
 
 
@@ -83,6 +89,19 @@ const MernaLetva = () => {
             return;
         }
 
+        fetch('http://localhost:8080/api/v1/brojZapisnika',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                setBrojZapisnika(data);
+            })
+            .catch(error => {
+                console.error('Error fetching broj zapisnika:', error);
+            });
+
         fetch('http://localhost:8080/api/v1/vrstakontrolisanja/getAll', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -119,8 +138,14 @@ const MernaLetva = () => {
         <div>
             <h2>Merna letva</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="zapisnikBroj">Zapisnik Broj:</label>
-                <input type="text" id="brojZapisnika" name="brojZapisnika"/><br/>
+                <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
+                <input
+                    type="text"
+                    id="brojZapisnika"
+                    name="brojZapisnika"
+                    value={brojZapisnika}
+                    onChange={handleChangeZapisnik}
+                /><br/>
 
                 <label>Izaberite vrstu kontrolisanja:</label>
                 <select>
