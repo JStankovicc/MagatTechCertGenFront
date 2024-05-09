@@ -230,12 +230,8 @@ const MernaLetva = () => {
                 <label htmlFor="oznakaTipa">Oznaka tipa/modela:</label>
                 <input type="text" id="oznakaTipa" name="oznakaTipa"/><br/>
 
-                <label htmlFor="sluzbenaOznakaTipa">Sluzbena oznaka tipa/broj izjave o usaglasenosti:</label>
-                <select id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa">
-                    <option value="predlog1">Predlog 1</option>
-                    <option value="predlog2">Predlog 2</option>
-                    <option value="predlog3">Predlog 3</option>
-                </select><br/>
+                <label htmlFor="sluzbenaOznakaTipa">Službena oznaka tipa/broj izjave o usaglašenosti:</label>
+                <input type="text" id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa"/>
 
                 <label htmlFor="merniOpseg">Merni opseg:</label>
                 <input type="text" id="merniOpseg" name="merniOpseg"/>
@@ -662,7 +658,7 @@ const MernaLetva = () => {
                 <input type="date" id="datum" name="datum"/><br/>
 
                 <label>
-                    <input type="checkbox" id="finishSetCheckbox"/> Završi set
+                    <input type="checkbox" id="finishSetCheckbox"/> Završi nalog
                 </label>
 
                 <input type="submit" value="Potvrdi"/>

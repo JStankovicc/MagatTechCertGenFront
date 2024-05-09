@@ -1060,7 +1060,7 @@ const MetriZaTekstil = () => {
                 <input type="date" id="datum" name="datum"/><br/><br/>
 
                 <label>
-                    <input type="checkbox" id="finishSetCheckbox"/> Završi set
+                    <input type="checkbox" id="finishSetCheckbox"/> Završi nalog
                 </label>
                 <input type="submit" value="Potvrdi"/>
             </form>

@@ -1066,7 +1066,7 @@ const JednodelnoMerilo = () => {
 
 
                     <label>
-                        <input type="checkbox" id="finishSetCheckbox"/> Završi set
+                        <input type="checkbox" id="finishSetCheckbox"/> Završi nalog
                     </label>
 
 

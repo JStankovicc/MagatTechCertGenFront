@@ -56,12 +56,8 @@ const MasinaZaMerenje = () => {
                 <label htmlFor="oznakaModela">Oznaka tipa/modela:</label>
                 <input type="text" id="oznakaModela" name="oznakaModela"/><br/>
 
-                <label htmlFor="sluzbenaOznaka">Sluzbena oznaka tipa/broj izjave o usaglasenosti:</label>
-                <select id="sluzbenaOznaka" name="sluzbenaOznaka">
-                    <option value="predlog1">Predlog 1</option>
-                    <option value="predlog2">Predlog 2</option>
-                    <option value="predlog3">Predlog 3</option>
-                </select><br/>
+                <label htmlFor="sluzbenaOznakaTipa">Službena oznaka tipa/broj izjave o usaglašenosti:</label>
+                <input type="text" id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa"/>
 
                 <label htmlFor="merniOpseg">Merni opseg:</label>
                 <input type="text" id="merniOpseg" name="merniOpseg"/>
