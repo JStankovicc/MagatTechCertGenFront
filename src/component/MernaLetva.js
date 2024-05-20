@@ -26,7 +26,6 @@ const MernaLetva = () => {
     const [greska8a, setGreska8a] = useState('');
     const [greska8b, setGreska8b] = useState('');
 
-
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
         if (!isNaN(numericValue)) {
@@ -39,7 +38,6 @@ const MernaLetva = () => {
     const handleChangeZapisnik = (event) => {
         setBrojZapisnika(event.target.value);
     };
-
 
     const handleSubmit = (event) => {
         event.preventDefault();

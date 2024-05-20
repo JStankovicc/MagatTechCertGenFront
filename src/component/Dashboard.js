@@ -8,14 +8,7 @@ function Dashboard() {
     const [masineZaMerenje, setMasineZaMerenje] = useState([]);
     const [slozivaMerila, setslozivaMerila] = useState([]);
     const [metriZaTekstil, setmetriZaTekstil] = useState([]);
-
-
-
     const [error, setError] = useState(null);
-
-    function handleUređivanje(id) {
-
-    }
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -656,6 +649,10 @@ function Dashboard() {
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
             });
+    }
+
+    function handleUređivanje(id) {
+
     }
 
     return (

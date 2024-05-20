@@ -44,9 +44,6 @@ const JednodelnoMerilo = () => {
     const [greska16a, setGreska16a] = useState('');
     const [greska16b, setGreska16b] = useState('');
 
-
-
-
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
         if (!isNaN(numericValue)) {
@@ -131,9 +128,6 @@ const JednodelnoMerilo = () => {
 
         window.location.reload();
     };
-
-
-
 
     useEffect(() => {
         const handleEnterKeyPress = (event) => {

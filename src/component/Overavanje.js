@@ -208,8 +208,6 @@ function Overavanje() {
             });
     }
 
-
-
     function handlePreuzimanjeMerneLetve(id) {
         const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
 
@@ -290,7 +288,6 @@ function Overavanje() {
             });
     }
 
-
     function handlePreuzimanjeMasineZaMerenje(id) {
         const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
 
@@ -331,7 +328,6 @@ function Overavanje() {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
             });
     }
-
 
     function handlePreuzimanjeSlozivogMerila(id) {
         const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
@@ -417,7 +413,6 @@ function Overavanje() {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
             });
     }
-
 
     function handleOdobravanjeJednodelnogMerila(id) {
 

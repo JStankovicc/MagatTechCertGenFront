@@ -43,9 +43,6 @@ const MetriZaTekstil = () => {
     const [greska16a, setGreska16a] = useState('');
     const [greska16b, setGreska16b] = useState('');
 
-
-
-
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
         if (!isNaN(numericValue)) {
@@ -194,7 +191,6 @@ const MetriZaTekstil = () => {
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
     }, []);
-
 
     return (
         <div>

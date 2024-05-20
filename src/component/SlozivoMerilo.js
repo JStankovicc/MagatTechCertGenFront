@@ -44,8 +44,6 @@ const SlozivoMerilo = () => {
     const [greska16b, setGreska16b] = useState('');
 
 
-
-
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
         if (!isNaN(numericValue)) {
