@@ -211,9 +211,9 @@ const JednodelnoMerilo = () => {
                     /><br/>
 
                     <label>Izaberite vrstu kontrolisanja:</label>
-                    <select>
+                    <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">
                         {vrsteKontrolisanja.map(vrsta => (
-                            <option key={vrsta.id} value={vrsta.id}>
+                            <option key={vrsta.description} value={vrsta.description}>
                                 {vrsta.description}
                             </option>
                         ))}
@@ -1050,6 +1050,13 @@ const JednodelnoMerilo = () => {
 
                     <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                     <select id="zapisnikUneo" name="zapisnikUneo">
+                        <option value="1">Opcija 1</option>
+                        <option value="2">Opcija 2</option>
+                        <option value="3">Opcija 3</option>
+                    </select><br/>
+
+                    <label htmlFor="zapisnikUneo">Zapisnik odobrio:</label>
+                    <select id="zapisnikOdobrio" name="zapisnikOdobrio">
                         <option value="1">Opcija 1</option>
                         <option value="2">Opcija 2</option>
                         <option value="3">Opcija 3</option>
