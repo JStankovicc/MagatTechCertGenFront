@@ -103,7 +103,7 @@ const MernaLetva = () => {
             .catch(error => {
                 console.error('Greška prilikom podnošenja forme:', error);
             });
-        //window.location.reload();
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -651,7 +651,6 @@ const MernaLetva = () => {
 
                 <label htmlFor="komentar">Komentar:</label>
                 <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea>
-
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                 <select id="zapisnikUneo" name="zapisnikUneo">
                     <option value="1">Opcija 1</option>
@@ -665,6 +664,7 @@ const MernaLetva = () => {
                     <option value="2">Opcija 2</option>
                     <option value="3">Opcija 3</option>
                 </select><br/>
+
 
                 <label htmlFor="datum">Datum:</label>
                 <input type="date" id="datum" name="datum"/><br/>

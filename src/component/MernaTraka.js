@@ -104,7 +104,7 @@ const MernaTraka = () => {
             .catch(error => {
                 console.error('Greška prilikom podnošenja forme:', error);
             });
-
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -171,7 +171,7 @@ const MernaTraka = () => {
                 /><br/>
 
                 <label>Izaberite vrstu kontrolisanja:</label>
-                <select>
+                <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">
                     {vrsteKontrolisanja.map(vrsta => (
                         <option key={vrsta.id} value={vrsta.id}>
                             {vrsta.description}
@@ -647,19 +647,19 @@ const MernaTraka = () => {
                 </div>
 
 
-                <label htmlFor="brojMernogLenjira">Serijski broj Mernog lenjira:</label>
-                <select id="brojMernogLenjira" name="brojMernogLenjira">
-                    <option value="opcija1">Opcija 1</option>
-                    <option value="opcija2">Opcija 2</option>
-                    <option value="opcija3">Opcija 3</option>
-                </select><br/>
-
-                <label htmlFor="brojMerneLupe">Serijski broj Merne lupe:</label>
-                <select id="brojMerneLupe" name="brojMerneLupe">
-                    <option value="opcija1">Opcija 1</option>
-                    <option value="opcija2">Opcija 2</option>
-                    <option value="opcija3">Opcija 3</option>
-                </select><br/>
+                <label>Merna Oprema:</label>
+                <label>
+                    <input type="checkbox" name="mernaLupa"/>
+                    Merna lupa
+                </label>
+                <label>
+                    <input type="checkbox" name="merniLenjir"/>
+                    Merni lenjir
+                </label>
+                <label>
+                    <input type="checkbox" name="pomicnoMerilo"/>
+                    Pomično merilo
+                </label>
 
                 <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>
                 <input type="text" id="skinutiZigovi" name="skinutiZigovi"/><br/>
@@ -677,6 +677,20 @@ const MernaTraka = () => {
 
                 <label htmlFor="komentar">Komentar:</label>
                 <textarea id="komentar" name="komentar" rows="4" cols="50"></textarea><br/>
+
+                <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
+                <select id="zapisnikUneo" name="zapisnikUneo">
+                    <option value="1">Opcija 1</option>
+                    <option value="2">Opcija 2</option>
+                    <option value="3">Opcija 3</option>
+                </select><br/>
+
+                <label htmlFor="zapisnikUneo">Zapisnik odobrio:</label>
+                <select id="zapisnikOdobrio" name="zapisnikOdobrio">
+                    <option value="1">Opcija 1</option>
+                    <option value="2">Opcija 2</option>
+                    <option value="3">Opcija 3</option>
+                </select><br/>
 
                 <label htmlFor="datum">Datum:</label>
                 <input type="date" id="datum" name="datum"/><br/>

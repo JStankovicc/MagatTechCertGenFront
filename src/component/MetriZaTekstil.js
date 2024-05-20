@@ -57,16 +57,20 @@ const MetriZaTekstil = () => {
     };
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
-
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
 
-        const formData = new FormData(event.target);
+        const form = document.getElementById('form');
+        const formData = new FormData(form);
+
+        const finishSetCheckbox = document.getElementById('finishSetCheckbox');
+        const finishSet = finishSetCheckbox.checked;
+
+        const endpoint = 'http://localhost:8080/api/v1/metriZaTekstil/add';
 
         const formDataToJson = (formData) => {
             const json = {};
@@ -76,8 +80,6 @@ const MetriZaTekstil = () => {
             return json;
         };
 
-        const finishSetCheckbox = document.getElementById('finishSetCheckbox');
-        const finishSet = finishSetCheckbox.checked;
         if (finishSet) {
             formData.append('finishSet', true);
 
@@ -102,7 +104,7 @@ const MetriZaTekstil = () => {
                 });
         }
 
-        fetch('http://localhost:8080/api/v1/metriZatekstil/add', {
+        fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -112,15 +114,17 @@ const MetriZaTekstil = () => {
         })
             .then(response => {
                 if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                console.log('Merilo dodato:', data);
             })
             .catch(error => {
-                console.error('Greška prilikom podnošenja forme:', error);
+                console.error('Greška prilikom dodavanja merila:', error);
             });
+
         window.location.reload();
     };
 
@@ -196,7 +200,7 @@ const MetriZaTekstil = () => {
         <div>
             <h2>Metri za tekstil</h2>
             <form onSubmit={handleSubmit} id="form">
-                <input type="hidden" id="token" name="token" value={localStorage.getItem('jwtToken')}/>
+                <input type="hidden" id="token" name="token" value={localStorage.getItem('token')}/>
 
                 <label htmlFor="brojZapisnika">Zapisnik Broj:</label>
                 <input
@@ -208,7 +212,7 @@ const MetriZaTekstil = () => {
                 /><br/>
 
                 <label>Izaberite vrstu kontrolisanja:</label>
-                <select>
+                <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">
                     {vrsteKontrolisanja.map(vrsta => (
                         <option key={vrsta.id} value={vrsta.id}>
                             {vrsta.description}
@@ -1045,8 +1049,14 @@ const MetriZaTekstil = () => {
                 <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea><br/>
 
 
-                <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                 <select id="zapisnikUneo" name="zapisnikUneo">
+                    <option value="1">Opcija 1</option>
+                    <option value="2">Opcija 2</option>
+                    <option value="3">Opcija 3</option>
+                </select><br/>
+
+                <label htmlFor="zapisnikUneo">Zapisnik odobrio:</label>
+                <select id="zapisnikOdobrio" name="zapisnikOdobrio">
                     <option value="1">Opcija 1</option>
                     <option value="2">Opcija 2</option>
                     <option value="3">Opcija 3</option>
