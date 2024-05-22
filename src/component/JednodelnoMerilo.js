@@ -6,7 +6,7 @@ const JednodelnoMerilo = () => {
     const [kompanije, setKompanije] = useState([]);
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
-
+    const [users, setUsers] = useState([]);
     const [brojZapisnika, setBrojZapisnika] = useState('');
 
 
@@ -193,6 +193,20 @@ const JednodelnoMerilo = () => {
             })
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
+
+        fetch('http://localhost:8080/api/v1/user/all', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setUsers(data))
+            .catch(error => console.error('Greška pri dobavljanju korisnika:', error));
     }, []);
 
     return (
@@ -1034,7 +1048,8 @@ const JednodelnoMerilo = () => {
                     <label className="container">
                         <div className="rezultatiContainer">
                             <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
-                            <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
+                            <input type="text" id="propisaniZahtevi" name="propisaniZahtevi"
+                                   className="rezultatiInput"/>
                         </div>
                         <h2>Merilo ispunjava propisane zahteve:</h2>
                         <input type="radio" id="meriloIspunjavaZahteve" name="meriloIspunjavaZahteve" value="DA"/>
@@ -1050,17 +1065,21 @@ const JednodelnoMerilo = () => {
 
                     <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                     <select id="zapisnikUneo" name="zapisnikUneo">
-                        <option value="1">Opcija 1</option>
-                        <option value="2">Opcija 2</option>
-                        <option value="3">Opcija 3</option>
+                        {users.map(user => (
+                            <option key={user.email} value={user.email}>
+                                {user.email}
+                            </option>
+                        ))}
                     </select><br/>
 
-                    <label htmlFor="zapisnikUneo">Zapisnik odobrio:</label>
+                    <label htmlFor="zapisnikOdobrio">Zapisnik odobrio:</label>
                     <select id="zapisnikOdobrio" name="zapisnikOdobrio">
-                        <option value="1">Opcija 1</option>
-                        <option value="2">Opcija 2</option>
-                        <option value="3">Opcija 3</option>
-                    </select><br/>
+                        {users.map(user => (
+                            <option key={user.email} value={user.email}>
+                                {user.email}
+                            </option>
+                        ))}
+                    </select>
 
                     <label htmlFor="datum">Datum:</label>
                     <input type="date" id="datum" name="datum"/><br/><br/>

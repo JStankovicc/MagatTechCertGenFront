@@ -6,7 +6,7 @@ const MasinaZaMerenje = () => {
     const [kompanije, setKompanije] = useState([]);
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
-
+    const [users, setUsers] = useState([]);
     const [brojZapisnika, setBrojZapisnika] = useState('');
 
 
@@ -78,6 +78,19 @@ const MasinaZaMerenje = () => {
             })
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
+        fetch('http://localhost:8080/api/v1/user/all', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setUsers(data))
+            .catch(error => console.error('Greška pri dobavljanju korisnika:', error));
     }, []);
 
     const handleSubmit = (event) => {
@@ -358,18 +371,22 @@ const MasinaZaMerenje = () => {
 
 
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
-                <select id="etalonirao" name="etalonirao">
-                    <option value="1">Opcija 1</option>
-                    <option value="2">Opcija 2</option>
-                    <option value="3">Opcija 3</option>
+                <select id="zapisnikUneo" name="zapisnikUneo">
+                    {users.map(user => (
+                        <option key={user.email} value={user.email}>
+                            {user.email}
+                        </option>
+                    ))}
                 </select><br/>
 
-                <label htmlFor="zapisnikUneo">Zapisnik odobrio:</label>
-                <select id="odobrio" name="odobrio">
-                    <option value="1">Opcija 1</option>
-                    <option value="2">Opcija 2</option>
-                    <option value="3">Opcija 3</option>
-                </select><br/>
+                <label htmlFor="zapisnikOdobrio">Zapisnik odobrio:</label>
+                <select id="zapisnikOdobrio" name="zapisnikOdobrio">
+                    {users.map(user => (
+                        <option key={user.email} value={user.email}>
+                            {user.email}
+                        </option>
+                    ))}
+                </select>
 
 
                 <label htmlFor="datum">Datum:</label>
