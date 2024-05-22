@@ -350,6 +350,14 @@ const MetriZaTekstil = () => {
 
 
                 <label>Greška podeljka skale:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit1" name="unit1" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input
                         type="text"
@@ -375,11 +383,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska1b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka1"
@@ -414,11 +417,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska1b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka2"
@@ -453,11 +451,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska3b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka3"
@@ -492,11 +485,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska4b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka4"
@@ -531,11 +519,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska5b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka5"
@@ -570,11 +553,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska6b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka6"
@@ -610,11 +588,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska7b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka7"
@@ -649,11 +622,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska8b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka8"
@@ -704,8 +672,16 @@ const MetriZaTekstil = () => {
 
 
                 <label>Greška podeljka skale:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit2" name="unit2" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
-                    <input
+                <input
                         type="text"
                         id="greska9a"
                         name="greska9a"
@@ -729,11 +705,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska1b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka1"
@@ -768,11 +739,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska10b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka10"
@@ -807,11 +773,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska11b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka11"
@@ -846,11 +807,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska12b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka12"
@@ -885,11 +841,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska13b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka13"
@@ -924,11 +875,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska14b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka14"
@@ -964,11 +910,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska15b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka15"
@@ -1003,11 +944,6 @@ const MetriZaTekstil = () => {
                             updateValues(e.target.value, setGreska16b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka16"

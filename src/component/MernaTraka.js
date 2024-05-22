@@ -337,8 +337,16 @@ const MernaTraka = () => {
 
 
                 <label>Greška podeljka skale:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit2" name="unit2" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
-                    <input
+                <input
                         type="text"
                         id="greska1a"
                         name="greska1a"
@@ -362,11 +370,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska1b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka1"
@@ -401,11 +404,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska1b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka2"
@@ -440,11 +438,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska3b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka3"
@@ -479,11 +472,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska4b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka4"
@@ -518,11 +506,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska5b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka5"
@@ -557,11 +540,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska6b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka6"
@@ -597,11 +575,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska7b);
                         }}
                     />
-                    <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka7"
@@ -636,11 +609,6 @@ const MernaTraka = () => {
                             updateValues(e.target.value, setGreska8b);
                         }}
                     />
-                    <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
-                        <option value="mm">mm</option>
-                        <option value="cm">cm</option>
-                    </select>
                     <input
                         type="text"
                         id="greskaPodeljka8"

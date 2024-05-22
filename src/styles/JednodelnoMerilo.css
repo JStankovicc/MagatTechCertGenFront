@@ -131,3 +131,26 @@ input.propisaniZahtevi[readonly] {
 }
 
 
+.mernaJedinicaContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.mernaJedinicaContainer .rezultatiLabel {
+    font-weight: bold;
+    margin-right: 10px;
+    width: 33.33%;
+}
+
+.mernaJedinicaContainer .rezultatiInput {
+    width: 150px;
+}
+
+.mernaJedinicaContainer select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="%23333;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat right 10px center/15px 15px;
+    padding-right: 40px;
+    background-color: #fff;
+}

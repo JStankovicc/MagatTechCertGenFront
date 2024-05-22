@@ -9,7 +9,6 @@ const JednodelnoMerilo = () => {
     const [users, setUsers] = useState([]);
     const [brojZapisnika, setBrojZapisnika] = useState('');
 
-
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
     const [greska2a, setGreska2a] = useState('');
@@ -348,6 +347,14 @@ const JednodelnoMerilo = () => {
 
 
                     <label>Greška podeljka skale:</label>
+                    <div className="mernaJedinicaContainer">
+                        <input type="text" value="Merna jedinica:" readOnly/>
+                        <select id="unit1" name="unit1" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                    </div>
                     <div className="rezultatiContainer">
                         <input
                             type="text"
@@ -373,11 +380,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska1b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka1"
@@ -412,11 +414,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska1b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka2"
@@ -451,11 +448,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska3b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka3"
@@ -490,11 +482,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska4b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka4"
@@ -529,11 +516,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska5b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka5"
@@ -568,11 +550,7 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska6b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
+
                         <input
                             type="text"
                             id="greskaPodeljka6"
@@ -608,11 +586,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska7b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka7"
@@ -647,11 +620,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska8b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka8"
@@ -702,6 +670,14 @@ const JednodelnoMerilo = () => {
 
 
                     <label>Greška podeljka skale:</label>
+                    <div className="mernaJedinicaContainer">
+                        <input type="text" value="Merna jedinica:" readOnly/>
+                        <select id="unit2" name="unit2" className="rezultatiInput">
+                            <option value="m">μm</option>
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                        </select>
+                    </div>
                     <div className="rezultatiContainer">
                         <input
                             type="text"
@@ -727,11 +703,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska1b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka1"
@@ -766,11 +737,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska10b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka10"
@@ -805,11 +771,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska11b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka11"
@@ -844,11 +805,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska12b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka12"
@@ -883,11 +839,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska13b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka13"
@@ -922,11 +873,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska14b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka14"
@@ -935,7 +881,6 @@ const JednodelnoMerilo = () => {
                             placeholder="Greška podeljka skale"
                         />
                     </div>
-
 
                     <div className="rezultatiContainer">
                         <input
@@ -962,11 +907,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska15b);
                             }}
                         />
-                        <select id="unit1" name="unit1" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka15"
@@ -1001,11 +941,6 @@ const JednodelnoMerilo = () => {
                                 updateValues(e.target.value, setGreska16b);
                             }}
                         />
-                        <select id="unit2" name="unit2" className="rezultatiInput">
-                            <option value="m">μm</option>
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                        </select>
                         <input
                             type="text"
                             id="greskaPodeljka16"
