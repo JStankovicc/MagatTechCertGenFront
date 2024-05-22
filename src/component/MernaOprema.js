@@ -4,11 +4,13 @@ import "../styles/Dashboard.css";
 
 function MernaOprema() {
     const [oprema, setOprema] = useState([]);
-    const [ime, setIme] = useState('');
+    const [tipoviOpreme, setTipoviOpreme] = useState([]);
+    const [tip, setTip] = useState('');
     const [serBrEtalona, setSerBrEtalona] = useState('');
 
     useEffect(() => {
         fetchOprema();
+        fetchTipoviOpreme();
     }, []);
 
     const fetchOprema = async () => {
@@ -22,6 +24,20 @@ function MernaOprema() {
             setOprema(response.data);
         } catch (error) {
             console.error('Greška prilikom dobijanja opreme:', error);
+        }
+    };
+
+    const fetchTipoviOpreme = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:8080/api/v1/oprema/types', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setTipoviOpreme(response.data);
+        } catch (error) {
+            console.error('Greška prilikom dobijanja tipova opreme:', error);
         }
     };
 
@@ -47,7 +63,7 @@ function MernaOprema() {
         try {
             const token = localStorage.getItem('token');
             await axios.post('http://localhost:8080/api/v1/oprema/add', {
-                name: ime,
+                tip: tip,
                 serBrEtalona: serBrEtalona,
             }, {
                 headers: {
@@ -56,7 +72,7 @@ function MernaOprema() {
                 },
             });
             fetchOprema();
-            setIme('');
+            setTip('');
             setSerBrEtalona('');
         } catch (error) {
             console.error('Greška prilikom dodavanja opreme:', error);
@@ -69,7 +85,7 @@ function MernaOprema() {
             <table>
                 <thead>
                 <tr>
-                    <th>Ime</th>
+                    <th>Tip</th>
                     <th>SerBrEtalona</th>
                     <th>Opcije</th>
                 </tr>
@@ -77,7 +93,7 @@ function MernaOprema() {
                 <tbody>
                 {oprema.map(item => (
                     <tr key={item.id}>
-                        <td>{item.name}</td>
+                        <td>{item.tip}</td>
                         <td>{item.serBrEtalona}</td>
                         <td>
                             <button onClick={() => handleBrisanjeOpreme(item.id)}>Obriši</button>
@@ -90,8 +106,12 @@ function MernaOprema() {
             <h2>Dodaj novu opremu</h2>
             <form onSubmit={handleDodajOpremu}>
                 <label>
-                    Ime:
-                    <input type="text" value={ime} onChange={(e) => setIme(e.target.value)}/>
+                    Tip:
+                    <select value={tip} onChange={(e) => setTip(e.target.value)}>
+                        {tipoviOpreme.map((tip) => (
+                            <option key={tip} value={tip}>{tip}</option>
+                        ))}
+                    </select>
                 </label>
                 <label>
                     SerBrEtalona:

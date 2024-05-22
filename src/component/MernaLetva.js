@@ -218,7 +218,7 @@ const MernaLetva = () => {
                 <input type="text" id="identifikacioniBroj" name="identifikacioniBroj"/><br/>
 
                 <label htmlFor="proizvodjac">Proizvodjac:</label>
-                <input type={"text"} id={"proizvodjac"} name="proizvodjaci" list={"kompanije"}/>
+                <input type={"text"} id={"proizvodjac"} name="proizvodjac" list={"kompanije"}/>
                 <datalist id={"proizvodjaci"}>
                     <option>Opcija 1</option>
                     <option>Opcija 2</option>
@@ -642,12 +642,16 @@ const MernaLetva = () => {
                 <input type="text" id="postavljeniZigovi" name="postavljeniZigovi"/><br/>
 
                 <label className="container">
+                    <div className="rezultatiContainer">
+                        <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
+                    </div>
                     <h2>Merna letva ispunjava propisane zahteve:</h2>
-                    <input type="radio" id="ispunjava" name="ispunjava" value="DA"/>
-                    <label htmlFor="ispunjava">DA</label>
-                    <input type="radio" id="neIspunjava" name="ispunjava" value="NE"/>
+                    <input type="radio" id="meriloIspunjavaZahteve" name="meriloIspunjavaZahteve" value="DA"/>
+                    <label htmlFor="meriloIspunjavaZahteve">DA</label>
+                    <input type="radio" id="neIspunjava" name="meriloIspunjavaZahteve" value="NE"/>
                     <label htmlFor="neIspunjava">NE</label>
-                </label>
+                </label><br/>
 
                 <label htmlFor="komentar">Komentar:</label>
                 <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea>

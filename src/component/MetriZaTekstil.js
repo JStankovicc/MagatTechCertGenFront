@@ -839,7 +839,7 @@ const MetriZaTekstil = () => {
                     <input
                         type="text"
                         id="greskaPodeljka12"
-                        name="greskaPodeljka4"
+                        name="greskaPodeljka12"
                         className="rezultatiInput"
                         placeholder="Greška podeljka skale"
                     />
@@ -1035,7 +1035,7 @@ const MetriZaTekstil = () => {
                 <label className="container">
                     <div className="rezultatiContainer">
                         <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
-                        <input type="text" id="ndr2" name="ndr2" className="rezultatiInput"/>
+                        <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
                     </div>
                     <h2>Merilo ispunjava propisane zahteve:</h2>
                     <input type="radio" id="meriloIspunjavaZahteve" name="meriloIspunjavaZahteve" value="DA"/>
