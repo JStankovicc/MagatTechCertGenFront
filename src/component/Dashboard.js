@@ -399,7 +399,7 @@ function Dashboard() {
             });
     }
 
-    function handleResenjeJednodelnogMerila(id){
+    function handleResenjeJednodelnogMerila(id) {
         const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
 
         if (!potvrda) {
@@ -412,9 +412,10 @@ function Dashboard() {
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/jednodelnoMerilo/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `http://localhost:8080/api/v1/jednodelnoMerilo/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/jednodelnoMerilo/printResenje?brojZapisnika=${id}`;
 
-        fetch(url, {
+        fetch(urlCheck, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -423,18 +424,33 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
                 }
-                return response.blob();
+                return response.text();
             })
-            .then(docxBlob => {
-                const url = window.URL.createObjectURL(docxBlob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', `generisanoResenje/Sertifikat.docx`);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
             })
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
@@ -454,9 +470,10 @@ function Dashboard() {
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaLetva/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `http://localhost:8080/api/v1/mernaLetva/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/mernaLetva/printResenje?brojZapisnika=${id}`;
 
-        fetch(url, {
+        fetch(urlCheck, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -465,18 +482,33 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
                 }
-                return response.blob();
+                return response.text();
             })
-            .then(docxBlob => {
-                const url = window.URL.createObjectURL(docxBlob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', `generisanoResenje/Sertifikat.docx`);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
             })
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
@@ -496,9 +528,10 @@ function Dashboard() {
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `http://localhost:8080/api/v1/mernaTrakaSaViskom/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/mernaTrakaSaViskom/printResenje?brojZapisnika=${id}`;
 
-        fetch(url, {
+        fetch(urlCheck, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -507,18 +540,33 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
                 }
-                return response.blob();
+                return response.text();
             })
-            .then(docxBlob => {
-                const url = window.URL.createObjectURL(docxBlob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', `generisanoResenje/Sertifikat.docx`);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
             })
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
@@ -538,9 +586,10 @@ function Dashboard() {
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/masinaZaMerenje/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `http://localhost:8080/api/v1/masinaZaMerenje/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/masinaZaMerenje/printResenje?brojZapisnika=${id}`;
 
-        fetch(url, {
+        fetch(urlCheck, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -549,18 +598,33 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
                 }
-                return response.blob();
+                return response.text();
             })
-            .then(docxBlob => {
-                const url = window.URL.createObjectURL(docxBlob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', `generisanoResenje/Sertifikat.docx`);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
             })
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
@@ -580,9 +644,10 @@ function Dashboard() {
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/slozivoMerilo/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `http://localhost:8080/api/v1/slozivoMerilo/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/slozivoMerilo/printResenje?brojZapisnika=${id}`;
 
-        fetch(url, {
+        fetch(urlCheck, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -591,18 +656,33 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
                 }
-                return response.blob();
+                return response.text();
             })
-            .then(docxBlob => {
-                const url = window.URL.createObjectURL(docxBlob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', `generisanoResenje/Sertifikat.docx`);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
             })
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
@@ -622,9 +702,10 @@ function Dashboard() {
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/metriZaTekstil/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `http://localhost:8080/api/v1/metriZaTekstil/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/metriZaTekstil/printResenje?brojZapisnika=${id}`;
 
-        fetch(url, {
+        fetch(urlCheck, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -633,26 +714,37 @@ function Dashboard() {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
                 }
-                return response.blob();
+                return response.text();
             })
-            .then(docxBlob => {
-                const url = window.URL.createObjectURL(docxBlob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', `generisanoResenje/Sertifikat.docx`);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
             })
             .catch(error => {
                 console.error('Greška prilikom preuzimanja Word datoteke:', error);
             });
-    }
-
-    function handleUređivanje(id) {
-
     }
 
     function handleSertifikatJednodelnogMerila(id) {
@@ -907,6 +999,10 @@ function Dashboard() {
             });
     }
 
+    function handleUređivanje(id) {
+
+    }
+
     return (
         <div>
             <h2>Jednodelna merila</h2>
@@ -976,7 +1072,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMerneLetve(merilo.brojZapisnika)}>Resenje
+                            <button onClick={() => handleResenjeMerneLetve(merilo.brojZapisnika)}>Resenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -990,7 +1086,7 @@ function Dashboard() {
             </table>
 
 
-            <h2>Merne trake</h2>
+            <h2>Merne trake sa viskom</h2>
             <table>
                 <thead>
                 <tr>
@@ -1016,7 +1112,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMerneTrake(merilo.brojZapisnika)}>Resenje
+                            <button onClick={() => handleResenjeMerneTrake(merilo.brojZapisnika)}>Resenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1057,7 +1153,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMasineZaMerenje(merilo.brojZapisnika)}>Resenje
+                            <button onClick={() => handleResenjeMasineZaMerenje(merilo.brojZapisnika)}>Resenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1097,7 +1193,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeSlozivogMerila(merilo.brojZapisnika)}>Resenje
+                            <button onClick={() => handleResenjeSlozivogMerila(merilo.brojZapisnika)}>Resenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1137,7 +1233,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMetriZaTekstil(merilo.brojZapisnika)}>Resenje
+                            <button onClick={() => handleResenjeMetriZaTekstil(merilo.brojZapisnika)}>Resenje/Uverenje
                             </button>
                         </td>
                         <td>

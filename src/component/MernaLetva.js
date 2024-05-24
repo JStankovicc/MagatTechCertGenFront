@@ -108,6 +108,19 @@ const MernaLetva = () => {
     };
 
     useEffect(() => {
+        const handleEnterKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const form = event.target.form;
+                const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
+                const index = inputs.indexOf(event.target);
+                if (index !== -1 && index !== inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            }
+        };
+
+
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token nije pronađen u local storage-u.');
