@@ -78,6 +78,8 @@ const MasinaZaMerenje = () => {
             })
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
+
+
         fetch('http://localhost:8080/api/v1/user/all', {
             headers: {
                 'Authorization': `Bearer ${token}`

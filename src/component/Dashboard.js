@@ -183,7 +183,7 @@ function Dashboard() {
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanoJednodelnoMerilo.docx`);
+                link.setAttribute('download', `generisanoJednodelnoMerilo - ${id}.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -223,7 +223,7 @@ function Dashboard() {
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaLetva.docx`);
+                link.setAttribute('download', `generisanaMernaLetva - ${id}.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -263,7 +263,7 @@ function Dashboard() {
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaTraka.docx`);
+                link.setAttribute('download', `generisanaMernaTraka - ${id}.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -304,7 +304,7 @@ function Dashboard() {
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMasinaZaMerenje.docx`);
+                link.setAttribute('download', `generisanaMasinaZaMerenje - ${id}.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -346,7 +346,7 @@ function Dashboard() {
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanoSlozivoMerilo.docx`);
+                link.setAttribute('download', `generisanoSlozivoMerilo - ${id}.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -389,7 +389,7 @@ function Dashboard() {
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanMetarZaTekstil.docx`);
+                link.setAttribute('download', `generisanMetarZaTekstil - ${id}.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

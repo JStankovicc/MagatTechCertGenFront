@@ -200,7 +200,7 @@ const MernaTraka = () => {
                 <label>Izaberite vrstu kontrolisanja:</label>
                 <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">
                     {vrsteKontrolisanja.map(vrsta => (
-                        <option key={vrsta.id} value={vrsta.id}>
+                        <option key={vrsta.id} value={vrsta.description}>
                             {vrsta.description}
                         </option>
                     ))}
@@ -352,7 +352,7 @@ const MernaTraka = () => {
                 <label>Greška podeljka skale:</label>
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
-                    <select id="unit2" name="unit2" className="rezultatiInput">
+                    <select id="unit1" name="unit1" className="rezultatiInput">
                         <option value="m">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
