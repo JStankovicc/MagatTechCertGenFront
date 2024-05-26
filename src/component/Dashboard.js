@@ -9,6 +9,35 @@ function Dashboard() {
     const [slozivaMerila, setslozivaMerila] = useState([]);
     const [metriZaTekstil, setmetriZaTekstil] = useState([]);
     const [error, setError] = useState(null);
+    const [brojZap, setBrojZap] = useState("");
+
+    function updateBrojZapisnika(){
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+        fetch('http://localhost:8080/api/v1/brojZapisnika/update', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Zapisnik ažuriran:', data);
+            })
+            .catch(error => {
+                console.error('Greška prilikom ažuriranja zapisnika:', error);
+            });
+        window.location.reload();
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -17,6 +46,19 @@ function Dashboard() {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+
+        fetch('http://localhost:8080/api/v1/brojZapisnika',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                setBrojZap(data);
+            })
+            .catch(error => {
+                console.error('Error fetching broj zapisnika:', error);
+            });
 
         fetch('http://localhost:8080/api/v1/jednodelnoMerilo/all', {
             headers: {
@@ -1005,6 +1047,9 @@ function Dashboard() {
 
     return (
         <div>
+            <div className="brojSetaContainer">
+                <label>Trenutni broj seta:</label><label id="brojZap">{brojZap}</label><button onClick={updateBrojZapisnika}>Završi</button>
+            </div>
             <h2>Jednodelna merila</h2>
             <table>
                 <thead>
@@ -1033,7 +1078,7 @@ function Dashboard() {
                         </td>
                         <td>
                             <button
-                                onClick={() => handleResenjeJednodelnogMerila(merilo.brojZapisnika)}>Resenje/Uverenje
+                                onClick={() => handleResenjeJednodelnogMerila(merilo.brojZapisnika)}>Rešenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1072,7 +1117,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMerneLetve(merilo.brojZapisnika)}>Resenje/Uverenje
+                            <button onClick={() => handleResenjeMerneLetve(merilo.brojZapisnika)}>Rešenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1112,7 +1157,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMerneTrake(merilo.brojZapisnika)}>Resenje/Uverenje
+                            <button onClick={() => handleResenjeMerneTrake(merilo.brojZapisnika)}>Rešenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1153,7 +1198,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMasineZaMerenje(merilo.brojZapisnika)}>Resenje/Uverenje
+                            <button onClick={() => handleResenjeMasineZaMerenje(merilo.brojZapisnika)}>Rešenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1193,7 +1238,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeSlozivogMerila(merilo.brojZapisnika)}>Resenje/Uverenje
+                            <button onClick={() => handleResenjeSlozivogMerila(merilo.brojZapisnika)}>Rešenje/Uverenje
                             </button>
                         </td>
                         <td>
@@ -1233,7 +1278,7 @@ function Dashboard() {
                             <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleResenjeMetriZaTekstil(merilo.brojZapisnika)}>Resenje/Uverenje
+                            <button onClick={() => handleResenjeMetriZaTekstil(merilo.brojZapisnika)}>Rešenje/Uverenje
                             </button>
                         </td>
                         <td>
