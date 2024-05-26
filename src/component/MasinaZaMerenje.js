@@ -8,6 +8,8 @@ const MasinaZaMerenje = () => {
     const [vlasnikKorisnik, setVlasnikKorisnik] = useState('');
     const [users, setUsers] = useState([]);
     const [brojZapisnika, setBrojZapisnika] = useState('');
+    const [proizvodjaci, setProizvodjaci] = useState([]);
+
 
 
     const handleChangeZapisnik = (event) => {
@@ -79,6 +81,19 @@ const MasinaZaMerenje = () => {
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
 
+        fetch('http://localhost:8080/api/v1/proizvodjac/all', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setProizvodjaci(data))
+            .catch(error => console.error('Greška pri dobavljanju proizvodjaca:', error));
 
         fetch('http://localhost:8080/api/v1/user/all', {
             headers: {
@@ -228,10 +243,11 @@ const MasinaZaMerenje = () => {
                 <input type="text" id="identifikacioniBroj" name="identifikacioniBroj"/><br/>
 
                 <label htmlFor="proizvodjac">Proizvodjač:</label>
-                <input type={"text"} id={"proizvodjac"} name="proizvodjac" list={"kompanije"}/>
+                <input type={"text"} id={"proizvodjac"} name="proizvodjac" list={"proizvodjaci"}/>
                 <datalist id={"proizvodjaci"}>
-                    <option>Opcija 1</option>
-                    <option>Opcija 2</option>
+                    {proizvodjaci.map((proizvodjac, index) => (
+                        <option key={index} value={proizvodjac.name}/>
+                    ))}
                 </datalist>
                 <br/>
 
