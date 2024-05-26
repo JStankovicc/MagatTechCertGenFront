@@ -959,21 +959,6 @@ const JednodelnoMerilo = () => {
                         <input type="text" id="ndr2" name="ndr2" className="rezultatiInput"/>
                     </div>
 
-
-                    <label>Merna Oprema:</label>
-                    <label>
-                        <input type="checkbox" name="mernaLupa"/>
-                        Merna lupa
-                    </label>
-                    <label>
-                        <input type="checkbox" name="merniLenjir"/>
-                        Merni lenjir
-                    </label>
-                    <label>
-                        <input type="checkbox" name="pomicnoMerilo"/>
-                        Pomično merilo
-                    </label>
-
                     <label htmlFor="skinutiZigovi">Skinuti žigovi (razdvojiti znakom ;):</label>
                     <input type="text" id="skinutiZigovi" name="skinutiZigovi"/><br/>
 
