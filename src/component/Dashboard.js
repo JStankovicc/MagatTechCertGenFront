@@ -17,7 +17,7 @@ function Dashboard() {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        fetch('http://localhost:8080/api/v1/brojZapisnika/update', {
+        fetch('http://localhost:8080/api/v1/brojZapisnika/checkAndUpdate', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
