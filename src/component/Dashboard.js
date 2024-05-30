@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/Dashboard.css";
 
-const Dashboard = ({ handleEditJednodelnogMerila }) =>{
+const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , handleEditMetriZaTekstil , handleEditMernaLetva , handleEditMernaTrakaSaViskom , handleEditMasinaZaMerenje}) =>{
     const [merila, setMerila] = useState([]);
     const [merneLetve, setMerneLetve] = useState([]);
     const [merneTrake, setMerneTrake] = useState([]);
@@ -1045,8 +1045,24 @@ const Dashboard = ({ handleEditJednodelnogMerila }) =>{
         handleEditJednodelnogMerila(id);
     }
 
-    function handleUređivanje(id){
+    function handleUredjivanjeSlozivogMerila(id) {
+        handleEditSlozivogMerila(id);
+    }
 
+    function handleUredjivanjeMetriZaTekstil(id){
+        handleEditMetriZaTekstil(id);
+    }
+
+    function handleUredjivanjeMernaLetva(id){
+        handleEditMernaLetva(id);
+    }
+
+    function handleUredjivanjeMernaTrakaSaViskom(id){
+        handleEditMernaTrakaSaViskom(id);
+    }
+
+    function handleUredjivanjeMasinaZaMerenje(id){
+        handleEditMasinaZaMerenje(id);
     }
 
     return (
@@ -1118,7 +1134,7 @@ const Dashboard = ({ handleEditJednodelnogMerila }) =>{
                             <button onClick={() => handlePreuzimanjeMerneLetve(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeMernaLetva(merilo.brojZapisnika)}>Uredi</button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeMerneLetve(merilo.brojZapisnika)}>Rešenje/Uverenje
@@ -1158,7 +1174,7 @@ const Dashboard = ({ handleEditJednodelnogMerila }) =>{
                             <button onClick={() => handlePreuzimanjeMerneTrake(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeMernaTrakaSaViskom(merilo.brojZapisnika)}>Uredi</button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeMerneTrake(merilo.brojZapisnika)}>Rešenje/Uverenje
@@ -1199,7 +1215,7 @@ const Dashboard = ({ handleEditJednodelnogMerila }) =>{
                             </button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeMasinaZaMerenje(merilo.brojZapisnika)}>Uredi</button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeMasineZaMerenje(merilo.brojZapisnika)}>Rešenje/Uverenje
@@ -1239,7 +1255,7 @@ const Dashboard = ({ handleEditJednodelnogMerila }) =>{
                             </button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeSlozivogMerila(merilo.brojZapisnika)}>Uredi</button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeSlozivogMerila(merilo.brojZapisnika)}>Rešenje/Uverenje
@@ -1279,7 +1295,7 @@ const Dashboard = ({ handleEditJednodelnogMerila }) =>{
                             </button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeMetriZaTekstil(merilo.brojZapisnika)}>Uredi</button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeMetriZaTekstil(merilo.brojZapisnika)}>Rešenje/Uverenje
