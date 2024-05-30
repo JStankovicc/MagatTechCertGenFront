@@ -290,7 +290,6 @@ const JednodelnoMerilo = () => {
                             <option key={index} value={proizvodjac.name}/>
                         ))}
                     </datalist>
-                    <br/>
 
                     <label htmlFor="oznakaTipa">Oznaka tipa/modela:</label>
                     <input type="text" id="oznakaTipa" name="oznakaTipa"/><br/>

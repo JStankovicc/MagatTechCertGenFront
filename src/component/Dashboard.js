@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/Dashboard.css";
 
-function Dashboard() {
+const Dashboard = ({ handleEditJednodelnogMerila }) =>{
     const [merila, setMerila] = useState([]);
     const [merneLetve, setMerneLetve] = useState([]);
     const [merneTrake, setMerneTrake] = useState([]);
@@ -1041,7 +1041,11 @@ function Dashboard() {
             });
     }
 
-    function handleUređivanje(id) {
+    function handleUredjivanjeJednodelnogMerila(id) {
+        handleEditJednodelnogMerila(id);
+    }
+
+    function handleUređivanje(id){
 
     }
 
@@ -1074,7 +1078,7 @@ function Dashboard() {
                             </button>
                         </td>
                         <td>
-                            <button onClick={() => handleUređivanje(merilo.id)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeJednodelnogMerila(merilo.brojZapisnika)}>Uredi</button>
                         </td>
                         <td>
                             <button
