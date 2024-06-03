@@ -272,9 +272,9 @@ const MasinaZaMerenje = () => {
 
                 <label className="container">
                     <h2>Mašina je funkcionalno ispravna:</h2>
-                    <input type="radio" id="da" name="funkcionalnaIspravnost" value="da"/>
+                    <input type="radio" id="da" name="meriloJeIspravno" value="DA"/>
                     <label htmlFor="da">DA</label>
-                    <input type="radio" id="ne" name="funkcionalnaIspravnost" value="ne"/>
+                    <input type="radio" id="ne" name="meriloJeIspravno" value="NE"/>
                     <label htmlFor="ne">NE</label>
                 </label>
 
@@ -317,10 +317,10 @@ const MasinaZaMerenje = () => {
 
                 <label className="container">
                     <h2>Provera ispravnsti pokaznog uređaja:</h2>
-                    <input type="radio" id="ispunjava1" name="ispunjava1" value="ispunjava"/>
-                    <label htmlFor="ispunjava1">ISPUNJAVA</label>
-                    <input type="radio" id="neIspunjava1" name="ispunjava1" value="neIspunjava"/>
-                    <label htmlFor="neIspunjava1">NE ISPUNJAVA</label>
+                    <input type="radio" id="jeste" name="proveraIspravnostiPokaznogUredjaja" value="DA"/>
+                    <label htmlFor="jeste">ISPUNJAVA</label>
+                    <input type="radio" id="nije" name="proveraIspravnostiPokaznogUredjaja" value="NE"/>
+                    <label htmlFor="nije">NE ISPUNJAVA</label>
                 </label>
 
 
