@@ -29,6 +29,61 @@ const MernaTrakaSaViskom = () => {
     const [greska8b, setGreska8b] = useState('');
 
 
+    const [ndg1, setNdg1] = useState('±1,2');
+    const [ndg2, setNdg2] = useState('±1,2');
+    const [ndg3, setNdg3] = useState('±1,2');
+    const [ndg4, setNdg4] = useState('±1,2');
+    const [ndg5, setNdg5] = useState('±1,2');
+    const [ndg6, setNdg6] = useState('±1,2');
+    const [ndg7, setNdg7] = useState('±1,2');
+    const [ndg8, setNdg8] = useState('±1,2');
+    const [ndg9, setNdg9] = useState('±1,2');
+    const [ndg10, setNdg10] = useState('±1,2');
+    const [ndg11, setNdg11] = useState('±1,2');
+    const [ndg12, setNdg12] = useState('±1,2');
+    const [ndr1, setNdr1] = useState('1,2');
+
+
+    const handleNdg1Change = (e) => {
+        setNdg1(e.target.value);
+    }
+    const handleNdg2Change = (e) => {
+        setNdg2(e.target.value);
+    }
+    const handleNdg3Change = (e) => {
+        setNdg3(e.target.value);
+    }
+    const handleNdg4Change = (e) => {
+        setNdg4(e.target.value);
+    }
+    const handleNdg5Change = (e) => {
+        setNdg5(e.target.value);
+    }
+    const handleNdg6Change = (e) => {
+        setNdg6(e.target.value);
+    }
+    const handleNdg7Change = (e) => {
+        setNdg7(e.target.value);
+    }
+    const handleNdg8Change = (e) => {
+        setNdg8(e.target.value);
+    }
+    const handleNdg9Change = (e) => {
+        setNdg9(e.target.value);
+    }
+    const handleNdg10Change = (e) => {
+        setNdg10(e.target.value);
+    }
+    const handleNdg11Change = (e) => {
+        setNdg11(e.target.value);
+    }
+    const handleNdg12Change = (e) => {
+        setNdg12(e.target.value);
+    }
+    const handleNdr1Change = (e) => {
+        setNdr1(e.target.value);
+    }
+
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
         if (!isNaN(numericValue)) {
@@ -320,57 +375,57 @@ const MernaTrakaSaViskom = () => {
                 <div className="rezultatiContainer">
                     <input type="text" value="0" readOnly/>
                     <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1} onChange={handleNdr1Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1000" readOnly/>
                     <input type="text" id="odstupanje2" name="odstupanje2" className="rezultatiInput"/>
-                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG" value={ndg2} onChange={handleNdg2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="2000" readOnly/>
                     <input type="text" id="odstupanje3" name="odstupanje3" className="rezultatiInput"/>
-                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG" value={ndg3} onChange={handleNdg3Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="3000" readOnly/>
                     <input type="text" id="odstupanje4" name="odstupanje4" className="rezultatiInput"/>
-                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG" value={ndg4} onChange={handleNdg4Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="4000" readOnly/>
                     <input type="text" id="odstupanje5" name="odstupanje5" className="rezultatiInput"/>
-                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG" value={ndg5} onChange={handleNdg5Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="5000" readOnly/>
                     <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput"/>
-                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG" value={ndg6} onChange={handleNdg6Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="6000" readOnly/>
                     <input type="text" id="odstupanje7" name="odstupanje7" className="rezultatiInput"/>
-                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" placeholder="NDG" value={ndg7} onChange={handleNdg7Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="7000" readOnly/>
                     <input type="text" id="odstupanje8" name="odstupanje8" className="rezultatiInput"/>
-                    <input type="text" id="ndg8" name="ndg8" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg8" name="ndg8" className="rezultatiInput" placeholder="NDG" value={ndg8} onChange={handleNdg8Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="8000" readOnly/>
                     <input type="text" id="odstupanje9" name="odstupanje9" className="rezultatiInput"/>
-                    <input type="text" id="ndg9" name="ndg9" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg9" name="ndg9" className="rezultatiInput" placeholder="NDG" value={ndg9} onChange={handleNdg9Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="9000" readOnly/>
                     <input type="text" id="odstupanje10" name="odstupanje10" className="rezultatiInput"/>
-                    <input type="text" id="ndg10" name="ndg10" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg10" name="ndg10" className="rezultatiInput" placeholder="NDG" value={ndg10} onChange={handleNdg10Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="10000" readOnly/>
                     <input type="text" id="odstupanje11" name="odstupanje11" className="rezultatiInput"/>
-                    <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG" value={ndg11} onChange={handleNdg11Change}/>
                 </div>
 
 
@@ -659,11 +714,11 @@ const MernaTrakaSaViskom = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg12" name="ndg12" className="rezultatiInput"/>
+                    <input type="text" id="ndg12" name="ndg12" className="rezultatiInput" value={ndg12} onChange={handleNdg12Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput"/>
+                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1} onChange={handleNdr1Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>

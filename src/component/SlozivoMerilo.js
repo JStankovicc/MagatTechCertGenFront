@@ -10,6 +10,12 @@ const SlozivoMerilo = () => {
     const [users, setUsers] = useState([]);
     const [proizvodjaci, setProizvodjaci] = useState([]);
 
+    const [ndg1, setNdg1] = useState('±1,2');
+    const [ndg2, setNdg2] = useState('±1,2');
+    const [ndg3, setNdg3] = useState('±1,2');
+    const [ndg4, setNdg4] = useState('±1,2');
+    const [ndr1, setNdr1] = useState('1,2');
+    const [ndr2, setNdr2] = useState('1,2');
 
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
@@ -45,6 +51,25 @@ const SlozivoMerilo = () => {
     const [greska16a, setGreska16a] = useState('');
     const [greska16b, setGreska16b] = useState('');
 
+
+    const handleNdg1Change = (e) => {
+        setNdg1(e.target.value);
+    }
+    const handleNdg2Change = (e) => {
+        setNdg2(e.target.value);
+    }
+    const handleNdg3Change = (e) => {
+        setNdg3(e.target.value);
+    }
+    const handleNdg4Change = (e) => {
+        setNdg4(e.target.value);
+    }
+    const handleNdr1Change = (e) => {
+        setNdr1(e.target.value);
+    }
+    const handleNdr2Change = (e) => {
+        setNdr2(e.target.value);
+    }
 
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
@@ -369,7 +394,7 @@ const SlozivoMerilo = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput"/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1} onChange={handleNdg1Change}/>
                 </div>
 
 
@@ -658,11 +683,11 @@ const SlozivoMerilo = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput"/>
+                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" value={ndg2} onChange={handleNdg2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput"/>
+                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1} onChange={handleNdr1Change}/>
                 </div>
 
 
@@ -699,7 +724,7 @@ const SlozivoMerilo = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput"/>
+                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" value={ndg3} onChange={handleNdg3Change}/>
                 </div>
 
 
@@ -987,11 +1012,11 @@ const SlozivoMerilo = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput"/>
+                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" value={ndg4} onChange={handleNdg4Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr2" name="ndr2" className="rezultatiInput"/>
+                    <input type="text" id="ndr2" name="ndr2" className="rezultatiInput" value={ndr2} onChange={handleNdr2Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi">Skinuti žigovi (razdvojiti znakom ;):</label>

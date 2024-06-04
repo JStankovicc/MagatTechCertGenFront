@@ -10,6 +10,15 @@ const MernaLetva = () => {
     const [users, setUsers] = useState([]);
     const [proizvodjaci, setProizvodjaci] = useState([]);
 
+    const [ndg1, setNdg1] = useState('±1,2');
+    const [ndg2, setNdg2] = useState('±1,2');
+    const [ndg3, setNdg3] = useState('±1,2');
+    const [ndg4, setNdg4] = useState('±1,2');
+    const [ndg5, setNdg5] = useState('±1,2');
+    const [ndg6, setNdg6] = useState('±1,2');
+    const [ndg7, setNdg7] = useState('±1,2');
+    const [ndr1, setNdr1] = useState('1,2');
+
 
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
@@ -27,6 +36,32 @@ const MernaLetva = () => {
     const [greska7b, setGreska7b] = useState('');
     const [greska8a, setGreska8a] = useState('');
     const [greska8b, setGreska8b] = useState('');
+
+
+    const handleNdg1Change = (e) => {
+        setNdg1(e.target.value);
+    }
+    const handleNdg2Change = (e) => {
+        setNdg2(e.target.value);
+    }
+    const handleNdg3Change = (e) => {
+        setNdg3(e.target.value);
+    }
+    const handleNdg4Change = (e) => {
+        setNdg4(e.target.value);
+    }
+    const handleNdg5Change = (e) => {
+        setNdg5(e.target.value);
+    }
+    const handleNdg6Change = (e) => {
+        setNdg6(e.target.value);
+    }
+    const handleNdg7Change = (e) => {
+        setNdg7(e.target.value);
+    }
+    const handleNdr1Change = (e) => {
+        setNdr1(e.target.value);
+    }
 
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
@@ -321,32 +356,32 @@ const MernaLetva = () => {
                 <div className="rezultatiContainer">
                     <input type="text" value="500" readOnly/>
                     <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1} onChange={handleNdg1Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1000" readOnly/>
                     <input type="text" id="odstupanje2" name="odstupanje2" className="rezultatiInput"/>
-                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG" value={ndg2} onChange={handleNdg2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1500" readOnly/>
                     <input type="text" id="odstupanje3" name="odstupanje3" className="rezultatiInput"/>
-                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG" value={ndg3} onChange={handleNdg3Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="2000" readOnly/>
                     <input type="text" id="odstupanje4" name="odstupanje4" className="rezultatiInput"/>
-                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG" value={ndg4} onChange={handleNdg4Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="2500" readOnly/>
                     <input type="text" id="odstupanje5" name="odstupanje5" className="rezultatiInput"/>
-                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG" value={ndg5} onChange={handleNdg5Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="3000" readOnly/>
                     <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput"/>
-                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG"/>
+                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG" value={ndg6} onChange={handleNdg6Change}/>
                 </div>
 
 
@@ -634,11 +669,11 @@ const MernaLetva = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput"/>
+                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" value={ndg7} onChange={handleNdg7Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput"/>
+                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1} onChange={handleNdr1Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>

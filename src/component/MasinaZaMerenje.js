@@ -10,7 +10,11 @@ const MasinaZaMerenje = () => {
     const [brojZapisnika, setBrojZapisnika] = useState('');
     const [proizvodjaci, setProizvodjaci] = useState([]);
 
+    const [ndg1, setNdg1] = useState('±1,2');
 
+    const handleNdg1Change = (e) => {
+        setNdg1(e.target.value);
+    }
 
     const handleChangeZapisnik = (event) => {
         setBrojZapisnika(event.target.value);
@@ -365,7 +369,7 @@ const MasinaZaMerenje = () => {
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput"/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1} onChange={handleNdg1Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>
