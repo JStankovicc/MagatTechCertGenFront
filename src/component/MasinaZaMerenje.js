@@ -292,6 +292,14 @@ const MasinaZaMerenje = () => {
                 <textarea id="napomena" name="napomena" rows="4" cols="50"></textarea><br/>
 
                 <label>Prečnik točka mašine:</label><br/>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit1" name="unit1" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1. merenje" readOnly/>
                     <input type="text" id="merenje1" name="merenje1" className="rezultatiInput"/>
@@ -325,6 +333,14 @@ const MasinaZaMerenje = () => {
 
 
                 <label>Provera ispravnosti uređaja za odmeravanje dužina:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit2" name="unit2" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="Dužina uzorka" readOnly/>
                     <input type="text" id="duzinaUzorka" name="duzinaUzorka" className="rezultatiInput"/>

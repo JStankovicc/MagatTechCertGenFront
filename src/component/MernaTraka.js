@@ -309,6 +309,14 @@ const MernaTraka = () => {
                 <textarea id="napomena" name="napomena" rows="4" cols="50"></textarea><br/>
 
                 <label>Odstupanje od nazivne mere:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit1" name="unit1" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="0" readOnly/>
                     <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"/>
@@ -369,14 +377,14 @@ const MernaTraka = () => {
                 <label>Greška podeljka skale:</label>
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
-                    <select id="unit1" name="unit1" className="rezultatiInput">
+                    <select id="unit2" name="unit2" className="rezultatiInput">
                         <option value="m">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
                 </div>
                 <div className="rezultatiContainer">
-                <input
+                    <input
                         type="text"
                         id="greska1a"
                         name="greska1a"
