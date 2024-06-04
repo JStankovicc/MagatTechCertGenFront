@@ -657,66 +657,96 @@ const EditMernaTrakaSaViskom = ({ id }) => {
                           onChange={handleNapomenaChange}></textarea><br/>
 
                 <label>Odstupanje od nazivne mere:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit1" name="unit1" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="0" readOnly/>
-                    <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput" value={odstupanje1} onChange={handleOdstupanje1Change}/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1} onChange={handleNdg1Change}/>
+                    <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"
+                           value={odstupanje1} onChange={handleOdstupanje1Change}/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1}
+                           onChange={handleNdg1Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1000" readOnly/>
-                    <input type="text" id="odstupanje2" name="odstupanje2" className="rezultatiInput" value={odstupanje2} onChange={handleOdstupanje2Change}/>
-                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG" value={ndg2} onChange={handleNdg2Change}/>
+                    <input type="text" id="odstupanje2" name="odstupanje2" className="rezultatiInput"
+                           value={odstupanje2} onChange={handleOdstupanje2Change}/>
+                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG" value={ndg2}
+                           onChange={handleNdg2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="2000" readOnly/>
-                    <input type="text" id="odstupanje3" name="odstupanje3" className="rezultatiInput" value={odstupanje3} onChange={handleOdstupanje3Change}/>
-                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG" value={ndg3} onChange={handleNdg3Change}/>
+                    <input type="text" id="odstupanje3" name="odstupanje3" className="rezultatiInput"
+                           value={odstupanje3} onChange={handleOdstupanje3Change}/>
+                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG" value={ndg3}
+                           onChange={handleNdg3Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="3000" readOnly/>
-                    <input type="text" id="odstupanje4" name="odstupanje4" className="rezultatiInput" value={odstupanje4} onChange={handleOdstupanje4Change}/>
-                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG" value={ndg4} onChange={handleNdg4Change}/>
+                    <input type="text" id="odstupanje4" name="odstupanje4" className="rezultatiInput"
+                           value={odstupanje4} onChange={handleOdstupanje4Change}/>
+                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG" value={ndg4}
+                           onChange={handleNdg4Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="4000" readOnly/>
-                    <input type="text" id="odstupanje5" name="odstupanje5" className="rezultatiInput" value={odstupanje5} onChange={handleOdstupanje5Change}/>
-                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG" value={ndg5} onChange={handleNdg5Change}/>
+                    <input type="text" id="odstupanje5" name="odstupanje5" className="rezultatiInput"
+                           value={odstupanje5} onChange={handleOdstupanje5Change}/>
+                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG" value={ndg5}
+                           onChange={handleNdg5Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="5000" readOnly/>
-                    <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput" value={odstupanje6} onChange={handleOdstupanje6Change}/>
-                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG" value={ndg6} onChange={handleNdg6Change}/>
+                    <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput"
+                           value={odstupanje6} onChange={handleOdstupanje6Change}/>
+                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG" value={ndg6}
+                           onChange={handleNdg6Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="6000" readOnly/>
-                    <input type="text" id="odstupanje7" name="odstupanje7" className="rezultatiInput" value={odstupanje7} onChange={handleOdstupanje7Change}/>
-                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" placeholder="NDG" value={ndg7} onChange={handleNdg7Change}/>
+                    <input type="text" id="odstupanje7" name="odstupanje7" className="rezultatiInput"
+                           value={odstupanje7} onChange={handleOdstupanje7Change}/>
+                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" placeholder="NDG" value={ndg7}
+                           onChange={handleNdg7Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="7000" readOnly/>
-                    <input type="text" id="odstupanje8" name="odstupanje8" className="rezultatiInput" value={odstupanje8} onChange={handleOdstupanje8Change}/>
-                    <input type="text" id="ndg8" name="ndg8" className="rezultatiInput" placeholder="NDG" value={ndg8} onChange={handleNdg8Change}/>
+                    <input type="text" id="odstupanje8" name="odstupanje8" className="rezultatiInput"
+                           value={odstupanje8} onChange={handleOdstupanje8Change}/>
+                    <input type="text" id="ndg8" name="ndg8" className="rezultatiInput" placeholder="NDG" value={ndg8}
+                           onChange={handleNdg8Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="8000" readOnly/>
-                    <input type="text" id="odstupanje9" name="odstupanje9" className="rezultatiInput" value={odstupanje9} onChange={handleOdstupanje9Change}/>
-                    <input type="text" id="ndg9" name="ndg9" className="rezultatiInput" placeholder="NDG" value={ndg9} onChange={handleNdg9Change}/>
+                    <input type="text" id="odstupanje9" name="odstupanje9" className="rezultatiInput"
+                           value={odstupanje9} onChange={handleOdstupanje9Change}/>
+                    <input type="text" id="ndg9" name="ndg9" className="rezultatiInput" placeholder="NDG" value={ndg9}
+                           onChange={handleNdg9Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="9000" readOnly/>
-                    <input type="text" id="odstupanje10" name="odstupanje10" className="rezultatiInput" value={odstupanje10} onChange={handleOdstupanje10Change}/>
-                    <input type="text" id="ndg10" name="ndg10" className="rezultatiInput" placeholder="NDG" value={ndg10} onChange={handleNdg10Change}/>
+                    <input type="text" id="odstupanje10" name="odstupanje10" className="rezultatiInput"
+                           value={odstupanje10} onChange={handleOdstupanje10Change}/>
+                    <input type="text" id="ndg10" name="ndg10" className="rezultatiInput" placeholder="NDG"
+                           value={ndg10} onChange={handleNdg10Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="10000" readOnly/>
-                    <input type="text" id="odstupanje11" name="odstupanje11" className="rezultatiInput" value={odstupanje11} onChange={handleOdstupanje11Change}/>
-                    <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG" value={ndg11} onChange={handleNdg11Change}/>
+                    <input type="text" id="odstupanje11" name="odstupanje11" className="rezultatiInput"
+                           value={odstupanje11} onChange={handleOdstupanje11Change}/>
+                    <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG"
+                           value={ndg11} onChange={handleNdg11Change}/>
                 </div>
 
                 <label>Greška podeljka skale:</label>
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
-                    <select id="unit1" name="unit1" className="rezultatiInput">
+                    <select id="unit2" name="unit2" className="rezultatiInput">
                         <option value="m">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
@@ -1033,7 +1063,8 @@ const EditMernaTrakaSaViskom = ({ id }) => {
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi"
+                               readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi"
                                className="rezultatiInput" value={propisaniZahtevi}
                                onChange={handlePropisaniZahteviChange}/>

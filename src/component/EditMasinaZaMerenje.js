@@ -481,64 +481,100 @@ const EditMasinaZaMerenje = ({ id }) => {
                           onChange={handleNapomenaChange}></textarea><br/>
 
                 <label>Prečnik točka mašine:</label><br/>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit1" name="unit1" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1. merenje" readOnly/>
-                    <input type="text" id="merenje1" name="merenje1" className="rezultatiInput" value={merenje1} onChange={handleMerenje1Change}/>
+                    <input type="text" id="merenje1" name="merenje1" className="rezultatiInput" value={merenje1}
+                           onChange={handleMerenje1Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="2. merenje" readOnly/>
-                    <input type="text" id="merenje2" name="merenje2" className="rezultatiInput" value={merenje2} onChange={handleMerenje2Change}/>
+                    <input type="text" id="merenje2" name="merenje2" className="rezultatiInput" value={merenje2}
+                           onChange={handleMerenje2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="3. merenje" readOnly/>
-                    <input type="text" id="merenje3" name="merenje3" className="rezultatiInput" value={merenje3} onChange={handleMerenje3Change}/>
+                    <input type="text" id="merenje3" name="merenje3" className="rezultatiInput" value={merenje3}
+                           onChange={handleMerenje3Change}/>
                 </div>
 
                 <label className="container">
                     <h2>Provera ispravnog vođenja mernog materijala (1mm):</h2>
-                    <input type="radio" id="ispunjava" name="proveraIspravnogVodjenja" value="ispunjava" checked={proveraIspravnogVodjenja === 'ispunjava'} onChange={() => setProveraIspravnogVodjenja('ispunjava')}/>
+                    <input type="radio" id="ispunjava" name="proveraIspravnogVodjenja" value="ispunjava"
+                           checked={proveraIspravnogVodjenja === 'ispunjava'}
+                           onChange={() => setProveraIspravnogVodjenja('ispunjava')}/>
                     <label htmlFor="ispunjava">ISPUNJAVA</label>
-                    <input type="radio" id="neIspunjava" name="proveraIspravnogVodjenja" value="neIspunjava" checked={proveraIspravnogVodjenja === 'neIspunjava'} onChange={() => setProveraIspravnogVodjenja('neIspunjava')}/>
+                    <input type="radio" id="neIspunjava" name="proveraIspravnogVodjenja" value="neIspunjava"
+                           checked={proveraIspravnogVodjenja === 'neIspunjava'}
+                           onChange={() => setProveraIspravnogVodjenja('neIspunjava')}/>
                     <label htmlFor="neIspunjava">NE ISPUNJAVA</label>
-                    <input type="radio" id="nijePrimenljivo" name="proveraIspravnogVodjenja" value="nijePrimenljivo"  checked={proveraIspravnogVodjenja === 'nijePrimenljivo'} onChange={() => setProveraIspravnogVodjenja('nijePrimenljivo')}/>
+                    <input type="radio" id="nijePrimenljivo" name="proveraIspravnogVodjenja" value="nijePrimenljivo"
+                           checked={proveraIspravnogVodjenja === 'nijePrimenljivo'}
+                           onChange={() => setProveraIspravnogVodjenja('nijePrimenljivo')}/>
                     <label htmlFor="nijePrimenljivo">NIJE PRIMENLJIVO</label>
                 </label>
 
                 <label className="container">
                     <h2>Provera ispravnsti pokaznog uređaja:</h2>
-                    <input type="radio" id="ispunjava1" name="ispunjava1" value="ispunjava" checked={ispravnostPokaznogUredjaja === 'DA'} onChange={() => setIspravnostPokaznogUredjaja('DA')}/>
+                    <input type="radio" id="ispunjava1" name="ispunjava1" value="ispunjava"
+                           checked={ispravnostPokaznogUredjaja === 'DA'}
+                           onChange={() => setIspravnostPokaznogUredjaja('DA')}/>
                     <label htmlFor="ispunjava1">ISPUNJAVA</label>
-                    <input type="radio" id="neIspunjava1" name="ispunjava1" value="neIspunjava" checked={ispravnostPokaznogUredjaja === 'NE'} onChange={() => setIspravnostPokaznogUredjaja('NE')}/>
+                    <input type="radio" id="neIspunjava1" name="ispunjava1" value="neIspunjava"
+                           checked={ispravnostPokaznogUredjaja === 'NE'}
+                           onChange={() => setIspravnostPokaznogUredjaja('NE')}/>
                     <label htmlFor="neIspunjava1">NE ISPUNJAVA</label>
                 </label>
 
 
                 <label>Provera ispravnosti uređaja za odmeravanje dužina:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit2" name="unit2" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="Dužina uzorka" readOnly/>
-                    <input type="text" id="duzinaUzorka" name="duzinaUzorka" className="rezultatiInput" value={duzinaUzorka} onChange={handleDuzinaUzorkaChange}/>
+                    <input type="text" id="duzinaUzorka" name="duzinaUzorka" className="rezultatiInput"
+                           value={duzinaUzorka} onChange={handleDuzinaUzorkaChange}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="Debljina uzorka" readOnly/>
-                    <input type="text" id="debljinaUzorka" name="debljinaUzorka" className="rezultatiInput" value={debljinaUzorka} onChange={handleDebljinaUzorkaChange}/>
+                    <input type="text" id="debljinaUzorka" name="debljinaUzorka" className="rezultatiInput"
+                           value={debljinaUzorka} onChange={handleDebljinaUzorkaChange}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="Pokazivanje mašine" readOnly/>
-                    <input type="text" id="pokazivanjeMasine" name="pokazivanjeMasine" className="rezultatiInput" value={pokazivanjeMasine} onChange={handlePokazivanjeMasineChange}/>
+                    <input type="text" id="pokazivanjeMasine" name="pokazivanjeMasine" className="rezultatiInput"
+                           value={pokazivanjeMasine} onChange={handlePokazivanjeMasineChange}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="Odstupanje od stvarne vrednosti dužine" readOnly/>
                     <input type="text" id="rezultaodstupanjeOdPraveVrednostiDuzinet14"
-                           name="odstupanjeOdPraveVrednostiDuzine" className="rezultatiInput" value={odstupanjeOdPraveVrednostiDuzine} onChange={handleOdstupanjeOdPraveVrednostiDuzineChange}/>
+                           name="odstupanjeOdPraveVrednostiDuzine" className="rezultatiInput"
+                           value={odstupanjeOdPraveVrednostiDuzine}
+                           onChange={handleOdstupanjeOdPraveVrednostiDuzineChange}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="Relativna greška izmerene dužine" readOnly/>
                     <input type="text" id="relativnaGreskaIzmereneDuzine" name="relativnaGreskaIzmereneDuzine"
-                           className="rezultatiInput" value={relativnaGreskaIzmereneDuzine} onChange={handleRelativnaGreskaIzmereneDuzineChange}/>
+                           className="rezultatiInput" value={relativnaGreskaIzmereneDuzine}
+                           onChange={handleRelativnaGreskaIzmereneDuzineChange}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1} onChange={handleNdg1Change}/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1}
+                           onChange={handleNdg1Change}/>
                 </div>
 
 
@@ -552,7 +588,8 @@ const EditMasinaZaMerenje = ({ id }) => {
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi"
+                               readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"
                                value={propisaniZahtevi} onChange={handlePropisaniZahteviChange}/>
                     </div>

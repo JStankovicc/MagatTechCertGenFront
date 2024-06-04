@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/MernaTraka.css";
 
-const MernaTraka = () => {
+const MernaTrakaSaViskom = () => {
     const [vrsteKontrolisanja, setVrsteKontrolisanja] = useState([]);
     const [kompanije, setKompanije] = useState([]);
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
@@ -312,7 +312,7 @@ const MernaTraka = () => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -378,7 +378,7 @@ const MernaTraka = () => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -674,7 +674,7 @@ const MernaTraka = () => {
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi" readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
                     </div>
                     <h2>Merna traka ispunjava propisane zahteve:</h2>
@@ -718,4 +718,4 @@ const MernaTraka = () => {
     );
 };
 
-export default MernaTraka;
+export default MernaTrakaSaViskom;

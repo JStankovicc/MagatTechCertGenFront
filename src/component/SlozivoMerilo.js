@@ -340,7 +340,7 @@ const SlozivoMerilo = () => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -377,7 +377,7 @@ const SlozivoMerilo = () => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -670,7 +670,7 @@ const SlozivoMerilo = () => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit3" name="unit3" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -707,7 +707,7 @@ const SlozivoMerilo = () => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit4" name="unit4" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -1002,7 +1002,7 @@ const SlozivoMerilo = () => {
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi" readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
                     </div>
                     <h2>Merilo ispunjava propisane zahteve:</h2>

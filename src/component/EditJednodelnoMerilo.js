@@ -605,7 +605,8 @@ const EditJednodelnoMerilo = ({ id }) => {
                 </datalist>
 
                 <label htmlFor="serijskiBroj">Serijski broj:</label>
-                <input type="text" id="serijskiBroj" name="serijskiBroj" value={serijskiBroj} onChange={handleSerijskiBrojChange}/><br/>
+                <input type="text" id="serijskiBroj" name="serijskiBroj" value={serijskiBroj}
+                       onChange={handleSerijskiBrojChange}/><br/>
 
                 <label htmlFor="identifikacioniBroj">Identifikacioni broj:</label>
                 <input type="text" id="identifikacioniBroj" name="identifikacioniBroj"
@@ -627,19 +628,24 @@ const EditJednodelnoMerilo = ({ id }) => {
                 </datalist>
 
                 <label htmlFor="oznakaTipa">Oznaka tipa/modela:</label>
-                <input type="text" id="oznakaTipa" name="oznakaTipa" value={oznakaTipa} onChange={handleOznakaTipaChange}/><br/>
+                <input type="text" id="oznakaTipa" name="oznakaTipa" value={oznakaTipa}
+                       onChange={handleOznakaTipaChange}/><br/>
 
                 <label htmlFor="sluzbenaOznakaTipa">Službena oznaka tipa/broj izjave o usaglašenosti:</label>
-                <input type="text" id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa" value={sluzbenaOznakaTipa} onChange={handleSluzbenaOznakaTipaChange}/>
+                <input type="text" id="sluzbenaOznakaTipa" name="sluzbenaOznakaTipa" value={sluzbenaOznakaTipa}
+                       onChange={handleSluzbenaOznakaTipaChange}/>
 
                 <label htmlFor="merniOpseg">Merni opseg:</label>
-                <input type="text" id="merniOpseg" name="merniOpseg" value={merniOpseg} onChange={handleMerniOpsegChange}/>
+                <input type="text" id="merniOpseg" name="merniOpseg" value={merniOpseg}
+                       onChange={handleMerniOpsegChange}/>
 
                 <label htmlFor="najmanjiPodeljak">Najmanji podeljak:</label>
-                <input type="text" id="najmanjiPodeljak" name="najmanjiPodeljak" value={najmanjiPodeljak} onChange={handleNajmanjiPodeljakChange}/>
+                <input type="text" id="najmanjiPodeljak" name="najmanjiPodeljak" value={najmanjiPodeljak}
+                       onChange={handleNajmanjiPodeljakChange}/>
 
                 <label htmlFor="klasaTacnosti">Klasa tacnosti:</label>
-                <select id="klasaTacnosti" name="klasaTacnosti" value={klasaTacnosti} onChange={handleKlasaTacnostiChange}>
+                <select id="klasaTacnosti" name="klasaTacnosti" value={klasaTacnosti}
+                        onChange={handleKlasaTacnostiChange}>
                     <option value="/">/</option>
                     <option value="I">I</option>
                     <option value="II">II</option>
@@ -681,9 +687,18 @@ const EditJednodelnoMerilo = ({ id }) => {
                 </label>
 
                 <label htmlFor="napomena">Napomena:</label>
-                <textarea id="napomena" name="napomena" rows="4" cols="50" value={napomena} onChange={handleNapomenaChange}></textarea><br/>
+                <textarea id="napomena" name="napomena" rows="4" cols="50" value={napomena}
+                          onChange={handleNapomenaChange}></textarea><br/>
 
                 <label>Odstupanje od nazivne mere:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit1" name="unit1" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="20" readOnly/>
                     <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"
@@ -711,13 +726,14 @@ const EditJednodelnoMerilo = ({ id }) => {
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1} onChange={handleNdg1Change}/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1}
+                           onChange={handleNdg1Change}/>
                 </div>
 
                 <label>Greška podeljka skale:</label>
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
-                    <select id="unit1" name="unit1" className="rezultatiInput">
+                    <select id="unit2" name="unit2" className="rezultatiInput">
                         <option value="m">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
@@ -1014,14 +1030,24 @@ const EditJednodelnoMerilo = ({ id }) => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" value={ndg2} onChange={handleNdg2Change}/>
+                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" value={ndg2}
+                           onChange={handleNdg2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1} onChange={handleNdr1Change}/>
+                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1}
+                           onChange={handleNdr1Change}/>
                 </div>
 
                 <label>Odstupanje od nazivne mere:</label>
+                <div className="mernaJedinicaContainer">
+                    <input type="text" value="Merna jedinica:" readOnly/>
+                    <select id="unit3" name="unit3" className="rezultatiInput">
+                        <option value="m">μm</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                    </select>
+                </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="20" readOnly/>
                     <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput"
@@ -1049,13 +1075,14 @@ const EditJednodelnoMerilo = ({ id }) => {
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" value={ndg3} onChange={handleNdg3Change}/>
+                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" value={ndg3}
+                           onChange={handleNdg3Change}/>
                 </div>
 
                 <label>Greška podeljka skale:</label>
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
-                    <select id="unit2" name="unit2" className="rezultatiInput">
+                    <select id="unit4" name="unit4" className="rezultatiInput">
                         <option value="m">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
@@ -1351,24 +1378,30 @@ const EditJednodelnoMerilo = ({ id }) => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" value={ndg4} onChange={handleNdg4Change}/>
+                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" value={ndg4}
+                           onChange={handleNdg4Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr2" name="ndr2" className="rezultatiInput" value={ndr2} onChange={handleNdr2Change}/>
+                    <input type="text" id="ndr2" name="ndr2" className="rezultatiInput" value={ndr2}
+                           onChange={handleNdr2Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi">Skinuti žigovi (razdvojiti znakom ;):</label>
-                <input type="text" id="skinutiZigovi" name="skinutiZigovi" value={skinutiZigovi} onChange={handleSkinutiZigoviChange}/><br/>
+                <input type="text" id="skinutiZigovi" name="skinutiZigovi" value={skinutiZigovi}
+                       onChange={handleSkinutiZigoviChange}/><br/>
 
                 <label htmlFor="postavljeniZigovi">Stavljeni žigovi (razdvojiti znakom ;):</label>
-                <input type="text" id="postavljeniZigovi" name="postavljeniZigovi" value={postavljeniZigovi} onChange={handlePostavljeniZigoviChange}/><br/>
+                <input type="text" id="postavljeniZigovi" name="postavljeniZigovi" value={postavljeniZigovi}
+                       onChange={handlePostavljeniZigoviChange}/><br/>
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Propisani zahtevi:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi"
+                               readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi"
-                               className="rezultatiInput" value={propisaniZahtevi} onChange={handlePropisaniZahteviChange}/>
+                               className="rezultatiInput" value={propisaniZahtevi}
+                               onChange={handlePropisaniZahteviChange}/>
                     </div>
                     <div>
                         <h2>Merilo ispunjava propisane zahteve:</h2>

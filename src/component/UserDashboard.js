@@ -3,7 +3,7 @@ import UserNavbar from "./UserNavbar";
 import Dashboard from "./Dashboard";
 import JednodelnoMerilo from "./JednodelnoMerilo";
 import MernaLetva from "./MernaLetva";
-import MernaTraka from "./MernaTraka";
+import MernaTrakaSaViskom from "./MernaTrakaSaViskom";
 import MasinaZaMerenje from "./MasinaZaMerenje";
 import SlozivoMerilo from "./SlozivoMerilo";
 import MetriZaTekstil from "./MetriZaTekstil";
@@ -57,7 +57,7 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
             {activeMenuItem === 'Dashboard' && <Dashboard handleEditJednodelnogMerila={handleEditJednodelnogMerila} handleEditSlozivogMerila={handleEditSlozivogMerila} handleEditMetriZaTekstil={handleEditMetriZaTekstil} handleEditMernaLetva={handleEditMernaLetva} handleEditMernaTrakaSaViskom={handleEditMernaTrakaSaViskom} handleEditMasinaZaMerenje={handleEditMasinaZaMerenje}/>}
             {activeMenuItem === 'Jednodelno merilo' && <JednodelnoMerilo />}
             {activeMenuItem === 'Merna letva' && <MernaLetva />}
-            {activeMenuItem === 'Merna traka' && <MernaTraka />}
+            {activeMenuItem === 'Merna traka sa viskom' && <MernaTrakaSaViskom />}
             {activeMenuItem === 'Masina za merenje' && <MasinaZaMerenje />}
             {activeMenuItem === 'Slozivo merilo' && <SlozivoMerilo />}
             {activeMenuItem === 'Metri za tekstil' && <MetriZaTekstil />}
