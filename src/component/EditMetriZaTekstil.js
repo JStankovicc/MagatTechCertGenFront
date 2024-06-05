@@ -152,7 +152,7 @@ const EditMetriZaTekstil = ({ id }) => {
                 setOdstupanje4(data.odstupanje4 || '');
                 setOdstupanje5(data.odstupanje5 || '');
                 setNdg1(data.ndg1 || '');
-                const [razlogOdbijanja, setRazlogOdbijanja] = useState('');
+                setRazlogOdbijanja(data.razlogOdbijanja || '');
 
                 const indexOfDash = data.greska1.indexOf('-');
                 const substring = indexOfDash !== -1 ? data.greska1.substring(0, indexOfDash) : data.greska1;
