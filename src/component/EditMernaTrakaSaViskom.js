@@ -77,6 +77,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
     const [zapisnikOdobrio, setZapisnikOdobrio] = useState('');
     const [datum, setDatum] = useState('');
     const [users, setUsers] = useState([]);
+    const [razlogOdbijanja, setRazlogOdbijanja] = useState('');
 
     useEffect(() => {
         const handleEnterKeyPress = (event) => {
@@ -180,6 +181,8 @@ const EditMernaTrakaSaViskom = ({ id }) => {
                 setNdg12(data.ndg12);
                 setSkinutiZigovi(data.skinutiZigovi || '');
                 setPostavljeniZigovi(data.postavljeniZigovi || '');
+                setRazlogOdbijanja(data.razlogOdbijanja || '');
+
                 setPropisaniZahtevi(data.propisaniZahtevi || '');
                 setMeriloIspunjavaZahteve(data.meriloIspunjavaZahteve === true ? 'DA' : 'NE');
                 setKomentar(data.komentar2 || '');
@@ -273,6 +276,10 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         fetchUsers();
         fetchMerilo();
     }, [id]);
+
+    const handleRazlogOdbijanjaChange = (e) => {
+        setRazlogOdbijanja(e.target.value);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -1097,6 +1104,9 @@ const EditMernaTrakaSaViskom = ({ id }) => {
                 <textarea id="komentar2" name="komentar2" rows="4" cols="50" value={komentar}
                           onChange={handleKomentarChange}></textarea><br/>
 
+                <label htmlFor="razlogOdbijanja">Razlog odbijanja:</label>
+                <textarea id="razlogOdbijanja" name="razlogOdbijanja" rows="4" cols="50" value={razlogOdbijanja}
+                          onChange={handleRazlogOdbijanjaChange}></textarea><br/>
 
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                 <select id="zapisnikUneo" name="zapisnikUneo">

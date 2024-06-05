@@ -12,6 +12,10 @@ const MasinaZaMerenje = () => {
 
     const [ndg1, setNdg1] = useState('±1,2');
 
+    const [razlogOdbijanja, setRazlogOdbijanja] = useState('/');
+    const [komentar, setKomentar] = useState('/');
+    const [komentar2, setKomentar2] = useState('/');
+
     const handleNdg1Change = (e) => {
         setNdg1(e.target.value);
     }
@@ -20,6 +24,17 @@ const MasinaZaMerenje = () => {
         setBrojZapisnika(event.target.value);
     };
 
+    const handleRazlogOdbijanjaChange = (e) => {
+        setRazlogOdbijanja(e.target.value);
+    }
+
+    const handleKomentarChange = (e) => {
+        setKomentar(e.target.value);
+    }
+
+    const handleKomentar2Change = (e) => {
+        setKomentar2(e.target.value);
+    }
     useEffect(() => {
         const handleEnterKeyPress = (event) => {
             if (event.key === 'Enter') {
@@ -293,7 +308,9 @@ const MasinaZaMerenje = () => {
                 </div>
 
                 <label htmlFor="napomena">Napomena:</label>
-                <textarea id="napomena" name="napomena" rows="4" cols="50"></textarea><br/>
+                <textarea id="napomena" name="napomena" rows="4" cols="50" value={komentar}
+                          onChange={handleKomentarChange}></textarea><br/>
+
 
                 <label>Prečnik točka mašine:</label><br/>
                 <div className="mernaJedinicaContainer">
@@ -369,7 +386,8 @@ const MasinaZaMerenje = () => {
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1} onChange={handleNdg1Change}/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1}
+                           onChange={handleNdg1Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>
@@ -380,7 +398,8 @@ const MasinaZaMerenje = () => {
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi"
+                               readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
                     </div>
                     <h2>Mašina ispunjava propisane zahteve:</h2>
@@ -390,8 +409,13 @@ const MasinaZaMerenje = () => {
                     <label htmlFor="neIspunjava">NE</label>
                 </label><br/>
 
-                <label htmlFor="komentar">Komentar:</label>
-                <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea>
+                <label htmlFor="komentar2">Komentar:</label>
+                <textarea id="komentar2" name="komentar2" rows="4" cols="50" value={komentar2}
+                          onChange={handleKomentar2Change}></textarea><br/>
+
+                <label htmlFor="razlogOdbijanja">Razlog odbijanja:</label>
+                <textarea id="razlogOdbijanja" name="razlogOdbijanja" rows="4" cols="20" value={razlogOdbijanja}
+                          onChange={handleRazlogOdbijanjaChange}></textarea><br/>
 
 
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>

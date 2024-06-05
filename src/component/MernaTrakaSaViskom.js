@@ -10,6 +10,9 @@ const MernaTrakaSaViskom = () => {
     const [users, setUsers] = useState([]);
     const [proizvodjaci, setProizvodjaci] = useState([]);
 
+    const [razlogOdbijanja, setRazlogOdbijanja] = useState('/');
+    const [komentar, setKomentar] = useState('/');
+    const [komentar2, setKomentar2] = useState('/');
 
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
@@ -82,6 +85,18 @@ const MernaTrakaSaViskom = () => {
     }
     const handleNdr1Change = (e) => {
         setNdr1(e.target.value);
+    }
+
+    const handleRazlogOdbijanjaChange = (e) => {
+        setRazlogOdbijanja(e.target.value);
+    }
+
+    const handleKomentarChange = (e) => {
+        setKomentar(e.target.value);
+    }
+
+    const handleKomentar2Change = (e) => {
+        setKomentar2(e.target.value);
     }
 
     const updateValues = (inputValue, setter) => {
@@ -361,7 +376,9 @@ const MernaTrakaSaViskom = () => {
                 </div>
 
                 <label htmlFor="napomena">Napomena:</label>
-                <textarea id="napomena" name="napomena" rows="4" cols="50"></textarea><br/>
+                <textarea id="napomena" name="napomena" rows="4" cols="50" value={komentar}
+                          onChange={handleKomentarChange}></textarea><br/>
+
 
                 <label>Odstupanje od nazivne mere:</label>
                 <div className="mernaJedinicaContainer">
@@ -739,8 +756,14 @@ const MernaTrakaSaViskom = () => {
                     <label htmlFor="neIspunjava">NE</label>
                 </label><br/>
 
-                <label htmlFor="komentar">Komentar:</label>
-                <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea><br/>
+                <label htmlFor="komentar2">Komentar:</label>
+                <textarea id="komentar2" name="komentar2" rows="4" cols="50" value={komentar2}
+                          onChange={handleKomentar2Change}></textarea><br/>
+
+                <label htmlFor="razlogOdbijanja">Razlog odbijanja:</label>
+                <textarea id="razlogOdbijanja" name="razlogOdbijanja" rows="4" cols="20" value={razlogOdbijanja}
+                          onChange={handleRazlogOdbijanjaChange}></textarea><br/>
+
 
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                 <select id="zapisnikUneo" name="zapisnikUneo">

@@ -93,6 +93,7 @@ const EditMetriZaTekstil = ({ id }) => {
     const [zapisnikOdobrio, setZapisnikOdobrio] = useState('');
     const [datum, setDatum] = useState('');
     const [users, setUsers] = useState([]);
+    const [razlogOdbijanja, setRazlogOdbijanja] = useState('');
 
     useEffect(() => {
         const handleEnterKeyPress = (event) => {
@@ -151,6 +152,7 @@ const EditMetriZaTekstil = ({ id }) => {
                 setOdstupanje4(data.odstupanje4 || '');
                 setOdstupanje5(data.odstupanje5 || '');
                 setNdg1(data.ndg1 || '');
+                const [razlogOdbijanja, setRazlogOdbijanja] = useState('');
 
                 const indexOfDash = data.greska1.indexOf('-');
                 const substring = indexOfDash !== -1 ? data.greska1.substring(0, indexOfDash) : data.greska1;
@@ -353,7 +355,9 @@ const EditMetriZaTekstil = ({ id }) => {
 
         window.location.reload();
     };
-
+    const handleRazlogOdbijanjaChange = (e) => {
+        setRazlogOdbijanja(e.target.value);
+    }
     const updateValues = (inputValue, setter) => {
         const numericValue = parseInt(inputValue);
         if (!isNaN(numericValue)) {
@@ -1431,6 +1435,9 @@ const EditMetriZaTekstil = ({ id }) => {
                 <textarea id="komentar2" name="komentar2" rows="4" cols="50" value={komentar}
                           onChange={handleKomentarChange}></textarea><br/>
 
+                <label htmlFor="razlogOdbijanja">Razlog odbijanja:</label>
+                <textarea id="razlogOdbijanja" name="razlogOdbijanja" rows="4" cols="50" value={razlogOdbijanja}
+                          onChange={handleRazlogOdbijanjaChange}></textarea><br/>
 
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                 <select id="zapisnikUneo" name="zapisnikUneo">

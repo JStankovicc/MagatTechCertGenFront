@@ -17,6 +17,10 @@ const JednodelnoMerilo = () => {
     const [ndr1, setNdr1] = useState('1,2');
     const [ndr2, setNdr2] = useState('1,2');
 
+    const [razlogOdbijanja, setRazlogOdbijanja] = useState('/');
+    const [komentar, setKomentar] = useState('/');
+    const [komentar2, setKomentar2] = useState('/');
+
     const [greska1a, setGreska1a] = useState('');
     const [greska1b, setGreska1b] = useState('');
     const [greska2a, setGreska2a] = useState('');
@@ -68,6 +72,18 @@ const JednodelnoMerilo = () => {
     }
     const handleNdr2Change = (e) => {
         setNdr2(e.target.value);
+    }
+
+    const handleRazlogOdbijanjaChange = (e) => {
+        setRazlogOdbijanja(e.target.value);
+    }
+
+    const handleKomentarChange = (e) => {
+        setKomentar(e.target.value);
+    }
+
+    const handleKomentar2Change = (e) => {
+        setKomentar2(e.target.value);
     }
 
     const updateValues = (inputValue, setter) => {
@@ -356,7 +372,7 @@ const JednodelnoMerilo = () => {
                     </label>
 
                     <label htmlFor="napomena">Napomena:</label>
-                    <textarea id="napomena" name="napomena" rows="4" cols="50"></textarea><br/>
+                    <textarea id="napomena" name="napomena" rows="4" cols="50" value={komentar} onChange={handleKomentarChange}></textarea><br/>
 
                     <label>Odstupanje od nazivne mere:</label>
                     <div className="mernaJedinicaContainer">
@@ -391,7 +407,8 @@ const JednodelnoMerilo = () => {
 
                     <div className="rezultatiContainer">
                         <input type="text" value="NDG" readOnly/>
-                        <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1} onChange={handleNdg1Change}/>
+                        <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" value={ndg1}
+                               onChange={handleNdg1Change}/>
                     </div>
 
 
@@ -681,11 +698,13 @@ const JednodelnoMerilo = () => {
 
                     <div className="rezultatiContainer">
                         <input type="text" value="NDG" readOnly/>
-                        <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" value={ndg2} onChange={handleNdg2Change}/>
+                        <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" value={ndg2}
+                               onChange={handleNdg2Change}/>
                     </div>
                     <div className="rezultatiContainer">
                         <input type="text" value="NDR" readOnly/>
-                        <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1} onChange={handleNdr1Change}/>
+                        <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1}
+                               onChange={handleNdr1Change}/>
                     </div>
 
 
@@ -722,7 +741,8 @@ const JednodelnoMerilo = () => {
 
                     <div className="rezultatiContainer">
                         <input type="text" value="NDG" readOnly/>
-                        <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" value={ndg3} onChange={handleNdg3Change}/>
+                        <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" value={ndg3}
+                               onChange={handleNdg3Change}/>
                     </div>
 
 
@@ -1009,11 +1029,13 @@ const JednodelnoMerilo = () => {
 
                     <div className="rezultatiContainer">
                         <input type="text" value="NDG" readOnly/>
-                        <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" value={ndg4} onChange={handleNdg4Change}/>
+                        <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" value={ndg4}
+                               onChange={handleNdg4Change}/>
                     </div>
                     <div className="rezultatiContainer">
                         <input type="text" value="NDR" readOnly/>
-                        <input type="text" id="ndr2" name="ndr2" className="rezultatiInput" value={ndr2} onChange={handleNdr2Change}/>
+                        <input type="text" id="ndr2" name="ndr2" className="rezultatiInput" value={ndr2}
+                               onChange={handleNdr2Change}/>
                     </div>
 
                     <label htmlFor="skinutiZigovi">Skinuti žigovi (razdvojiti znakom ;):</label>
@@ -1024,7 +1046,8 @@ const JednodelnoMerilo = () => {
 
                     <label className="container">
                         <div className="rezultatiContainer">
-                            <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi" readOnly/>
+                            <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi"
+                                   readOnly/>
                             <input type="text" id="propisaniZahtevi" name="propisaniZahtevi"
                                    className="rezultatiInput"/>
                         </div>
@@ -1037,7 +1060,10 @@ const JednodelnoMerilo = () => {
 
 
                     <label htmlFor="komentar2">Komentar:</label>
-                    <textarea id="komentar2" name="komentar2" rows="4" cols="50"></textarea><br/>
+                    <textarea id="komentar2" name="komentar2" rows="4" cols="50" value={komentar2} onChange={handleKomentar2Change}></textarea><br/>
+
+                    <label htmlFor="razlogOdbijanja">Razlog odbijanja:</label>
+                    <textarea id="razlogOdbijanja" name="razlogOdbijanja" rows="4" cols="20" value={razlogOdbijanja} onChange={handleRazlogOdbijanjaChange}></textarea><br/>
 
 
                     <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>

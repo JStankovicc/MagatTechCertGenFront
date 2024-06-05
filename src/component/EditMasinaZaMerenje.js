@@ -40,6 +40,7 @@ const EditMasinaZaMerenje = ({ id }) => {
     const [pokazivanjeMasine, setPokazivanjeMasine] = useState('');
     const [odstupanjeOdPraveVrednostiDuzine , setOdstupanjeOdPraveVrednostiDuzine] = useState('');
     const [relativnaGreskaIzmereneDuzine, setRelativnaGreskaIzmereneDuzine] = useState('');
+    const [razlogOdbijanja, setRazlogOdbijanja] = useState('');
 
     useEffect(() => {
         const handleEnterKeyPress = (event) => {
@@ -108,6 +109,8 @@ const EditMasinaZaMerenje = ({ id }) => {
                 setIspravnostPokaznogUredjaja(data.proveraIspravnostiPokaznogUredjaja === true ? 'DA' : 'NE');
                 setKomentar(data.komentar2 || '');
                 setProveraIspravnogVodjenja(data.proveraIspravnogVodjenja || '');
+                setRazlogOdbijanja(data.razlogOdbijanja || '');
+
                 if (data.datum) {
                     const dateObject = new Date(data.datum);
                     const year = dateObject.getFullYear();
@@ -199,6 +202,9 @@ const EditMasinaZaMerenje = ({ id }) => {
         fetchMerilo();
     }, [id]);
 
+    const handleRazlogOdbijanjaChange = (e) => {
+        setRazlogOdbijanja(e.target.value);
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
         const token = localStorage.getItem('token');
@@ -621,6 +627,9 @@ const EditMasinaZaMerenje = ({ id }) => {
                 <textarea id="komentar2" name="komentar2" rows="4" cols="50" value={komentar}
                           onChange={handleKomentarChange}></textarea><br/>
 
+                <label htmlFor="razlogOdbijanja">Razlog odbijanja:</label>
+                <textarea id="razlogOdbijanja" name="razlogOdbijanja" rows="4" cols="50" value={razlogOdbijanja}
+                          onChange={handleRazlogOdbijanjaChange}></textarea><br/>
 
                 <label htmlFor="zapisnikUneo">Zapisnik uneo:</label>
                 <select id="zapisnikUneo" name="zapisnikUneo">
