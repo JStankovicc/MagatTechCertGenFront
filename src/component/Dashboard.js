@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/Dashboard.css";
 
-const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , handleEditMetriZaTekstil , handleEditMernaLetva , handleEditMernaTrakaSaViskom , handleEditMasinaZaMerenje}) =>{
+const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , handleEditMetriZaTekstil , handleEditMernaLetva , handleEditMernaTrakaSaViskom , handleEditMasinaZaMerenje, handleEditMernaTrakaSaViskom25m}) =>{
     const [merila, setMerila] = useState([]);
     const [merneLetve, setMerneLetve] = useState([]);
     const [merneTrake, setMerneTrake] = useState([]);
+    const [merneTrake25m, setMerneTrake25m] = useState([]);
     const [masineZaMerenje, setMasineZaMerenje] = useState([]);
     const [slozivaMerila, setslozivaMerila] = useState([]);
     const [metriZaTekstil, setmetriZaTekstil] = useState([]);
@@ -119,6 +120,27 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                     return { ...merneTrake, ime: "Merna traka" };
                 });
                 setMerneTrake(merilaSaImenom);
+            })
+            .catch(error => {
+                setError(error);
+            });
+
+        fetch('http://localhost:8080/api/v1/mernaTrakaSaViskom25m/all', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Neuspešno dohvatanje podataka');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const merilaSaImenom = data.map(merneTrake => {
+                    return { ...merneTrake, ime: "Merna traka 25m" };
+                });
+                setMerneTrake25m(merilaSaImenom);
             })
             .catch(error => {
                 setError(error);
@@ -288,6 +310,46 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
         const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom/print?brojZapisnika=${id}`;
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                }
+                return response.blob();
+            })
+            .then(docxBlob => {
+                const url = window.URL.createObjectURL(docxBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', `generisanaMernaTraka - ${id}.docx`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.error('Greška prilikom preuzimanja Word datoteke:', error);
+            });
+    }
+
+    function handlePreuzimanjeMerneTrake25m(id) {
+        const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
+
+        if (!potvrda) {
+            return;
+        }
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/print?brojZapisnika=${id}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -572,6 +634,64 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
 
         const urlCheck = `http://localhost:8080/api/v1/mernaTrakaSaViskom/checkType?brojZapisnika=${id}`;
         const urlDownload = `http://localhost:8080/api/v1/mernaTrakaSaViskom/printResenje?brojZapisnika=${id}`;
+
+        fetch(urlCheck, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Neuspešno dobijanje tipa datoteke');
+                }
+                return response.text();
+            })
+            .then(fileType => {
+                return fetch(urlDownload, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Neuspešno preuzimanje Word datoteke');
+                        }
+                        return response.blob();
+                    })
+                    .then(docxBlob => {
+                        const url = window.URL.createObjectURL(docxBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', `${id}-${fileType}.docx`);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
+            })
+            .catch(error => {
+                console.error('Greška prilikom preuzimanja Word datoteke:', error);
+            });
+    }
+
+    function handleResenjeMerneTrake25m(id) {
+        const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
+
+        if (!potvrda) {
+            return;
+        }
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+
+        const urlCheck = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/checkType?brojZapisnika=${id}`;
+        const urlDownload = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -915,6 +1035,48 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             });
     }
 
+    function handleSertifikatMerneTrake25m(id) {
+        const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
+
+        if (!potvrda) {
+            return;
+        }
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token nije pronađen u local storage-u.');
+            return;
+        }
+
+        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/printSertifikat?brojZapisnika=${id}`;
+
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Neuspešno preuzimanje Word datoteke');
+                }
+                return response.blob();
+            })
+            .then(docxBlob => {
+                const url = window.URL.createObjectURL(docxBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', `sertifikat.docx`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.error('Greška prilikom preuzimanja Word datoteke:', error);
+            });
+    }
+
     function handleSertifikatMasineZaMerenje(id) {
         const potvrda = window.confirm('Da li želite da preuzmete datoteku?');
 
@@ -1061,6 +1223,10 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
         handleEditMernaTrakaSaViskom(id);
     }
 
+    function handleUredjivanjeMernaTrakaSaViskom25m(id){
+        handleEditMernaTrakaSaViskom25m(id);
+    }
+
     function handleUredjivanjeMasinaZaMerenje(id){
         handleEditMasinaZaMerenje(id);
     }
@@ -1068,7 +1234,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
     return (
         <div>
             <div className="brojSetaContainer">
-                <label>Trenutni broj seta:</label><label id="brojZap">{brojZap}</label><button onClick={updateBrojZapisnika}>Završi</button>
+                <label>Trenutni broj seta:</label><label id="brojZap">{brojZap}</label>
+                <button onClick={updateBrojZapisnika}>Završi</button>
             </div>
             <h2>Jednodelna merila</h2>
             <table>
@@ -1094,7 +1261,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                             </button>
                         </td>
                         <td>
-                            <button onClick={() => handleUredjivanjeJednodelnogMerila(merilo.brojZapisnika)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeJednodelnogMerila(merilo.brojZapisnika)}>Uredi
+                            </button>
                         </td>
                         <td>
                             <button
@@ -1151,7 +1319,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             </table>
 
 
-            <h2>Merne trake sa viskom</h2>
+            <h2>Merne trake sa viskom 5m</h2>
             <table>
                 <thead>
                 <tr>
@@ -1174,7 +1342,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                             <button onClick={() => handlePreuzimanjeMerneTrake(merilo.brojZapisnika)}>Preuzmi</button>
                         </td>
                         <td>
-                            <button onClick={() => handleUredjivanjeMernaTrakaSaViskom(merilo.brojZapisnika)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeMernaTrakaSaViskom(merilo.brojZapisnika)}>Uredi
+                            </button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeMerneTrake(merilo.brojZapisnika)}>Rešenje/Uverenje
@@ -1183,6 +1352,47 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                         <td>
                             <button
                                 onClick={() => handleSertifikatMerneTrake(merilo.brojZapisnika)}>Sertifikat
+                            </button>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+
+
+            <h2>Merne trake sa viskom 25m</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Broj Zapisnika</th>
+                    <th>Ime</th>
+                    <th>Datum</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {merneTrake25m.map(merilo => (
+                    <tr key={merilo.id}>
+                        <td>{merilo.brojZapisnika}</td>
+                        <td>{merilo.ime}</td>
+                        <td>{new Date(merilo.datum).toLocaleDateString()}</td>
+                        <td>
+                            <button onClick={() => handlePreuzimanjeMerneTrake25m(merilo.brojZapisnika)}>Preuzmi</button>
+                        </td>
+                        <td>
+                            <button onClick={() => handleUredjivanjeMernaTrakaSaViskom25m(merilo.brojZapisnika)}>Uredi
+                            </button>
+                        </td>
+                        <td>
+                            <button onClick={() => handleResenjeMerneTrake25m(merilo.brojZapisnika)}>Rešenje/Uverenje
+                            </button>
+                        </td>
+                        <td>
+                            <button
+                                onClick={() => handleSertifikatMerneTrake25m(merilo.brojZapisnika)}>Sertifikat
                             </button>
                         </td>
                     </tr>
@@ -1215,7 +1425,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                             </button>
                         </td>
                         <td>
-                            <button onClick={() => handleUredjivanjeMasinaZaMerenje(merilo.brojZapisnika)}>Uredi</button>
+                            <button onClick={() => handleUredjivanjeMasinaZaMerenje(merilo.brojZapisnika)}>Uredi
+                            </button>
                         </td>
                         <td>
                             <button onClick={() => handleResenjeMasineZaMerenje(merilo.brojZapisnika)}>Rešenje/Uverenje
