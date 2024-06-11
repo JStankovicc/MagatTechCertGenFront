@@ -63,13 +63,22 @@
     display: flex;
     flex-direction: column; /* Stack submenu items vertically */
     margin-top: 8px; /* Add some space between the main menu item and submenu */
+    z-index: 1; /* Ensure submenu is above other content */
 }
 
 .submenu li {
     padding: 8px 15px;
     white-space: nowrap; /* Prevent text wrapping */
+    background-color: #0b6d95; /* Match submenu background with main menu */
+    border-radius: 4px;
 }
 
 .submenu li:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure the main menu and submenu items align */
+.user-navbar ul li .submenu {
+    left: 0; /* Align submenu with parent menu item */
+    top: 36px; /* Adjust based on padding and font size of parent menu item */
 }

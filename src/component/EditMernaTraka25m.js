@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const EditMernaTrakaSaViskom = ({ id }) => {
+const EditMernaTraka25m = ({ id }) => {
     const [merilo, setMerilo] = useState(null);
     const [vrsteKontrolisanja, setVrsteKontrolisanja] = useState([]);
     const [vrstaKontrolisanja, setVrstaKontrolisanja] = useState('');
@@ -58,6 +58,21 @@ const EditMernaTrakaSaViskom = ({ id }) => {
     const [odstupanje9, setOdstupanje9] = useState('');
     const [odstupanje10, setOdstupanje10] = useState('');
     const [odstupanje11, setOdstupanje11] = useState('');
+    const [odstupanje12, setOdstupanje12] = useState('');
+    const [odstupanje13, setOdstupanje13] = useState('');
+    const [odstupanje14, setOdstupanje14] = useState('');
+    const [odstupanje15, setOdstupanje15] = useState('');
+    const [odstupanje16, setOdstupanje16] = useState('');
+    const [odstupanje17, setOdstupanje17] = useState('');
+    const [odstupanje18, setOdstupanje18] = useState('');
+    const [odstupanje19, setOdstupanje19] = useState('');
+    const [odstupanje20, setOdstupanje20] = useState('');
+    const [odstupanje21, setOdstupanje21] = useState('');
+    const [odstupanje22, setOdstupanje22] = useState('');
+    const [odstupanje23, setOdstupanje23] = useState('');
+    const [odstupanje24, setOdstupanje24] = useState('');
+    const [odstupanje25, setOdstupanje25] = useState('');
+    const [odstupanje26, setOdstupanje26] = useState('');
     const [ndg3, setNdg3] = useState('');
     const [ndg4, setNdg4] = useState('');
     const [ndg5, setNdg5] = useState('');
@@ -68,6 +83,21 @@ const EditMernaTrakaSaViskom = ({ id }) => {
     const [ndg10, setNdg10] = useState('');
     const [ndg11, setNdg11] = useState('');
     const [ndg12, setNdg12] = useState('');
+    const [ndg13, setNdg13] = useState('');
+    const [ndg14, setNdg14] = useState('');
+    const [ndg15, setNdg15] = useState('');
+    const [ndg16, setNdg16] = useState('');
+    const [ndg17, setNdg17] = useState('');
+    const [ndg18, setNdg18] = useState('');
+    const [ndg19, setNdg19] = useState('');
+    const [ndg20, setNdg20] = useState('');
+    const [ndg21, setNdg21] = useState('');
+    const [ndg22, setNdg22] = useState('');
+    const [ndg23, setNdg23] = useState('');
+    const [ndg24, setNdg24] = useState('');
+    const [ndg25, setNdg25] = useState('');
+    const [ndg26, setNdg26] = useState('');
+    const [ndg27, setNdg27] = useState('');
     const [skinutiZigovi, setSkinutiZigovi] = useState('');
     const [postavljeniZigovi, setPostavljeniZigovi] = useState('');
     const [propisaniZahtevi, setPropisaniZahtevi] = useState('');
@@ -100,7 +130,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         }
 
         const fetchMerilo = async () => {
-            const urlMerilo = `http://localhost:8080/api/v1/mernaTrakaSaViskom/get?brojZapisnika=${id}`;
+            const urlMerilo = `http://localhost:8080/api/v1/mernaTraka25m/get?brojZapisnika=${id}`;
 
             try {
                 const response = await fetch(urlMerilo, {
@@ -169,6 +199,21 @@ const EditMernaTrakaSaViskom = ({ id }) => {
                 setOdstupanje9(data.odstupanje9 || '');
                 setOdstupanje10(data.odstupanje10 || '');
                 setOdstupanje11(data.odstupanje11 || '');
+                setOdstupanje12(data.odstupanje12 || '');
+                setOdstupanje13(data.odstupanje13 || '');
+                setOdstupanje14(data.odstupanje14 || '');
+                setOdstupanje15(data.odstupanje15 || '');
+                setOdstupanje16(data.odstupanje16 || '');
+                setOdstupanje17(data.odstupanje17 || '');
+                setOdstupanje18(data.odstupanje18 || '');
+                setOdstupanje19(data.odstupanje19 || '');
+                setOdstupanje20(data.odstupanje20 || '');
+                setOdstupanje21(data.odstupanje21 || '');
+                setOdstupanje22(data.odstupanje22 || '');
+                setOdstupanje23(data.odstupanje23 || '');
+                setOdstupanje24(data.odstupanje24 || '');
+                setOdstupanje25(data.odstupanje25 || '');
+                setOdstupanje26(data.odstupanje26 || '');
                 setNdg3(data.ndg3 || '');
                 setNdg4(data.ndg4 || '');
                 setNdg5(data.ndg5 || '');
@@ -179,6 +224,21 @@ const EditMernaTrakaSaViskom = ({ id }) => {
                 setNdg10(data.ndg10);
                 setNdg11(data.ndg11);
                 setNdg12(data.ndg12);
+                setNdg13(data.ndg13);
+                setNdg14(data.ndg14);
+                setNdg15(data.ndg15);
+                setNdg16(data.ndg16);
+                setNdg17(data.ndg17);
+                setNdg18(data.ndg18);
+                setNdg19(data.ndg19);
+                setNdg20(data.ndg20);
+                setNdg21(data.ndg21);
+                setNdg22(data.ndg22);
+                setNdg23(data.ndg23);
+                setNdg24(data.ndg24);
+                setNdg25(data.ndg25);
+                setNdg26(data.ndg26);
+                setNdg27(data.ndg27);
                 setSkinutiZigovi(data.skinutiZigovi || '');
                 setPostavljeniZigovi(data.postavljeniZigovi || '');
                 setRazlogOdbijanja(data.razlogOdbijanja || '');
@@ -293,7 +353,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         const formData = new FormData(form);
 
         let replacedString = id.replace(/\//g, "_");
-        const endpoint = 'http://localhost:8080/api/v1/mernaTrakaSaViskom/update/' + replacedString;
+        const endpoint = 'http://localhost:8080/api/v1/mernaTraka25m/update/' + replacedString;
 
         const formDataToJson = (formData) => {
             const json = {};
@@ -472,6 +532,66 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         setOdstupanje11(e.target.value);
     }
 
+    const handleOdstupanje12Change = (e) => {
+        setOdstupanje12(e.target.value);
+    }
+
+    const handleOdstupanje13Change = (e) => {
+        setOdstupanje13(e.target.value);
+    }
+
+    const handleOdstupanje14Change = (e) => {
+        setOdstupanje14(e.target.value);
+    }
+
+    const handleOdstupanje15Change = (e) => {
+        setOdstupanje15(e.target.value);
+    }
+
+    const handleOdstupanje16Change = (e) => {
+        setOdstupanje16(e.target.value);
+    }
+
+    const handleOdstupanje17Change = (e) => {
+        setOdstupanje17(e.target.value);
+    }
+
+    const handleOdstupanje18Change = (e) => {
+        setOdstupanje18(e.target.value);
+    }
+
+    const handleOdstupanje19Change = (e) => {
+        setOdstupanje19(e.target.value);
+    }
+
+    const handleOdstupanje20Change = (e) => {
+        setOdstupanje20(e.target.value);
+    }
+
+    const handleOdstupanje21Change = (e) => {
+        setOdstupanje21(e.target.value);
+    }
+
+    const handleOdstupanje22Change = (e) => {
+        setOdstupanje22(e.target.value);
+    }
+
+    const handleOdstupanje23Change = (e) => {
+        setOdstupanje23(e.target.value);
+    }
+
+    const handleOdstupanje24Change = (e) => {
+        setOdstupanje24(e.target.value);
+    }
+
+    const handleOdstupanje25Change = (e) => {
+        setOdstupanje25(e.target.value);
+    }
+
+    const handleOdstupanje26Change = (e) => {
+        setOdstupanje26(e.target.value);
+    }
+
     const handleNdg3Change = (e) => {
         setNdg3(e.target.value);
     }
@@ -512,6 +632,66 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         setNdg12(e.target.value);
     }
 
+    const handleNdg13Change = (e) => {
+        setNdg13(e.target.value);
+    }
+
+    const handleNdg14Change = (e) => {
+        setNdg14(e.target.value);
+    }
+
+    const handleNdg15Change = (e) => {
+        setNdg15(e.target.value);
+    }
+
+    const handleNdg16Change = (e) => {
+        setNdg16(e.target.value);
+    }
+
+    const handleNdg17Change = (e) => {
+        setNdg17(e.target.value);
+    }
+
+    const handleNdg18Change = (e) => {
+        setNdg18(e.target.value);
+    }
+
+    const handleNdg19Change = (e) => {
+        setNdg19(e.target.value);
+    }
+
+    const handleNdg20Change = (e) => {
+        setNdg20(e.target.value);
+    }
+
+    const handleNdg21Change = (e) => {
+        setNdg21(e.target.value);
+    }
+
+    const handleNdg22Change = (e) => {
+        setNdg22(e.target.value);
+    }
+
+    const handleNdg23Change = (e) => {
+        setNdg23(e.target.value);
+    }
+
+    const handleNdg24Change = (e) => {
+        setNdg24(e.target.value);
+    }
+
+    const handleNdg25Change = (e) => {
+        setNdg25(e.target.value);
+    }
+
+    const handleNdg26Change = (e) => {
+        setNdg26(e.target.value);
+    }
+
+    const handleNdg27Change = (e) => {
+        setNdg27(e.target.value);
+    }
+
     const handleSkinutiZigoviChange = (e) => {
         setSkinutiZigovi(e.target.value);
     }
@@ -526,7 +706,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
 
     return (
         <div>
-            <h2>Merna traka sa viskom 10m</h2>
+            <h2>Merna traka 25m</h2>
             <form onSubmit={handleSubmit} id="form">
                 <input type="hidden" id="token" name="token" value={localStorage.getItem('jwtToken')}/>
                 <div className='rezultatiContainer'>
@@ -748,6 +928,111 @@ const EditMernaTrakaSaViskom = ({ id }) => {
                            value={odstupanje11} onChange={handleOdstupanje11Change}/>
                     <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG"
                            value={ndg11} onChange={handleNdg11Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="11000" readOnly/>
+                    <input type="text" id="odstupanje12" name="odstupanje12" className="rezultatiInput"
+                           value={odstupanje12} onChange={handleOdstupanje12Change}/>
+                    <input type="text" id="ndg12" name="ndg12" className="rezultatiInput" placeholder="NDG"
+                           value={ndg12} onChange={handleNdg12Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="12000" readOnly/>
+                    <input type="text" id="odstupanje13" name="odstupanje13" className="rezultatiInput"
+                           value={odstupanje13} onChange={handleOdstupanje13Change}/>
+                    <input type="text" id="ndg13" name="ndg13" className="rezultatiInput" placeholder="NDG"
+                           value={ndg13} onChange={handleNdg13Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="13000" readOnly/>
+                    <input type="text" id="odstupanje14" name="odstupanje14" className="rezultatiInput"
+                           value={odstupanje14} onChange={handleOdstupanje14Change}/>
+                    <input type="text" id="ndg14" name="ndg14" className="rezultatiInput" placeholder="NDG"
+                           value={ndg14} onChange={handleNdg14Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="14000" readOnly/>
+                    <input type="text" id="odstupanje15" name="odstupanje15" className="rezultatiInput"
+                           value={odstupanje15} onChange={handleOdstupanje15Change}/>
+                    <input type="text" id="ndg15" name="ndg15" className="rezultatiInput" placeholder="NDG"
+                           value={ndg15} onChange={handleNdg15Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="15000" readOnly/>
+                    <input type="text" id="odstupanje16" name="odstupanje16" className="rezultatiInput"
+                           value={odstupanje16} onChange={handleOdstupanje16Change}/>
+                    <input type="text" id="ndg16" name="ndg16" className="rezultatiInput" placeholder="NDG"
+                           value={ndg16} onChange={handleNdg16Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="16000" readOnly/>
+                    <input type="text" id="odstupanje17" name="odstupanje17" className="rezultatiInput"
+                           value={odstupanje17} onChange={handleOdstupanje17Change}/>
+                    <input type="text" id="ndg17" name="ndg17" className="rezultatiInput" placeholder="NDG"
+                           value={ndg17} onChange={handleNdg17Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="17000" readOnly/>
+                    <input type="text" id="odstupanje18" name="odstupanje18" className="rezultatiInput"
+                           value={odstupanje18} onChange={handleOdstupanje18Change}/>
+                    <input type="text" id="ndg18" name="ndg18" className="rezultatiInput" placeholder="NDG"
+                           value={ndg18} onChange={handleNdg18Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="18000" readOnly/>
+                    <input type="text" id="odstupanje19" name="odstupanje19" className="rezultatiInput"
+                           value={odstupanje19} onChange={handleOdstupanje19Change}/>
+                    <input type="text" id="ndg19" name="ndg19" className="rezultatiInput" placeholder="NDG"
+                           value={ndg19} onChange={handleNdg19Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="19000" readOnly/>
+                    <input type="text" id="odstupanje20" name="odstupanje20" className="rezultatiInput"
+                           value={odstupanje20} onChange={handleOdstupanje20Change}/>
+                    <input type="text" id="ndg20" name="ndg20" className="rezultatiInput" placeholder="NDG"
+                           value={ndg20} onChange={handleNdg20Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="20000" readOnly/>
+                    <input type="text" id="odstupanje21" name="odstupanje21" className="rezultatiInput"
+                           value={odstupanje21} onChange={handleOdstupanje21Change}/>
+                    <input type="text" id="ndg21" name="ndg21" className="rezultatiInput" placeholder="NDG"
+                           value={ndg21} onChange={handleNdg21Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="21000" readOnly/>
+                    <input type="text" id="odstupanje22" name="odstupanje22" className="rezultatiInput"
+                           value={odstupanje22} onChange={handleOdstupanje22Change}/>
+                    <input type="text" id="ndg22" name="ndg22" className="rezultatiInput" placeholder="NDG"
+                           value={ndg22} onChange={handleNdg22Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="22000" readOnly/>
+                    <input type="text" id="odstupanje23" name="odstupanje23" className="rezultatiInput"
+                           value={odstupanje23} onChange={handleOdstupanje23Change}/>
+                    <input type="text" id="ndg23" name="ndg23" className="rezultatiInput" placeholder="NDG"
+                           value={ndg23} onChange={handleNdg23Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="23000" readOnly/>
+                    <input type="text" id="odstupanje24" name="odstupanje24" className="rezultatiInput"
+                           value={odstupanje24} onChange={handleOdstupanje24Change}/>
+                    <input type="text" id="ndg24" name="ndg24" className="rezultatiInput" placeholder="NDG"
+                           value={ndg24} onChange={handleNdg24Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="24000" readOnly/>
+                    <input type="text" id="odstupanje25" name="odstupanje25" className="rezultatiInput"
+                           value={odstupanje25} onChange={handleOdstupanje25Change}/>
+                    <input type="text" id="ndg25" name="ndg25" className="rezultatiInput" placeholder="NDG"
+                           value={ndg25} onChange={handleNdg25Change}/>
+                </div>
+                <div className="rezultatiContainer">
+                    <input type="text" value="25000" readOnly/>
+                    <input type="text" id="odstupanje26" name="odstupanje26" className="rezultatiInput"
+                           value={odstupanje26} onChange={handleOdstupanje26Change}/>
+                    <input type="text" id="ndg26" name="ndg26" className="rezultatiInput" placeholder="NDG"
+                           value={ndg26} onChange={handleNdg26Change}/>
                 </div>
 
                 <label>Greška podeljka skale:</label>
@@ -1050,8 +1335,8 @@ const EditMernaTrakaSaViskom = ({ id }) => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg12" name="ndg12" className="rezultatiInput" value={ndg12}
-                           onChange={handleNdg12Change}/>
+                    <input type="text" id="ndg27" name="ndg27" className="rezultatiInput" value={ndg27}
+                           onChange={handleNdg27Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
@@ -1135,4 +1420,4 @@ const EditMernaTrakaSaViskom = ({ id }) => {
     );
 };
 
-export default EditMernaTrakaSaViskom;
+export default EditMernaTraka25m;
