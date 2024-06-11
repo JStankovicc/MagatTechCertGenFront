@@ -17,6 +17,8 @@ import EditMasinaZaMerenje from "./EditMasinaZaMerenje";
 import EditMernaTrakaSaViskom25m from "./EditMernaTrakaSaViskom25m";
 import MernaTraka25m from "./MernaTraka25m";
 import EditMernaTraka25m from "./EditMernaTraka25m";
+import EditMernaTraka5m from "./EditMernaTraka5m";
+import MernaTraka5m from "./MernaTraka5m";
 
 const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
     const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
@@ -26,6 +28,7 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
     const [editMernaLetvaId, setEditMernaLetvaId] = useState(null);
     const [editMernaTrakaSaViskomId , setEditMernaTrakaSaViskomId] = useState(null);
     const [editMernaTrakaSaViskom25mId , setEditMernaTrakaSaViskom25mId] = useState(null);
+    const [editMernaTraka5mId , setEditMernaTraka5mId] = useState(null);
     const [editMernaTraka25mId , setEditMernaTraka25mId] = useState(null);
     const [editMasinaZaMerenjeId, setEditMasinaZaMerenjeId] = useState(null);
 
@@ -61,6 +64,10 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
         setEditMernaTraka25mId(id);
         setActiveMenuItem('Edit merna traka 25m');
     }
+    const handleEditMernaTraka5m = (id) => {
+        setEditMernaTraka5mId(id);
+        setActiveMenuItem('Edit merna traka 5m');
+    }
     const handleEditMasinaZaMerenje = (id) => {
         setEditMasinaZaMerenjeId(id);
         setActiveMenuItem('Edit masina za merenje')
@@ -68,7 +75,7 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
     return (
         <div>
             <UserNavbar handleLogout={handleLogout} onMenuItemClick={handleMenuItemClick} activeMenuItem={activeMenuItem} />
-            {activeMenuItem === 'Dashboard' && <Dashboard handleEditJednodelnogMerila={handleEditJednodelnogMerila} handleEditSlozivogMerila={handleEditSlozivogMerila} handleEditMetriZaTekstil={handleEditMetriZaTekstil} handleEditMernaLetva={handleEditMernaLetva} handleEditMernaTrakaSaViskom={handleEditMernaTrakaSaViskom} handleEditMernaTrakaSaViskom25m={handleEditMernaTrakaSaViskom25m} handleEditMernaTraka25m={handleEditMernaTraka25m} handleEditMasinaZaMerenje={handleEditMasinaZaMerenje}/>}
+            {activeMenuItem === 'Dashboard' && <Dashboard handleEditJednodelnogMerila={handleEditJednodelnogMerila} handleEditSlozivogMerila={handleEditSlozivogMerila} handleEditMetriZaTekstil={handleEditMetriZaTekstil} handleEditMernaLetva={handleEditMernaLetva} handleEditMernaTrakaSaViskom={handleEditMernaTrakaSaViskom} handleEditMernaTrakaSaViskom25m={handleEditMernaTrakaSaViskom25m} handleEditMernaTraka25m={handleEditMernaTraka25m} handleEditMernaTraka5m={handleEditMernaTraka5m} handleEditMasinaZaMerenje={handleEditMasinaZaMerenje}/>}
             {activeMenuItem === 'Jednodelno merilo' && <JednodelnoMerilo />}
             {activeMenuItem === 'Merna letva' && <MernaLetva />}
             {activeMenuItem === 'Merna traka sa viskom 10m' && <MernaTrakaSaViskom />}
@@ -83,8 +90,10 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
             {activeMenuItem === 'Edit merna traka sa viskom 10m' && <EditMernaTrakaSaViskom id={editMernaTrakaSaViskomId}/> }
             {activeMenuItem === 'Edit merna traka sa viskom 25m' && <EditMernaTrakaSaViskom25m id={editMernaTrakaSaViskom25mId}/> }
             {activeMenuItem === 'Edit merna traka 25m' && <EditMernaTraka25m id={editMernaTraka25mId}/> }
+            {activeMenuItem === 'Edit merna traka 5m' && <EditMernaTraka5m id={editMernaTraka5mId}/> }
             {activeMenuItem === 'Edit masina za merenje' && <EditMasinaZaMerenje id={editMasinaZaMerenjeId}/>}
             {activeMenuItem === 'Merna traka 25m' && <MernaTraka25m />}
+            {activeMenuItem === 'Merna traka 5m' && <MernaTraka5m />}
         </div>
     );
 };

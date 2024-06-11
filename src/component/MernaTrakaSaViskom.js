@@ -392,7 +392,7 @@ const MernaTrakaSaViskom = () => {
                 <div className="rezultatiContainer">
                     <input type="text" value="0" readOnly/>
                     <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1} onChange={handleNdr1Change}/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1} onChange={handleNdg1Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1000" readOnly/>
