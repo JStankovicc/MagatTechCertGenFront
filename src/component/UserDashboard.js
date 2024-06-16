@@ -19,6 +19,7 @@ import MernaTraka25m from "./MernaTraka25m";
 import EditMernaTraka25m from "./EditMernaTraka25m";
 import EditMernaTraka5m from "./EditMernaTraka5m";
 import MernaTraka5m from "./MernaTraka5m";
+import DashboardV2 from "./DashboardV2";
 
 const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
     const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
@@ -31,6 +32,7 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
     const [editMernaTraka5mId , setEditMernaTraka5mId] = useState(null);
     const [editMernaTraka25mId , setEditMernaTraka25mId] = useState(null);
     const [editMasinaZaMerenjeId, setEditMasinaZaMerenjeId] = useState(null);
+    const [viewSetId, setViewSetId] = useState(null);
 
     const handleMenuItemClick = (menuItem) => {
         setActiveMenuItem(menuItem);
@@ -72,10 +74,20 @@ const UserDashboard = ({ onLogout, userRole, handleLogout }) => {
         setEditMasinaZaMerenjeId(id);
         setActiveMenuItem('Edit masina za merenje')
     }
+
+    const handleViewSet = (id) => {
+        setViewSetId(id);
+        setActiveMenuItem('Vidi set');
+    }
     return (
         <div>
             <UserNavbar handleLogout={handleLogout} onMenuItemClick={handleMenuItemClick} activeMenuItem={activeMenuItem} />
-            {activeMenuItem === 'Dashboard' && <Dashboard handleEditJednodelnogMerila={handleEditJednodelnogMerila} handleEditSlozivogMerila={handleEditSlozivogMerila} handleEditMetriZaTekstil={handleEditMetriZaTekstil} handleEditMernaLetva={handleEditMernaLetva} handleEditMernaTrakaSaViskom={handleEditMernaTrakaSaViskom} handleEditMernaTrakaSaViskom25m={handleEditMernaTrakaSaViskom25m} handleEditMernaTraka25m={handleEditMernaTraka25m} handleEditMernaTraka5m={handleEditMernaTraka5m} handleEditMasinaZaMerenje={handleEditMasinaZaMerenje}/>}
+
+            {activeMenuItem === 'Dashboard' && <DashboardV2 handleViewSet={handleViewSet} />}
+            {activeMenuItem === 'Vidi set' && <Dashboard brojSeta={viewSetId} handleEditJednodelnogMerila={handleEditJednodelnogMerila} handleEditMasinaZaMerenje={handleEditMasinaZaMerenje}
+                            handleEditMernaTraka5m={handleEditMernaTraka5m} handleEditMernaLetva={handleEditMernaLetva} handleEditMernaTraka25m={handleEditMernaTraka25m}
+                            handleEditMernaTrakaSaViskom={handleEditMernaTrakaSaViskom} handleEditMernaTrakaSaViskom25m={handleEditMernaTrakaSaViskom25m}
+                            handleEditMetriZaTekstil={handleEditMetriZaTekstil} handleEditSlozivogMerila={handleEditSlozivogMerila}/>}
             {activeMenuItem === 'Jednodelno merilo' && <JednodelnoMerilo />}
             {activeMenuItem === 'Merna letva' && <MernaLetva />}
             {activeMenuItem === 'Merna traka sa viskom 10m' && <MernaTrakaSaViskom />}

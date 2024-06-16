@@ -698,7 +698,7 @@ const EditMetriZaTekstil = ({ id }) => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit1" name="unit1" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -738,7 +738,7 @@ const EditMetriZaTekstil = ({ id }) => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit2" name="unit2" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -1047,7 +1047,7 @@ const EditMetriZaTekstil = ({ id }) => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit3" name="unit3" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>
@@ -1087,7 +1087,7 @@ const EditMetriZaTekstil = ({ id }) => {
                 <div className="mernaJedinicaContainer">
                     <input type="text" value="Merna jedinica:" readOnly/>
                     <select id="unit4" name="unit4" className="rezultatiInput">
-                        <option value="m">μm</option>
+                        <option value="μm">μm</option>
                         <option value="mm">mm</option>
                         <option value="cm">cm</option>
                     </select>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/Dashboard.css";
 
-const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , handleEditMetriZaTekstil , handleEditMernaLetva , handleEditMernaTrakaSaViskom , handleEditMasinaZaMerenje, handleEditMernaTrakaSaViskom25m, handleEditMernaTraka25m, handleEditMernaTraka5m}) =>{
+const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , handleEditMetriZaTekstil , handleEditMernaLetva , handleEditMernaTrakaSaViskom , handleEditMasinaZaMerenje, handleEditMernaTrakaSaViskom25m, handleEditMernaTraka25m, handleEditMernaTraka5m, brojSeta}) =>{
     const [merila, setMerila] = useState([]);
     const [merneLetve, setMerneLetve] = useState([]);
     const [merneTrake, setMerneTrake] = useState([]);
@@ -63,7 +63,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 console.error('Error fetching broj zapisnika:', error);
             });
 
-        fetch('http://localhost:8080/api/v1/jednodelnoMerilo/all', {
+        fetch(`http://localhost:8080/api/v1/jednodelnoMerilo/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -84,7 +84,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/mernaLetva/all', {
+        fetch(`http://localhost:8080/api/v1/mernaLetva/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -106,7 +106,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             });
 
 
-        fetch('http://localhost:8080/api/v1/mernaTrakaSaViskom/all', {
+        fetch(`http://localhost:8080/api/v1/mernaTrakaSaViskom/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -127,7 +127,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/mernaTrakaSaViskom25m/all', {
+        fetch(`http://localhost:8080/api/v1/mernaTrakaSaViskom25m/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -148,7 +148,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/mernaTraka25m/all', {
+        fetch(`http://localhost:8080/api/v1/mernaTraka25m/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -169,7 +169,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/mernaTraka5m/all', {
+        fetch(`http://localhost:8080/api/v1/mernaTraka5m/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -190,7 +190,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/masinaZaMerenje/all', {
+        fetch(`http://localhost:8080/api/v1/masinaZaMerenje/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -211,7 +211,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/slozivoMerilo/all', {
+        fetch(`http://localhost:8080/api/v1/slozivoMerilo/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -232,7 +232,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/metriZaTekstil/all', {
+        fetch(`http://localhost:8080/api/v1/metriZaTekstil/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
