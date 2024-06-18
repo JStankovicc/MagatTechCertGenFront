@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import "../styles/Dashboard.css";
+import {GlobalContext} from "./GlobalContext";
 
 const DashboardV2 = ( {handleViewSet}) => {
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
+
     const [setoviOvaGodina, setSetoviOvaGodina] = useState([]);
     const [starijiSetovi, setStarijiSetovi] = useState([]);
     const [error, setError] = useState(null);
@@ -17,7 +21,7 @@ const DashboardV2 = ( {handleViewSet}) => {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        fetch('http://localhost:8080/api/v1/brojZapisnika/checkAndUpdate', {
+        fetch(`${globalVariable}/api/v1/brojZapisnika/checkAndUpdate`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -47,7 +51,7 @@ const DashboardV2 = ( {handleViewSet}) => {
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/brojZapisnika', {
+        fetch(`${globalVariable}/api/v1/brojZapisnika`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -60,7 +64,7 @@ const DashboardV2 = ( {handleViewSet}) => {
                 console.error('Error fetching broj zapisnika:', error);
             });
 
-        fetch('http://localhost:8080/api/v1/brojZapisnika/getThisYear', {
+        fetch(`${globalVariable}/api/v1/brojZapisnika/getThisYear`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -78,7 +82,7 @@ const DashboardV2 = ( {handleViewSet}) => {
                 setError(error);
             });
 
-        fetch('http://localhost:8080/api/v1/brojZapisnika/getWithoutThisYear', {
+        fetch(`${globalVariable}/api/v1/brojZapisnika/getWithoutThisYear`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

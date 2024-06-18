@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import "../styles/Dashboard.css";
 import axios from "axios";
+import {GlobalContext} from "./GlobalContext";
 
 function Korisnici() {
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
     const [korisnici, setKorisnici] = useState([]);
     const [role, setRole] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -21,7 +24,7 @@ function Korisnici() {
                 console.error('Token nije pronađen u local storage-u.');
                 return;
             }
-            const response = await axios.get('http://localhost:8080/api/v1/user/all', {
+            const response = await axios.get(`${globalVariable}/api/v1/user/all`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -51,13 +54,13 @@ function Korisnici() {
                 password: password,
                 role: role,
             };
-            await axios.post('http://localhost:8080/api/v1/user/add', userRequest, {
+            await axios.post(`${globalVariable}/api/v1/user/add`, userRequest, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
             });
-            const response = await axios.get('http://localhost:8080/api/v1/user/all', {
+            const response = await axios.get(`${globalVariable}/api/v1/user/all`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -81,7 +84,7 @@ function Korisnici() {
                 console.error('Token nije pronađen u local storage-u.');
                 return;
             }
-            await axios.delete('http://localhost:8080/api/v1/user/delete', {
+            await axios.delete(`${globalVariable}/api/v1/user/delete`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

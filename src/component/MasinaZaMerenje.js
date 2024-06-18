@@ -1,7 +1,10 @@
-import React, {useEffect, UseEffect, useState, UseState} from 'react';
+import React, {useContext, useEffect, UseEffect, useState, UseState} from 'react';
 import "../styles/MasinaZaMerenje.css";
+import {GlobalContext} from "./GlobalContext";
 
 const MasinaZaMerenje = () => {
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
     const [vrsteKontrolisanja, setVrsteKontrolisanja] = useState([]);
     const [kompanije, setKompanije] = useState([]);
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
@@ -56,7 +59,7 @@ const MasinaZaMerenje = () => {
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/masinaZaMerenje/getND',{
+        fetch(`${globalVariable}/api/v1/masinaZaMerenje/getND`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -69,7 +72,7 @@ const MasinaZaMerenje = () => {
                 console.error('Error fetching ND:', error);
             });
 
-        fetch('http://localhost:8080/api/v1/brojZapisnika',{
+        fetch(`${globalVariable}/api/v1/brojZapisnika`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -82,7 +85,7 @@ const MasinaZaMerenje = () => {
                 console.error('Error fetching broj zapisnika:', error);
             });
 
-        fetch('http://localhost:8080/api/v1/vrstakontrolisanja/getAll', {
+        fetch(`${globalVariable}/api/v1/vrstakontrolisanja/getAll`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -99,7 +102,7 @@ const MasinaZaMerenje = () => {
             })
             .catch(error => console.error('Greška pri dobavljanju vrsta kontrolisanja:', error));
 
-        fetch('http://localhost:8080/api/v1/kompanija/all', {
+        fetch(`${globalVariable}/api/v1/kompanija/all`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -113,7 +116,7 @@ const MasinaZaMerenje = () => {
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
 
-        fetch('http://localhost:8080/api/v1/proizvodjac/all', {
+        fetch(`${globalVariable}/api/v1/proizvodjac/all`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -127,7 +130,7 @@ const MasinaZaMerenje = () => {
             .then(data => setProizvodjaci(data))
             .catch(error => console.error('Greška pri dobavljanju proizvodjaca:', error));
 
-        fetch('http://localhost:8080/api/v1/user/all', {
+        fetch(`${globalVariable}/api/v1/user/all`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -156,7 +159,7 @@ const MasinaZaMerenje = () => {
         const finishSetCheckbox = document.getElementById('finishSetCheckbox');
         const finishSet = finishSetCheckbox.checked;
 
-        const endpoint = 'http://localhost:8080/api/v1/masinaZaMerenje/add';
+        const endpoint = `${globalVariable}/api/v1/masinaZaMerenje/add`;
 
         const formDataToJson = (formData) => {
             const json = {};
@@ -169,7 +172,7 @@ const MasinaZaMerenje = () => {
         if (finishSet) {
             formData.append('finishSet', true);
 
-            fetch('http://localhost:8080/api/v1/brojZapisnika/update', {
+            fetch(`${globalVariable}/api/v1/brojZapisnika/update`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,

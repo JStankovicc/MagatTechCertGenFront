@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {GlobalContext} from "./GlobalContext";
 
 const EditMernaTrakaSaViskom = ({ id }) => {
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
     const [merilo, setMerilo] = useState(null);
     const [vrsteKontrolisanja, setVrsteKontrolisanja] = useState([]);
     const [vrstaKontrolisanja, setVrstaKontrolisanja] = useState('');
@@ -100,7 +103,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         }
 
         const fetchMerilo = async () => {
-            const urlMerilo = `http://localhost:8080/api/v1/mernaTrakaSaViskom/get?brojZapisnika=${id}`;
+            const urlMerilo = `${globalVariable}/api/v1/mernaTrakaSaViskom/get?brojZapisnika=${id}`;
 
             try {
                 const response = await fetch(urlMerilo, {
@@ -202,7 +205,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         };
 
         const fetchVrsteKontrolisanja = async () => {
-            const urlVrste = `http://localhost:8080/api/v1/vrstakontrolisanja/getAll`;
+            const urlVrste = `${globalVariable}/api/v1/vrstakontrolisanja/getAll`;
 
             try {
                 const response = await fetch(urlVrste, {
@@ -223,7 +226,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         };
 
         const fetchKompanije = async () => {
-            fetch('http://localhost:8080/api/v1/kompanija/all', {
+            fetch(`${globalVariable}/api/v1/kompanija/all`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -239,7 +242,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         }
 
         const fetchProizvodjaci = async () => {
-            fetch('http://localhost:8080/api/v1/proizvodjac/all', {
+            fetch(`${globalVariable}/api/v1/proizvodjac/all`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -255,7 +258,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         }
 
         const fetchUsers = async () => {
-            fetch('http://localhost:8080/api/v1/user/all', {
+            fetch(`${globalVariable}/api/v1/user/all`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -293,7 +296,7 @@ const EditMernaTrakaSaViskom = ({ id }) => {
         const formData = new FormData(form);
 
         let replacedString = id.replace(/\//g, "_");
-        const endpoint = 'http://localhost:8080/api/v1/mernaTrakaSaViskom/update/' + replacedString;
+        const endpoint = `${globalVariable}/api/v1/mernaTrakaSaViskom/update/` + replacedString;
 
         const formDataToJson = (formData) => {
             const json = {};

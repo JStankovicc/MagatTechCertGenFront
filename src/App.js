@@ -1,8 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import MainApp from "./component/MainApp";
 import LoginScreen from "./component/LoginScreen";
+import {GlobalProvider,GlobalContext} from "./component/GlobalContext";
+
 function App() {
+  const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState('');
 
@@ -16,7 +20,7 @@ function App() {
   const loginWithToken = async (token) => {
     try {
       const response = await axios.post(
-          'http://localhost:8080/api/v1/auth/token',
+          `${globalVariable}/api/v1/auth/token`,
           { token }
       );
 
@@ -33,7 +37,7 @@ function App() {
   const handleLogin = async (email, password) => {
     try {
       const response = await axios.post(
-          'http://localhost:8080/api/v1/auth/signin',
+          `${globalVariable}/api/v1/auth/signin`,
           { email, password }
       );
 
@@ -54,14 +58,19 @@ function App() {
   };
 
   return (
-      <div>
-        {loggedIn ? (
-            <MainApp onLogout={handleLogout} userRole={userRole} />
-        ) : (
-            <LoginScreen onLogin={handleLogin} />
-        )}
+      <GlobalProvider>
 
-      </div>
+        <div>
+          {loggedIn ? (
+              <MainApp onLogout={handleLogout} userRole={userRole}/>
+          ) : (
+              <LoginScreen onLogin={handleLogin}/>
+          )}
+
+        </div>
+
+      </GlobalProvider>
+
   );
 }
 

@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import "../styles/Dashboard.css";
+import {GlobalContext} from "./GlobalContext";
 
 function MernaOprema() {
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
     const [oprema, setOprema] = useState([]);
     const [tipoviOpreme, setTipoviOpreme] = useState([]);
-    const [tip, setTip] = useState('');
+    const [tip, setTip] = useState('MERNA_LUPA');
     const [serBrEtalona, setSerBrEtalona] = useState('');
 
     useEffect(() => {
@@ -16,7 +19,7 @@ function MernaOprema() {
     const fetchOprema = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:8080/api/v1/oprema/all', {
+            const response = await axios.get(`${globalVariable}/api/v1/oprema/all`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -30,7 +33,7 @@ function MernaOprema() {
     const fetchTipoviOpreme = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:8080/api/v1/oprema/types', {
+            const response = await axios.get(`${globalVariable}/api/v1/oprema/types`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -44,7 +47,7 @@ function MernaOprema() {
     const handleBrisanjeOpreme = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`http://localhost:8080/api/v1/oprema/delete`, {
+            await axios.delete(`${globalVariable}/api/v1/oprema/delete`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -62,7 +65,7 @@ function MernaOprema() {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            await axios.post('http://localhost:8080/api/v1/oprema/add', {
+            await axios.post(`${globalVariable}/api/v1/oprema/add`, {
                 tip: tip,
                 serBrEtalona: serBrEtalona,
             }, {

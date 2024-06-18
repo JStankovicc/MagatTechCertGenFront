@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import "../styles/Dashboard.css";
+import {GlobalContext} from "./GlobalContext";
 
 const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , handleEditMetriZaTekstil , handleEditMernaLetva , handleEditMernaTrakaSaViskom , handleEditMasinaZaMerenje, handleEditMernaTrakaSaViskom25m, handleEditMernaTraka25m, handleEditMernaTraka5m, brojSeta}) =>{
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
+
+
     const [merila, setMerila] = useState([]);
     const [merneLetve, setMerneLetve] = useState([]);
     const [merneTrake, setMerneTrake] = useState([]);
@@ -20,7 +25,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        fetch('http://localhost:8080/api/v1/brojZapisnika/checkAndUpdate', {
+        fetch(`${globalVariable}/api/v1/brojZapisnika/checkAndUpdate`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -50,7 +55,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/brojZapisnika',{
+        fetch(`${globalVariable}/api/v1/brojZapisnika`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -63,7 +68,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 console.error('Error fetching broj zapisnika:', error);
             });
 
-        fetch(`http://localhost:8080/api/v1/jednodelnoMerilo/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/jednodelnoMerilo/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -84,7 +89,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/mernaLetva/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/mernaLetva/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -106,7 +111,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             });
 
 
-        fetch(`http://localhost:8080/api/v1/mernaTrakaSaViskom/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/mernaTrakaSaViskom/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -127,7 +132,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/mernaTrakaSaViskom25m/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/mernaTrakaSaViskom25m/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -148,7 +153,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/mernaTraka25m/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/mernaTraka25m/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -169,7 +174,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/mernaTraka5m/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/mernaTraka5m/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -190,7 +195,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/masinaZaMerenje/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/masinaZaMerenje/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -211,7 +216,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/slozivoMerilo/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/slozivoMerilo/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -232,7 +237,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 setError(error);
             });
 
-        fetch(`http://localhost:8080/api/v1/metriZaTekstil/allByBrojSeta?brojSeta=${brojSeta}`, {
+        fetch(`${globalVariable}/api/v1/metriZaTekstil/allByBrojSeta?brojSeta=${brojSeta}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -271,7 +276,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/jednodelnoMerilo/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/jednodelnoMerilo/print?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -311,7 +316,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        const url = `http://localhost:8080/api/v1/mernaLetva/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaLetva/print?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -352,7 +357,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTrakaSaViskom/print?brojZapisnika=${id}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -392,7 +397,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        const url = `http://localhost:8080/api/v1/mernaTraka25m/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTraka25m/print?brojZapisnika=${id}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -432,7 +437,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        const url = `http://localhost:8080/api/v1/mernaTraka5m/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTraka5m/print?brojZapisnika=${id}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -472,7 +477,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTrakaSaViskom25m/print?brojZapisnika=${id}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -512,7 +517,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
-        const url = `http://localhost:8080/api/v1/masinaZaMerenje/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/masinaZaMerenje/print?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -554,7 +559,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/slozivoMerilo/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/slozivoMerilo/print?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -596,7 +601,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/metriZaTekstil/print?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/metriZaTekstil/print?brojZapisnika=${id}`;
 
 
         fetch(url, {
@@ -639,8 +644,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/jednodelnoMerilo/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/jednodelnoMerilo/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/jednodelnoMerilo/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/jednodelnoMerilo/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -697,8 +702,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/mernaLetva/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/mernaLetva/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/mernaLetva/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/mernaLetva/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -755,8 +760,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/mernaTrakaSaViskom/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/mernaTrakaSaViskom/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/mernaTrakaSaViskom/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/mernaTrakaSaViskom/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -813,8 +818,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/mernaTrakaSaViskom25m/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/mernaTrakaSaViskom25m/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -871,8 +876,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/mernaTraka25m/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/mernaTraka25m/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/mernaTraka25m/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/mernaTraka25m/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -929,8 +934,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/mernaTraka5m/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/mernaTraka5m/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/mernaTraka5m/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/mernaTraka5m/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -987,8 +992,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/masinaZaMerenje/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/masinaZaMerenje/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/masinaZaMerenje/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/masinaZaMerenje/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -1045,8 +1050,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/slozivoMerilo/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/slozivoMerilo/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/slozivoMerilo/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/slozivoMerilo/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -1103,8 +1108,8 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const urlCheck = `http://localhost:8080/api/v1/metriZaTekstil/checkType?brojZapisnika=${id}`;
-        const urlDownload = `http://localhost:8080/api/v1/metriZaTekstil/printResenje?brojZapisnika=${id}`;
+        const urlCheck = `${globalVariable}/api/v1/metriZaTekstil/checkType?brojZapisnika=${id}`;
+        const urlDownload = `${globalVariable}/api/v1/metriZaTekstil/printResenje?brojZapisnika=${id}`;
 
         fetch(urlCheck, {
             method: 'GET',
@@ -1161,7 +1166,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/jednodelnoMerilo/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/jednodelnoMerilo/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1203,7 +1208,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaLetva/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaLetva/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1245,7 +1250,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTrakaSaViskom/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1287,7 +1292,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaTrakaSaViskom25m/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTrakaSaViskom25m/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1329,7 +1334,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaTraka25m/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTraka25m/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1371,7 +1376,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/mernaTraka5m/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/mernaTraka5m/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1413,7 +1418,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/masinaZaMerenje/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/masinaZaMerenje/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1455,7 +1460,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/slozivoMerilo/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/slozivoMerilo/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',
@@ -1497,7 +1502,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
             return;
         }
 
-        const url = `http://localhost:8080/api/v1/metriZaTekstil/printSertifikat?brojZapisnika=${id}`;
+        const url = `${globalVariable}/api/v1/metriZaTekstil/printSertifikat?brojZapisnika=${id}`;
 
         fetch(url, {
             method: 'GET',

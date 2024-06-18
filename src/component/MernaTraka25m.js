@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "../styles/MernaTraka.css";
+import {GlobalContext} from "./GlobalContext";
 
 const MernaTraka25m = () => {
+    const { globalVariable, setGlobalVariable } = useContext(GlobalContext);
+
     const [vrsteKontrolisanja, setVrsteKontrolisanja] = useState([]);
     const [kompanije, setKompanije] = useState([]);
     const [podnosilacZahteva, setPodnosilacZahteva] = useState('');
@@ -268,7 +271,7 @@ const MernaTraka25m = () => {
         if (finishSet) {
             formData.append('finishSet', true);
 
-            fetch('http://localhost:8080/api/v1/brojZapisnika/update', {
+            fetch(`${globalVariable}/api/v1/brojZapisnika/update`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -289,7 +292,7 @@ const MernaTraka25m = () => {
                 });
         }
 
-        fetch('http://localhost:8080/api/v1/mernaTraka25m/add', {
+        fetch(`${globalVariable}/api/v1/mernaTraka25m/add`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -331,7 +334,7 @@ const MernaTraka25m = () => {
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/mernaTraka25m/getND',{
+        fetch(`${globalVariable}/api/v1/mernaTraka25m/getND`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -371,7 +374,7 @@ const MernaTraka25m = () => {
                 console.error('Error fetching ND:', error);
             });
 
-        fetch('http://localhost:8080/api/v1/brojZapisnika',{
+        fetch(`${globalVariable}/api/v1/brojZapisnika`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -383,7 +386,7 @@ const MernaTraka25m = () => {
             .catch(error => {
                 console.error('Error fetching broj zapisnika:', error);
             });
-        fetch('http://localhost:8080/api/v1/vrstakontrolisanja/getAll', {
+        fetch(`${globalVariable}/api/v1/vrstakontrolisanja/getAll`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -400,7 +403,7 @@ const MernaTraka25m = () => {
             })
             .catch(error => console.error('Greška pri dobavljanju vrsta kontrolisanja:', error));
 
-        fetch('http://localhost:8080/api/v1/kompanija/all', {
+        fetch(`${globalVariable}/api/v1/kompanija/all`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -414,7 +417,7 @@ const MernaTraka25m = () => {
             .then(data => setKompanije(data))
             .catch(error => console.error('Greška pri dobavljanju kompanija:', error));
 
-        fetch('http://localhost:8080/api/v1/proizvodjac/all', {
+        fetch(`${globalVariable}/api/v1/proizvodjac/all`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -428,7 +431,7 @@ const MernaTraka25m = () => {
             .then(data => setProizvodjaci(data))
             .catch(error => console.error('Greška pri dobavljanju proizvodjaca:', error));
 
-        fetch('http://localhost:8080/api/v1/user/all', {
+        fetch(`${globalVariable}/api/v1/user/all`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
