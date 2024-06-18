@@ -32,35 +32,35 @@ const MernaTrakaSaViskom25m = () => {
     const [greska8b, setGreska8b] = useState('');
 
 
-    const [ndg1, setNdg1] = useState('±1,2');
-    const [ndg2, setNdg2] = useState('±1,2');
-    const [ndg3, setNdg3] = useState('±1,2');
-    const [ndg4, setNdg4] = useState('±1,2');
-    const [ndg5, setNdg5] = useState('±1,2');
-    const [ndg6, setNdg6] = useState('±1,2');
-    const [ndg7, setNdg7] = useState('±1,2');
-    const [ndg8, setNdg8] = useState('±1,2');
-    const [ndg9, setNdg9] = useState('±1,2');
-    const [ndg10, setNdg10] = useState('±1,2');
-    const [ndg11, setNdg11] = useState('±1,2');
-    const [ndg12, setNdg12] = useState('±1,2');
-    const [ndg13, setNdg13] = useState('±1,2');
-    const [ndg14, setNdg14] = useState('±1,2');
-    const [ndg15, setNdg15] = useState('±1,2');
-    const [ndg16, setNdg16] = useState('±1,2');
-    const [ndg17, setNdg17] = useState('±1,2');
-    const [ndg18, setNdg18] = useState('±1,2');
-    const [ndg19, setNdg19] = useState('±1,2');
-    const [ndg20, setNdg20] = useState('±1,2');
-    const [ndg21, setNdg21] = useState('±1,2');
-    const [ndg22, setNdg22] = useState('±1,2');
-    const [ndg23, setNdg23] = useState('±1,2');
-    const [ndg24, setNdg24] = useState('±1,2');
-    const [ndg25, setNdg25] = useState('±1,2');
-    const [ndg26, setNdg26] = useState('±1,2');
-    const [ndg27, setNdg27] = useState('±1,2');
+    const [ndg1, setNdg1] = useState('±');
+    const [ndg2, setNdg2] = useState('±');
+    const [ndg3, setNdg3] = useState('±');
+    const [ndg4, setNdg4] = useState('±');
+    const [ndg5, setNdg5] = useState('±');
+    const [ndg6, setNdg6] = useState('±');
+    const [ndg7, setNdg7] = useState('±');
+    const [ndg8, setNdg8] = useState('±');
+    const [ndg9, setNdg9] = useState('±');
+    const [ndg10, setNdg10] = useState('±');
+    const [ndg11, setNdg11] = useState('±');
+    const [ndg12, setNdg12] = useState('±');
+    const [ndg13, setNdg13] = useState('±');
+    const [ndg14, setNdg14] = useState('±');
+    const [ndg15, setNdg15] = useState('±');
+    const [ndg16, setNdg16] = useState('±');
+    const [ndg17, setNdg17] = useState('±');
+    const [ndg18, setNdg18] = useState('±');
+    const [ndg19, setNdg19] = useState('±');
+    const [ndg20, setNdg20] = useState('±');
+    const [ndg21, setNdg21] = useState('±');
+    const [ndg22, setNdg22] = useState('±');
+    const [ndg23, setNdg23] = useState('±');
+    const [ndg24, setNdg24] = useState('±');
+    const [ndg25, setNdg25] = useState('±');
+    const [ndg26, setNdg26] = useState('±');
+    const [ndg27, setNdg27] = useState('±');
 
-    const [ndr1, setNdr1] = useState('1,2');
+    const [ndr1, setNdr1] = useState('');
 
 
     const handleNdg1Change = (e) => {
@@ -330,6 +330,46 @@ const MernaTrakaSaViskom25m = () => {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+
+        fetch('http://localhost:8080/api/v1/mernaTrakaSaViskom25m/getND',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setNdg1(data.ndg1);
+                setNdg2(data.ndg2);
+                setNdg3(data.ndg3);
+                setNdg4(data.ndg4);
+                setNdg5(data.ndg5);
+                setNdg6(data.ndg6);
+                setNdg7(data.ndg7);
+                setNdg8(data.ndg8);
+                setNdg9(data.ndg9);
+                setNdg10(data.ndg10);
+                setNdg11(data.ndg11);
+                setNdg12(data.ndg12);
+                setNdg13(data.ndg13);
+                setNdg14(data.ndg14);
+                setNdg15(data.ndg15);
+                setNdg16(data.ndg16);
+                setNdg17(data.ndg17);
+                setNdg18(data.ndg18);
+                setNdg19(data.ndg19);
+                setNdg20(data.ndg20);
+                setNdg21(data.ndg21);
+                setNdg22(data.ndg22);
+                setNdg23(data.ndg23);
+                setNdg24(data.ndg24);
+                setNdg25(data.ndg25);
+                setNdg26(data.ndg26);
+                setNdg27(data.ndg27);
+                setNdr1(data.ndr1);
+            })
+            .catch(error => {
+                console.error('Error fetching ND:', error);
+            });
 
         fetch('http://localhost:8080/api/v1/brojZapisnika',{
             headers: {

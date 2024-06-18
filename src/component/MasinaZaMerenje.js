@@ -10,7 +10,7 @@ const MasinaZaMerenje = () => {
     const [brojZapisnika, setBrojZapisnika] = useState('');
     const [proizvodjaci, setProizvodjaci] = useState([]);
 
-    const [ndg1, setNdg1] = useState('±1,2');
+    const [ndg1, setNdg1] = useState('±');
 
     const [razlogOdbijanja, setRazlogOdbijanja] = useState('/');
     const [komentar, setKomentar] = useState('/');
@@ -55,6 +55,19 @@ const MasinaZaMerenje = () => {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+
+        fetch('http://localhost:8080/api/v1/masinaZaMerenje/getND',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setNdg1(data.ndg1);
+            })
+            .catch(error => {
+                console.error('Error fetching ND:', error);
+            });
 
         fetch('http://localhost:8080/api/v1/brojZapisnika',{
             headers: {

@@ -10,12 +10,12 @@ const SlozivoMerilo = () => {
     const [users, setUsers] = useState([]);
     const [proizvodjaci, setProizvodjaci] = useState([]);
 
-    const [ndg1, setNdg1] = useState('±1,2');
-    const [ndg2, setNdg2] = useState('±1,2');
-    const [ndg3, setNdg3] = useState('±1,2');
-    const [ndg4, setNdg4] = useState('±1,2');
-    const [ndr1, setNdr1] = useState('1,2');
-    const [ndr2, setNdr2] = useState('1,2');
+    const [ndg1, setNdg1] = useState('±');
+    const [ndg2, setNdg2] = useState('±');
+    const [ndg3, setNdg3] = useState('±');
+    const [ndg4, setNdg4] = useState('±');
+    const [ndr1, setNdr1] = useState('');
+    const [ndr2, setNdr2] = useState('');
 
     const [razlogOdbijanja, setRazlogOdbijanja] = useState('/');
     const [komentar, setKomentar] = useState('/');
@@ -345,6 +345,24 @@ const SlozivoMerilo = () => {
             console.error('Token nije pronađen u local storage-u.');
             return;
         }
+
+        fetch('http://localhost:8080/api/v1/slozivoMerilo/getND',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setNdg1(data.ndg1);
+                setNdg2(data.ndg2);
+                setNdg3(data.ndg3);
+                setNdg4(data.ndg4);
+                setNdr1(data.ndr1);
+                setNdr2(data.ndr2);
+            })
+            .catch(error => {
+                console.error('Error fetching ND:', error);
+            });
 
         fetch('http://localhost:8080/api/v1/brojZapisnika',{
             headers: {
