@@ -86,12 +86,164 @@ const JednodelnoMerilo = () => {
         setKomentar2(e.target.value);
     }
 
-    const updateValues = (inputValue, setter) => {
-        const numericValue = parseInt(inputValue);
+
+    const handleGreska1aChange = (value) => {
+        setGreska1a(value);
+        const numericValue = parseFloat(value);
+
         if (!isNaN(numericValue)) {
-            setter(numericValue + 1);
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue1b = numericValue + increment;
+            setGreska1b(nextValue1b);
+
+            const nextValue2a = nextValue1b;
+            setGreska2a(nextValue2a);
+
+            setGreska2b(nextValue2a + increment);
         } else {
-            setter('');
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska3aChange = (value) => {
+        setGreska3a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue3b = numericValue + increment;
+            setGreska3b(nextValue3b);
+
+            const nextValue4a = nextValue3b;
+            setGreska4a(nextValue4a);
+
+            setGreska4b(nextValue4a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska5aChange = (value) => {
+        setGreska5a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue5b = numericValue + increment;
+            setGreska5b(nextValue5b);
+
+            const nextValue6a = nextValue5b;
+            setGreska6a(nextValue6a);
+
+            setGreska6b(nextValue6a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska7aChange = (value) => {
+        setGreska7a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue7b = numericValue + increment;
+            setGreska7b(nextValue7b);
+
+            const nextValue8a = nextValue7b;
+            setGreska8a(nextValue8a);
+
+            setGreska8b(nextValue8a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska9aChange = (value) => {
+        setGreska9a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue9b = numericValue + increment;
+            setGreska9b(nextValue9b);
+
+            const nextValue10a = nextValue9b;
+            setGreska10a(nextValue10a);
+
+            setGreska10b(nextValue10a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska11aChange = (value) => {
+        setGreska11a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue11b = numericValue + increment;
+            setGreska11b(nextValue11b);
+
+            const nextValue12a = nextValue11b;
+            setGreska12a(nextValue12a);
+
+            setGreska12b(nextValue12a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska13aChange = (value) => {
+        setGreska13a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue13b = numericValue + increment;
+            setGreska13b(nextValue13b);
+
+            const nextValue14a = nextValue13b;
+            setGreska14a(nextValue14a);
+
+            setGreska14b(nextValue14a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska15aChange = (value) => {
+        setGreska15a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue15b = numericValue + increment;
+            setGreska15b(nextValue15b);
+
+            const nextValue16a = nextValue15b;
+            setGreska16a(nextValue16a);
+
+            setGreska16b(nextValue16a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
         }
     };
 
@@ -429,10 +581,7 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska1a}
-                            onChange={(e) => {
-                                setGreska1a(e.target.value);
-                                updateValues(e.target.value, setGreska1b);
-                            }}
+                            onChange={(e) => handleGreska1aChange(e.target.value)}
                         />
                         <input
                             type="text"
@@ -440,11 +589,7 @@ const JednodelnoMerilo = () => {
                             name="greska1b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska1a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska1b(e.target.value);
-                                updateValues(e.target.value, setGreska1b);
-                            }}
+                            value={greska1b}
                         />
                         <input
                             type="text"
@@ -462,11 +607,7 @@ const JednodelnoMerilo = () => {
                             name="greska2a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska1a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska2a(e.target.value);
-                                updateValues(e.target.value, setGreska1b);
-                            }}
+                            value={greska2a}
                         />
                         <input
                             type="text"
@@ -474,11 +615,7 @@ const JednodelnoMerilo = () => {
                             name="greska2b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska1a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska2b(e.target.value);
-                                updateValues(e.target.value, setGreska1b);
-                            }}
+                            value={greska2b}
                         />
                         <input
                             type="text"
@@ -497,10 +634,7 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska3a}
-                            onChange={(e) => {
-                                setGreska3a(e.target.value);
-                                updateValues(e.target.value, setGreska3b);
-                            }}
+                            onChange={(e) => handleGreska3aChange(e.target.value)}
                         />
                         <input
                             type="text"
@@ -508,11 +642,7 @@ const JednodelnoMerilo = () => {
                             name="greska3b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska3a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska3b(e.target.value);
-                                updateValues(e.target.value, setGreska3b);
-                            }}
+                            value={greska3b}
                         />
                         <input
                             type="text"
@@ -530,11 +660,7 @@ const JednodelnoMerilo = () => {
                             name="greska4a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska3a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska4a(e.target.value);
-                                updateValues(e.target.value, setGreska4b);
-                            }}
+                            value={greska4a}
                         />
                         <input
                             type="text"
@@ -542,11 +668,7 @@ const JednodelnoMerilo = () => {
                             name="greska4b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska3a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska4b(e.target.value);
-                                updateValues(e.target.value, setGreska4b);
-                            }}
+                            value={greska4b}
                         />
                         <input
                             type="text"
@@ -565,10 +687,8 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska5a}
-                            onChange={(e) => {
-                                setGreska5a(e.target.value);
-                                updateValues(e.target.value, setGreska5b);
-                            }}
+                            onChange={(e) => handleGreska5aChange(e.target.value)}
+
                         />
                         <input
                             type="text"
@@ -576,11 +696,7 @@ const JednodelnoMerilo = () => {
                             name="greska5b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska5a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska5b(e.target.value);
-                                updateValues(e.target.value, setGreska5b);
-                            }}
+                            value={greska5b}
                         />
                         <input
                             type="text"
@@ -598,11 +714,7 @@ const JednodelnoMerilo = () => {
                             name="greska6a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska5a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska6a(e.target.value);
-                                updateValues(e.target.value, setGreska6b);
-                            }}
+                            value={greska6a}
                         />
                         <input
                             type="text"
@@ -610,11 +722,7 @@ const JednodelnoMerilo = () => {
                             name="greska6b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska5a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska2b(e.target.value);
-                                updateValues(e.target.value, setGreska6b);
-                            }}
+                            value={greska6b}
                         />
 
                         <input
@@ -635,10 +743,7 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska7a}
-                            onChange={(e) => {
-                                setGreska7a(e.target.value);
-                                updateValues(e.target.value, setGreska7b);
-                            }}
+                            onChange={(e) => handleGreska7aChange(e.target.value)}
                         />
                         <input
                             type="text"
@@ -646,11 +751,7 @@ const JednodelnoMerilo = () => {
                             name="greska7b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska7a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska7b(e.target.value);
-                                updateValues(e.target.value, setGreska7b);
-                            }}
+                            value={greska7b}
                         />
                         <input
                             type="text"
@@ -668,11 +769,7 @@ const JednodelnoMerilo = () => {
                             name="greska8a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska7a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska8a(e.target.value);
-                                updateValues(e.target.value, setGreska8b);
-                            }}
+                            value={greska8a}
                         />
                         <input
                             type="text"
@@ -680,11 +777,7 @@ const JednodelnoMerilo = () => {
                             name="greska8b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska7a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska8b(e.target.value);
-                                updateValues(e.target.value, setGreska8b);
-                            }}
+                            value={greska8b}
                         />
                         <input
                             type="text"
@@ -763,10 +856,8 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska9a}
-                            onChange={(e) => {
-                                setGreska9a(e.target.value);
-                                updateValues(e.target.value, setGreska1b);
-                            }}
+                            onChange={(e) => handleGreska9aChange(e.target.value)}
+
                         />
                         <input
                             type="text"
@@ -774,11 +865,7 @@ const JednodelnoMerilo = () => {
                             name="greska9b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska9a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska9b(e.target.value);
-                                updateValues(e.target.value, setGreska1b);
-                            }}
+                            value={greska9b}
                         />
                         <input
                             type="text"
@@ -796,11 +883,7 @@ const JednodelnoMerilo = () => {
                             name="greska10a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska9a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska10a(e.target.value);
-                                updateValues(e.target.value, setGreska10b);
-                            }}
+                            value={greska10a}
                         />
                         <input
                             type="text"
@@ -808,11 +891,7 @@ const JednodelnoMerilo = () => {
                             name="greska10b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska9a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska2b(e.target.value);
-                                updateValues(e.target.value, setGreska10b);
-                            }}
+                            value={greska10b}
                         />
                         <input
                             type="text"
@@ -831,10 +910,7 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska11a}
-                            onChange={(e) => {
-                                setGreska11a(e.target.value);
-                                updateValues(e.target.value, setGreska11b);
-                            }}
+                            onChange={(e) => handleGreska11aChange(e.target.value)}
                         />
                         <input
                             type="text"
@@ -842,11 +918,7 @@ const JednodelnoMerilo = () => {
                             name="greska11b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska11a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska11b(e.target.value);
-                                updateValues(e.target.value, setGreska11b);
-                            }}
+                            value={greska11b}
                         />
                         <input
                             type="text"
@@ -864,11 +936,7 @@ const JednodelnoMerilo = () => {
                             name="greska12a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska11a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska12a(e.target.value);
-                                updateValues(e.target.value, setGreska12b);
-                            }}
+                            value={greska12a}
                         />
                         <input
                             type="text"
@@ -876,11 +944,7 @@ const JednodelnoMerilo = () => {
                             name="greska12b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska11a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska12b(e.target.value);
-                                updateValues(e.target.value, setGreska12b);
-                            }}
+                            value={greska12b}
                         />
                         <input
                             type="text"
@@ -899,10 +963,7 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska13a}
-                            onChange={(e) => {
-                                setGreska13a(e.target.value);
-                                updateValues(e.target.value, setGreska13b);
-                            }}
+                            onChange={(e) => handleGreska13aChange(e.target.value)}
                         />
                         <input
                             type="text"
@@ -910,11 +971,7 @@ const JednodelnoMerilo = () => {
                             name="greska13b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska13a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska13b(e.target.value);
-                                updateValues(e.target.value, setGreska13b);
-                            }}
+                            value={greska13b}
                         />
                         <input
                             type="text"
@@ -932,11 +989,7 @@ const JednodelnoMerilo = () => {
                             name="greska14a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska13a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska14a(e.target.value);
-                                updateValues(e.target.value, setGreska14b);
-                            }}
+                            value={greska14a}
                         />
                         <input
                             type="text"
@@ -944,11 +997,7 @@ const JednodelnoMerilo = () => {
                             name="greska14b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska13a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska14b(e.target.value);
-                                updateValues(e.target.value, setGreska14b);
-                            }}
+                            value={greska14b}
                         />
                         <input
                             type="text"
@@ -967,10 +1016,7 @@ const JednodelnoMerilo = () => {
                             className="rezultatiInput"
                             placeholder="Od:"
                             value={greska15a}
-                            onChange={(e) => {
-                                setGreska15a(e.target.value);
-                                updateValues(e.target.value, setGreska15b);
-                            }}
+                            onChange={(e) => handleGreska15aChange(e.target.value)}
                         />
                         <input
                             type="text"
@@ -978,11 +1024,7 @@ const JednodelnoMerilo = () => {
                             name="greska15b"
                             className="rezultatiInput"
                             placeholder={"Do:"}
-                            value={parseInt(greska15a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska15b(e.target.value);
-                                updateValues(e.target.value, setGreska15b);
-                            }}
+                            value={greska15b}
                         />
                         <input
                             type="text"
@@ -1000,11 +1042,7 @@ const JednodelnoMerilo = () => {
                             name="greska16a"
                             className="rezultatiInput"
                             placeholder="Od:"
-                            value={parseInt(greska15a) + 1 || ''}
-                            onChange={(e) => {
-                                setGreska16a(e.target.value);
-                                updateValues(e.target.value, setGreska16b);
-                            }}
+                            value={greska16a}
                         />
                         <input
                             type="text"
@@ -1012,11 +1050,7 @@ const JednodelnoMerilo = () => {
                             name="greska16b"
                             className="rezultatiInput"
                             placeholder="Do:"
-                            value={parseInt(greska15a) + 2 || ''}
-                            onChange={(e) => {
-                                setGreska16b(e.target.value);
-                                updateValues(e.target.value, setGreska16b);
-                            }}
+                            value={greska16b}
                         />
                         <input
                             type="text"

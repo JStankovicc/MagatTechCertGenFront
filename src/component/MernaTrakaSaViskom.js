@@ -99,12 +99,83 @@ const MernaTrakaSaViskom = () => {
         setKomentar2(e.target.value);
     }
 
-    const updateValues = (inputValue, setter) => {
-        const numericValue = parseInt(inputValue);
+    const handleGreska1aChange = (value) => {
+        setGreska1a(value);
+        const numericValue = parseFloat(value);
+
         if (!isNaN(numericValue)) {
-            setter(numericValue + 1);
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue1b = numericValue + increment;
+            setGreska1b(nextValue1b);
+
+            const nextValue2a = nextValue1b;
+            setGreska2a(nextValue2a);
+
+            setGreska2b(nextValue2a + increment);
         } else {
-            setter('');
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska3aChange = (value) => {
+        setGreska3a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue3b = numericValue + increment;
+            setGreska3b(nextValue3b);
+
+            const nextValue4a = nextValue3b;
+            setGreska4a(nextValue4a);
+
+            setGreska4b(nextValue4a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska5aChange = (value) => {
+        setGreska5a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue5b = numericValue + increment;
+            setGreska5b(nextValue5b);
+
+            const nextValue6a = nextValue5b;
+            setGreska6a(nextValue6a);
+
+            setGreska6b(nextValue6a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
+        }
+    };
+
+    const handleGreska7aChange = (value) => {
+        setGreska7a(value);
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            const increment = Number.isInteger(numericValue) ? 1 : 0.5;
+            const nextValue7b = numericValue + increment;
+            setGreska7b(nextValue7b);
+
+            const nextValue8a = nextValue7b;
+            setGreska8a(nextValue8a);
+
+            setGreska8b(nextValue8a + increment);
+        } else {
+            setGreska1b('');
+            setGreska2a('');
+            setGreska2b('');
         }
     };
 
@@ -392,57 +463,68 @@ const MernaTrakaSaViskom = () => {
                 <div className="rezultatiContainer">
                     <input type="text" value="0" readOnly/>
                     <input type="text" id="odstupanje1" name="odstupanje1" className="rezultatiInput"/>
-                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1} onChange={handleNdg1Change}/>
+                    <input type="text" id="ndg1" name="ndg1" className="rezultatiInput" placeholder="NDG" value={ndg1}
+                           onChange={handleNdg1Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="1000" readOnly/>
                     <input type="text" id="odstupanje2" name="odstupanje2" className="rezultatiInput"/>
-                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG" value={ndg2} onChange={handleNdg2Change}/>
+                    <input type="text" id="ndg2" name="ndg2" className="rezultatiInput" placeholder="NDG" value={ndg2}
+                           onChange={handleNdg2Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="2000" readOnly/>
                     <input type="text" id="odstupanje3" name="odstupanje3" className="rezultatiInput"/>
-                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG" value={ndg3} onChange={handleNdg3Change}/>
+                    <input type="text" id="ndg3" name="ndg3" className="rezultatiInput" placeholder="NDG" value={ndg3}
+                           onChange={handleNdg3Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="3000" readOnly/>
                     <input type="text" id="odstupanje4" name="odstupanje4" className="rezultatiInput"/>
-                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG" value={ndg4} onChange={handleNdg4Change}/>
+                    <input type="text" id="ndg4" name="ndg4" className="rezultatiInput" placeholder="NDG" value={ndg4}
+                           onChange={handleNdg4Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="4000" readOnly/>
                     <input type="text" id="odstupanje5" name="odstupanje5" className="rezultatiInput"/>
-                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG" value={ndg5} onChange={handleNdg5Change}/>
+                    <input type="text" id="ndg5" name="ndg5" className="rezultatiInput" placeholder="NDG" value={ndg5}
+                           onChange={handleNdg5Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="5000" readOnly/>
                     <input type="text" id="odstupanje6" name="odstupanje6" className="rezultatiInput"/>
-                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG" value={ndg6} onChange={handleNdg6Change}/>
+                    <input type="text" id="ndg6" name="ndg6" className="rezultatiInput" placeholder="NDG" value={ndg6}
+                           onChange={handleNdg6Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="6000" readOnly/>
                     <input type="text" id="odstupanje7" name="odstupanje7" className="rezultatiInput"/>
-                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" placeholder="NDG" value={ndg7} onChange={handleNdg7Change}/>
+                    <input type="text" id="ndg7" name="ndg7" className="rezultatiInput" placeholder="NDG" value={ndg7}
+                           onChange={handleNdg7Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="7000" readOnly/>
                     <input type="text" id="odstupanje8" name="odstupanje8" className="rezultatiInput"/>
-                    <input type="text" id="ndg8" name="ndg8" className="rezultatiInput" placeholder="NDG" value={ndg8} onChange={handleNdg8Change}/>
+                    <input type="text" id="ndg8" name="ndg8" className="rezultatiInput" placeholder="NDG" value={ndg8}
+                           onChange={handleNdg8Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="8000" readOnly/>
                     <input type="text" id="odstupanje9" name="odstupanje9" className="rezultatiInput"/>
-                    <input type="text" id="ndg9" name="ndg9" className="rezultatiInput" placeholder="NDG" value={ndg9} onChange={handleNdg9Change}/>
+                    <input type="text" id="ndg9" name="ndg9" className="rezultatiInput" placeholder="NDG" value={ndg9}
+                           onChange={handleNdg9Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="9000" readOnly/>
                     <input type="text" id="odstupanje10" name="odstupanje10" className="rezultatiInput"/>
-                    <input type="text" id="ndg10" name="ndg10" className="rezultatiInput" placeholder="NDG" value={ndg10} onChange={handleNdg10Change}/>
+                    <input type="text" id="ndg10" name="ndg10" className="rezultatiInput" placeholder="NDG"
+                           value={ndg10} onChange={handleNdg10Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="10000" readOnly/>
                     <input type="text" id="odstupanje11" name="odstupanje11" className="rezultatiInput"/>
-                    <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG" value={ndg11} onChange={handleNdg11Change}/>
+                    <input type="text" id="ndg11" name="ndg11" className="rezultatiInput" placeholder="NDG"
+                           value={ndg11} onChange={handleNdg11Change}/>
                 </div>
 
 
@@ -463,10 +545,7 @@ const MernaTrakaSaViskom = () => {
                         className="rezultatiInput"
                         placeholder="Od:"
                         value={greska1a}
-                        onChange={(e) => {
-                            setGreska1a(e.target.value);
-                            updateValues(e.target.value, setGreska1b);
-                        }}
+                        onChange={(e) => handleGreska1aChange(e.target.value)}
                     />
                     <input
                         type="text"
@@ -474,11 +553,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska1b"
                         className="rezultatiInput"
                         placeholder={"Do:"}
-                        value={parseInt(greska1a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska1b(e.target.value);
-                            updateValues(e.target.value, setGreska1b);
-                        }}
+                        value={greska1b}
                     />
                     <input
                         type="text"
@@ -496,11 +571,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska2a"
                         className="rezultatiInput"
                         placeholder="Od:"
-                        value={parseInt(greska1a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska2a(e.target.value);
-                            updateValues(e.target.value, setGreska1b);
-                        }}
+                        value={greska2a}
                     />
                     <input
                         type="text"
@@ -508,11 +579,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska2b"
                         className="rezultatiInput"
                         placeholder="Do:"
-                        value={parseInt(greska1a) + 2 || ''}
-                        onChange={(e) => {
-                            setGreska2b(e.target.value);
-                            updateValues(e.target.value, setGreska1b);
-                        }}
+                        value={greska2b}
                     />
                     <input
                         type="text"
@@ -531,10 +598,7 @@ const MernaTrakaSaViskom = () => {
                         className="rezultatiInput"
                         placeholder="Od:"
                         value={greska3a}
-                        onChange={(e) => {
-                            setGreska3a(e.target.value);
-                            updateValues(e.target.value, setGreska3b);
-                        }}
+                        onChange={(e) => handleGreska3aChange(e.target.value)}
                     />
                     <input
                         type="text"
@@ -542,11 +606,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska3b"
                         className="rezultatiInput"
                         placeholder={"Do:"}
-                        value={parseInt(greska3a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska3b(e.target.value);
-                            updateValues(e.target.value, setGreska3b);
-                        }}
+                        value={greska3b}
                     />
                     <input
                         type="text"
@@ -564,11 +624,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska4a"
                         className="rezultatiInput"
                         placeholder="Od:"
-                        value={parseInt(greska3a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska4a(e.target.value);
-                            updateValues(e.target.value, setGreska4b);
-                        }}
+                        value={greska4a}
                     />
                     <input
                         type="text"
@@ -576,11 +632,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska4b"
                         className="rezultatiInput"
                         placeholder="Do:"
-                        value={parseInt(greska3a) + 2 || ''}
-                        onChange={(e) => {
-                            setGreska4b(e.target.value);
-                            updateValues(e.target.value, setGreska4b);
-                        }}
+                        value={greska4b}
                     />
                     <input
                         type="text"
@@ -599,10 +651,8 @@ const MernaTrakaSaViskom = () => {
                         className="rezultatiInput"
                         placeholder="Od:"
                         value={greska5a}
-                        onChange={(e) => {
-                            setGreska5a(e.target.value);
-                            updateValues(e.target.value, setGreska5b);
-                        }}
+                        onChange={(e) => handleGreska5aChange(e.target.value)}
+
                     />
                     <input
                         type="text"
@@ -610,11 +660,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska5b"
                         className="rezultatiInput"
                         placeholder={"Do:"}
-                        value={parseInt(greska5a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska5b(e.target.value);
-                            updateValues(e.target.value, setGreska5b);
-                        }}
+                        value={greska5b}
                     />
                     <input
                         type="text"
@@ -632,11 +678,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska6a"
                         className="rezultatiInput"
                         placeholder="Od:"
-                        value={parseInt(greska5a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska6a(e.target.value);
-                            updateValues(e.target.value, setGreska6b);
-                        }}
+                        value={greska6a}
                     />
                     <input
                         type="text"
@@ -644,12 +686,9 @@ const MernaTrakaSaViskom = () => {
                         name="greska6b"
                         className="rezultatiInput"
                         placeholder="Do:"
-                        value={parseInt(greska5a) + 2 || ''}
-                        onChange={(e) => {
-                            setGreska2b(e.target.value);
-                            updateValues(e.target.value, setGreska6b);
-                        }}
+                        value={greska6b}
                     />
+
                     <input
                         type="text"
                         id="greskaPodeljka6"
@@ -668,10 +707,7 @@ const MernaTrakaSaViskom = () => {
                         className="rezultatiInput"
                         placeholder="Od:"
                         value={greska7a}
-                        onChange={(e) => {
-                            setGreska7a(e.target.value);
-                            updateValues(e.target.value, setGreska7b);
-                        }}
+                        onChange={(e) => handleGreska7aChange(e.target.value)}
                     />
                     <input
                         type="text"
@@ -679,11 +715,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska7b"
                         className="rezultatiInput"
                         placeholder={"Do:"}
-                        value={parseInt(greska7a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska7b(e.target.value);
-                            updateValues(e.target.value, setGreska7b);
-                        }}
+                        value={greska7b}
                     />
                     <input
                         type="text"
@@ -701,11 +733,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska8a"
                         className="rezultatiInput"
                         placeholder="Od:"
-                        value={parseInt(greska7a) + 1 || ''}
-                        onChange={(e) => {
-                            setGreska8a(e.target.value);
-                            updateValues(e.target.value, setGreska8b);
-                        }}
+                        value={greska8a}
                     />
                     <input
                         type="text"
@@ -713,11 +741,7 @@ const MernaTrakaSaViskom = () => {
                         name="greska8b"
                         className="rezultatiInput"
                         placeholder="Do:"
-                        value={parseInt(greska7a) + 2 || ''}
-                        onChange={(e) => {
-                            setGreska8b(e.target.value);
-                            updateValues(e.target.value, setGreska8b);
-                        }}
+                        value={greska8b}
                     />
                     <input
                         type="text"
@@ -731,11 +755,13 @@ const MernaTrakaSaViskom = () => {
 
                 <div className="rezultatiContainer">
                     <input type="text" value="NDG" readOnly/>
-                    <input type="text" id="ndg12" name="ndg12" className="rezultatiInput" value={ndg12} onChange={handleNdg12Change}/>
+                    <input type="text" id="ndg12" name="ndg12" className="rezultatiInput" value={ndg12}
+                           onChange={handleNdg12Change}/>
                 </div>
                 <div className="rezultatiContainer">
                     <input type="text" value="NDR" readOnly/>
-                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1} onChange={handleNdr1Change}/>
+                    <input type="text" id="ndr1" name="ndr1" className="rezultatiInput" value={ndr1}
+                           onChange={handleNdr1Change}/>
                 </div>
 
                 <label htmlFor="skinutiZigovi1">Skinuti žigovi (razdvojiti znakom ;):</label>
@@ -746,7 +772,8 @@ const MernaTrakaSaViskom = () => {
 
                 <label className="container">
                     <div className="rezultatiContainer">
-                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi" readOnly/>
+                        <input type="text" value="Zahtevi propisani pravilnikom o:" className="propisaniZahtevi"
+                               readOnly/>
                         <input type="text" id="propisaniZahtevi" name="propisaniZahtevi" className="rezultatiInput"/>
                     </div>
                     <h2>Merna traka ispunjava propisane zahteve:</h2>
