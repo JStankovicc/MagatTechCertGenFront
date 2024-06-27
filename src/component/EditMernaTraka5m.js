@@ -133,18 +133,22 @@ const EditMernaTraka5m = ({ id }) => {
                 const indexOfDash = data.greska1.indexOf('-');
                 const substring = indexOfDash !== -1 ? data.greska1.substring(0, indexOfDash) : data.greska1;
                 setGreska1a(substring);
+                handleGreska1aChange(substring);
 
                 const indexOfDash1 = data.greska3.indexOf('-');
                 const substring1 = indexOfDash1 !== -1 ? data.greska3.substring(0, indexOfDash1) : data.greska3;
                 setGreska3a(substring1);
+                handleGreska3aChange(substring1);
 
                 const indexOfDash2 = data.greska5.indexOf('-');
                 const substring2 = indexOfDash2 !== -1 ? data.greska5.substring(0, indexOfDash2) : data.greska5;
                 setGreska5a(substring2);
+                handleGreska5aChange(substring2);
 
                 const indexOfDash3 = data.greska7.indexOf('-');
                 const substring3 = indexOfDash3 !== -1 ? data.greska7.substring(0, indexOfDash3) : data.greska7;
                 setGreska7a(substring3);
+                handleGreska7aChange(substring3);
 
                 setGreskaPodeljka1(data.greskaPodeljka1 || '');
                 setGreskaPodeljka2(data.greskaPodeljka2 || '');

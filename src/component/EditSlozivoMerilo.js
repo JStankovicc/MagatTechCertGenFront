@@ -160,18 +160,22 @@ const EditSlozivoMerilo = ({ id }) => {
                 const indexOfDash = data.greska1.indexOf('-');
                 const substring = indexOfDash !== -1 ? data.greska1.substring(0, indexOfDash) : data.greska1;
                 setGreska1a(substring);
+                handleGreska1aChange(substring);
 
                 const indexOfDash1 = data.greska3.indexOf('-');
                 const substring1 = indexOfDash1 !== -1 ? data.greska3.substring(0, indexOfDash1) : data.greska3;
                 setGreska3a(substring1);
+                handleGreska3aChange(substring1);
 
                 const indexOfDash2 = data.greska5.indexOf('-');
                 const substring2 = indexOfDash2 !== -1 ? data.greska5.substring(0, indexOfDash2) : data.greska5;
                 setGreska5a(substring2);
+                handleGreska5aChange(substring2);
 
                 const indexOfDash3 = data.greska7.indexOf('-');
                 const substring3 = indexOfDash3 !== -1 ? data.greska7.substring(0, indexOfDash3) : data.greska7;
                 setGreska7a(substring3);
+                handleGreska7aChange(substring3);
 
                 setGreskaPodeljka1(data.greskaPodeljka1 || '');
                 setGreskaPodeljka2(data.greskaPodeljka2 || '');
@@ -193,18 +197,22 @@ const EditSlozivoMerilo = ({ id }) => {
                 const indexOfDash4 = data.greska9.indexOf('-');
                 const substring4 = indexOfDash4 !== -1 ? data.greska9.substring(0, indexOfDash4) : data.greska9;
                 setGreska9a(substring4);
+                handleGreska9aChange(substring4);
 
                 const indexOfDash5 = data.greska11.indexOf('-');
                 const substring5 = indexOfDash5 !== -1 ? data.greska11.substring(0, indexOfDash5) : data.greska11;
                 setGreska11a(substring5);
+                handleGreska11aChange(substring5);
 
                 const indexOfDash6 = data.greska13.indexOf('-');
                 const substring6 = indexOfDash6 !== -1 ? data.greska13.substring(0, indexOfDash6) : data.greska13;
                 setGreska13a(substring6);
+                handleGreska13aChange(substring6);
 
                 const indexOfDash7 = data.greska15.indexOf('-');
                 const substring7 = indexOfDash7 !== -1 ? data.greska15.substring(0, indexOfDash7) : data.greska15;
                 setGreska15a(substring7);
+                handleGreska15aChange(substring7)
 
                 setGreskaPodeljka9(data.greskaPodeljka9 || '');
                 setGreskaPodeljka10(data.greskaPodeljka10 || '');
