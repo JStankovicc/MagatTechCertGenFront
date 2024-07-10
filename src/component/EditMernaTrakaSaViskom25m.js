@@ -391,7 +391,7 @@ const EditMernaTrakaSaViskom25m = ({ id }) => {
                 console.error('Greška prilikom dodavanja merila:', error);
             });
 
-        ///window.location.reload();
+        window.location.reload();
     };
 
     const handleGreska1aChange = (value) => {
@@ -643,7 +643,7 @@ const EditMernaTrakaSaViskom25m = ({ id }) => {
     }
 
     const handleOdstupanje20Change = (e) => {
-        setOdstupanje11(e.target.value);
+        setOdstupanje20(e.target.value);
     }
 
     const handleOdstupanje21Change = (e) => {
