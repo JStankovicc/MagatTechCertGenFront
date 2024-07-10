@@ -322,7 +322,7 @@ const EditMernaTrakaSaViskom25m = ({ id }) => {
         }
 
         const fetchUsers = async () => {
-            fetch('http://localhost:8080/api/v1/user/all', {
+            fetch(`${globalVariable}/api/v1/user/all`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -391,7 +391,7 @@ const EditMernaTrakaSaViskom25m = ({ id }) => {
                 console.error('Greška prilikom dodavanja merila:', error);
             });
 
-        window.location.reload();
+        ///window.location.reload();
     };
 
     const handleGreska1aChange = (value) => {
