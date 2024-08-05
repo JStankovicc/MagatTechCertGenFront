@@ -457,7 +457,7 @@ const MetriZaTekstil = () => {
                 <label>Izaberite vrstu kontrolisanja:</label>
                 <select id="vrstaKontrolisanja" name="vrstaKontrolisanja">
                     {vrsteKontrolisanja.map(vrsta => (
-                        <option key={vrsta.id} value={vrsta.id}>
+                        <option key={vrsta.id} value={vrsta.description}>
                             {vrsta.description}
                         </option>
                     ))}
