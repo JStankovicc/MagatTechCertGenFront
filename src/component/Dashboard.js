@@ -295,7 +295,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanoJednodelnoMerilo - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -335,7 +335,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaLetva - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -375,7 +375,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaTraka - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -415,7 +415,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaTraka - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -455,7 +455,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaTraka - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -495,7 +495,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMernaTraka - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -536,7 +536,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanaMasinaZaMerenje - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -578,7 +578,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanoSlozivoMerilo - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -621,7 +621,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `generisanMetarZaTekstil - ${id}.docx`);
+                link.setAttribute('download', `${id} - zapisnik.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1185,7 +1185,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1227,7 +1227,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1269,7 +1269,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1311,7 +1311,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1353,7 +1353,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1395,7 +1395,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1437,7 +1437,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1479,7 +1479,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -1521,7 +1521,7 @@ const Dashboard = ({ handleEditJednodelnogMerila , handleEditSlozivogMerila , ha
                 const url = window.URL.createObjectURL(docxBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `sertifikat.docx`);
+                link.setAttribute('download', `${id} - sertifikat o etaloniranju.docx`);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
